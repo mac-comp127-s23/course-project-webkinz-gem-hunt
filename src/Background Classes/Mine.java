@@ -2,9 +2,7 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Path;
 
-import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Graphics;
 
 public class Mine {
 
