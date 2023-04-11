@@ -1,3 +1,4 @@
-# Project Title Goes Here
+# Webkinz Gem Hunt Clone
 
-Info about your project goes here
+Our team wants to create a clone of Webkinz’s daily gem hunt game. The project's core goals include a map that allows the player to select one of the five different mines and mine for gems in each one. Each gemstone and mine will have some sort of graphics component and description. The peripheral goals include side scrolling within the mine (with a minecart graphic), gem collections, pickaxe cursor graphics/animation, and reworking Webkinz’s game logic. If some peripheral goals cannot be completed, we will focus on elevating the core goals. Because the topic is largely visual, there will be only a few unit tests done. The testing will be done by actually playing the game and drawing the canvas. The testing will be similar to the one done in the Breakout assignment. The project will mostly be utilizing Kilt Graphics for graphics, Math/Random for gem generation probabilities, and a scanner to read a spreadsheet of gemstone data. 
+
