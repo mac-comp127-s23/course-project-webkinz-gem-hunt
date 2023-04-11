@@ -3,10 +3,13 @@ import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Path;
 
 import java.awt.Color;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Mine {
 
     private static GraphicsGroup group;
+    private static List<Rock> rocks;
     private static double CANVAS_WIDTH = 800; // change this to pull from canvas settings in game class
     private static double CANVAS_HEIGHT = 600; // change this to pull from canvas settings in game class
 
@@ -26,7 +29,7 @@ public class Mine {
      * @param size The height of each layer of cave rock, and width of each triangle
      * 
      */
-    private static void addCave(double size) {
+    public static void addCave(double size) {
         int layers = 3; // can adjust this or take as input parameter
 
         for (int layer = layers ; layer > 0; layer--) {
@@ -95,15 +98,38 @@ public class Mine {
         return titesGroup;
     }
 
-    
-    // for testing:
-    public static void main(String[] args) {
-        group = new GraphicsGroup();
-        CanvasWindow canvas = new CanvasWindow("Mine", 800, 600);
+    public static void generateRocks() {
 
-        addCave(300);
-        canvas.add(group);
-        canvas.draw();
+        int numRocks = 10; // number of rocks across top and bottom
+
+        double totalWidth = CANVAS_WIDTH; // can be modified if scrolling implemented
+
+        for (int i = 0; i < numRocks; i++){
+            Rock topRock = new Rock(
+                i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100), 
+                Helpers.randomDouble(10, 100));
+            group.add(topRock.getRockShape());
+
+            Rock bottomRock = new Rock(
+                i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100), 
+                CANVAS_HEIGHT - Helpers.randomDouble(50, 150));
+            group.add(bottomRock.getRockShape());
+        }
+
     }
+
+    
+    // // for testing:
+    // public static void main(String[] args) {
+    //     group = new GraphicsGroup();
+    //     CanvasWindow canvas = new CanvasWindow("Mine", 800, 600);
+
+    //     addCave(300);
+    //     canvas.add(group);
+    //     canvas.draw();
+
+    //     generateRocks();
+    //     canvas.draw();
+    // }
     
 }

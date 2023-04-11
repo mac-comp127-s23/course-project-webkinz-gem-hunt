@@ -41,22 +41,22 @@ public class Pickaxe {
         }
     }
 
-    // for testing:
-    public static void main(String[] args) {
-        drawAxe();
+    // // for testing:
+    // public static void main(String[] args) {
+    //     drawAxe();
 
-        CanvasWindow canvas = new CanvasWindow("Pickaxe", 800, 600);
+    //     CanvasWindow canvas = new CanvasWindow("Pickaxe", 800, 600);
 
-        canvas.add(axe, 100, 100); // arbitrary starting point
-        canvas.draw();
+    //     canvas.add(axe, 100, 100); // arbitrary starting point
+    //     canvas.draw();
 
-        canvas.onMouseMove(event -> {
-            axe.setPosition(event.getPosition());
-        });
+    //     canvas.onMouseMove(event -> {
+    //         axe.setPosition(event.getPosition());
+    //     });
 
-        canvas.onClick(event -> {
-            mineAnimate(canvas);
-        });
-    }
+    //     canvas.onClick(event -> {
+    //         mineAnimate(canvas);
+    //     });
+    // }
     
 }
