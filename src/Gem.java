@@ -1,5 +1,6 @@
 import edu.macalester.graphics.*;
 
+/** Information for each gemstone */
 public class Gem {
     
     private String name;
@@ -10,5 +11,9 @@ public class Gem {
     private String type;
     private double rarity;
     private Image image;
+
+    public Gem() {
+
+    }
 
 }

@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/** Retrieves data from a the given csv file */
 public class GemReader {
   
     public static void main(String[] args) {
