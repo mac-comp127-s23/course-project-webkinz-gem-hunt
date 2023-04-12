@@ -21,7 +21,7 @@ public class Game {
             canvas.draw();
 
             canvas.onMouseMove(event -> {
-                axeShape.setPosition(event.getPosition());
+                axeShape.setCenter(event.getPosition());
             });
 
             canvas.onClick(event -> {
