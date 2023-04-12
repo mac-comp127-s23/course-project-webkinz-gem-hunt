@@ -7,7 +7,7 @@ public class Minecart {
     private static GraphicsGroup minecart;
     private static final Color CART_COLOR = new Color(22, 0, 117);
 
-    public Minecart(CanvasWindow canvas) {
+    public Minecart() {
     }
 
     public static GraphicsGroup drawMinecart() {
