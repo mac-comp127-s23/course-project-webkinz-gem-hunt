@@ -7,7 +7,7 @@ public class Minecart {
     private static GraphicsGroup minecart;
     private static final Color CART_COLOR = new Color(22, 0, 117);
 
-    public Minecart(CanvasWindow canvas) {
+    public Minecart() {
     }
 
     public static GraphicsGroup drawMinecart() {
@@ -22,6 +22,16 @@ public class Minecart {
         cart.setStrokeColor(Color.BLACK);
         cart.setCenter(400, 550);
         minecart.add(cart);
+
+        Ellipse wheel1 = new Ellipse(0, 0, 30, 30);
+        wheel1.setFillColor(Color.GRAY);
+        wheel1.setCenter(380, 590);
+        minecart.add(wheel1);
+
+        Ellipse wheel2 = new Ellipse(0, 0, 30, 30);
+        wheel2.setFillColor(Color.GRAY);
+        wheel2.setCenter(420, 590);
+        minecart.add(wheel2);
 
         return minecart;
     }
