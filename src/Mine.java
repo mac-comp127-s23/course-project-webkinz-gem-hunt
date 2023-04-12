@@ -1,4 +1,3 @@
-import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Path;
 
@@ -9,7 +8,7 @@ import java.util.ArrayList;
 public class Mine {
 
     private static GraphicsGroup group;
-    private static List<Rock> rocks;
+    private static List<Path> rocksList;
     private static double CANVAS_WIDTH = 800; // change this to pull from canvas settings in game class
     private static double CANVAS_HEIGHT = 600; // change this to pull from canvas settings in game class
 
@@ -99,6 +98,7 @@ public class Mine {
     }
 
     public static void generateRocks() {
+        rocksList = new ArrayList<>();
 
         int numRocks = 10; // number of rocks across top and bottom
 
@@ -109,13 +109,19 @@ public class Mine {
                 i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100), 
                 Helpers.randomDouble(10, 100));
             group.add(topRock.getRockShape());
+            rocksList.add(topRock.getRockShape());
 
             Rock bottomRock = new Rock(
                 i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100), 
                 CANVAS_HEIGHT - Helpers.randomDouble(50, 150));
             group.add(bottomRock.getRockShape());
+            rocksList.add(bottomRock.getRockShape());
         }
 
+    }
+
+    public static List<Path> getRockList() {
+        return rocksList ;
     }
 
     

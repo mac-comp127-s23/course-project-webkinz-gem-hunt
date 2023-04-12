@@ -54,7 +54,7 @@ public class Rock {
         twoThirds.setFillColor(rockColor);
         twoThirds.setStrokeColor(Color.BLACK);
         twoThirds.setStrokeWidth(3);
-        twoThirds.setPosition(x, y + Math.sin(Math.toRadians(45)));
+        twoThirds.setPosition(x, y + ((y/2) - height * Math.sin(Math.toRadians(45))) );
         
         return twoThirds;
 
@@ -73,7 +73,7 @@ public class Rock {
         oneThird.setFillColor(rockColor);
         oneThird.setStrokeColor(Color.BLACK);
         oneThird.setStrokeWidth(3);
-        oneThird.setPosition(x, y + Math.sin(Math.toRadians(45)));
+        oneThird.setPosition(x, y + ((y/2) - height * Math.sin(Math.toRadians(45))) );
         
         return oneThird;
 
