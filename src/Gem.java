@@ -1,3 +1,5 @@
+import java.util.TooManyListenersException;
+
 import edu.macalester.graphics.*;
 
 /** Information for each gemstone */
@@ -78,5 +80,11 @@ public class Gem {
 
     public Image getImage() {
         return this.image;
+    }
+
+    public String toString(){
+        return "Name: " + name + "\n Description: " + description + "\n Type: "
+        + type + "\n Low Price: " + regLowPrice + "\n High Price: " + regHighPrice 
+        + "\n Gem of the Day Price: " + gemOfDayPrice + "\n Rarity: " + rarity;
     }
 }

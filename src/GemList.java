@@ -7,4 +7,10 @@ public class GemList {
     public void add(Gem gem){
         gems.add(gem);
     }
+
+    //Sets the gem list using gem reader.
+    public void setList(){
+        GemReader readGems = new GemReader();
+        gems = new ArrayList<Gem>(readGems.readGems());
+    }
 }
