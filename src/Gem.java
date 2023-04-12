@@ -72,9 +72,11 @@ public class Gem {
         return this.rarity;
     }
 
-    public Image setImage(String imageFile) {
-        Image img = new Image(imageFile);
-        return img;
+    public void setImage(String imageFile) {
+        this.image = new Image(imageFile);
     }
 
+    public Image getImage() {
+        return this.image;
+    }
 }
