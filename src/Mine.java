@@ -7,19 +7,26 @@ import java.util.ArrayList;
 
 public class Mine {
 
-    private static GraphicsGroup group;
+    private static Color color;
+    private static GraphicsGroup mineGroup;
     private static List<Path> rocksList;
     private static double CANVAS_WIDTH = 800; // change this to pull from canvas settings in game class
     private static double CANVAS_HEIGHT = 600; // change this to pull from canvas settings in game class
 
 
-    public Mine() {
-        group = new GraphicsGroup();
-        addCave(300);
+    public Mine(Color color) {
+        Mine.color = color;
+        mineGroup = new GraphicsGroup(0,0);
+        rocksList = new ArrayList<>();
     }
 
-    public static GraphicsGroup getGraphicsGroup() {
-        return group;
+    public void generateMine() {
+        addCave(300, color);
+        generateRocks();
+    }
+
+    public GraphicsGroup getGraphicsGroup() {
+        return mineGroup;
     }
 
     /**
@@ -28,12 +35,12 @@ public class Mine {
      * @param size The height of each layer of cave rock, and width of each triangle
      * 
      */
-    public static void addCave(double size) {
+    public void addCave(double size, Color color) {
         int layers = 3; // can adjust this or take as input parameter
 
         for (int layer = layers ; layer > 0; layer--) {
-            group.add(createStalagmites(layer * size * 0.2), 0, 0); // each layer is smaller/shorter according to the layer
-            group.add(createStalactites(layer * size * 0.2), 0, 0); 
+            mineGroup.add(createStalagmites(layer * size * 0.2, color), 0, 0); // each layer is smaller/shorter according to the layer
+            mineGroup.add(createStalactites(layer * size * 0.2, color), 0, 0); 
 
         }
     }
@@ -43,12 +50,12 @@ public class Mine {
      * 
      * @param size The maximum height of the peaks
      */
-    private static GraphicsGroup createStalagmites(double size) {
+    private GraphicsGroup createStalagmites(double size, Color color) {
         GraphicsGroup mitesGroup = new GraphicsGroup();
 
         double layerLeft = Helpers.randomDouble(-size, 0);
         double layerRight = CANVAS_WIDTH + size;
-        Color layerColor = Helpers.randomColorVariation(Color.BLUE, Helpers.randomInt(30, 50)); // change color to variable based upon instance var
+        Color layerColor = Helpers.randomColorVariation(color, Helpers.randomInt(30, 50)); // change color to variable based upon instance var
 
         double x = layerLeft;
         while (x < layerRight) {
@@ -62,7 +69,6 @@ public class Mine {
             peak.setFilled(true);
             peak.setStroked(false);
             mitesGroup.add(peak);
-            group.add(peak);
             x += curWidth * 0.5;
         }
         return mitesGroup;
@@ -73,12 +79,12 @@ public class Mine {
      * 
      * @param size The maximum height of the peaks
      */
-    private static GraphicsGroup createStalactites(double size) {
+    private GraphicsGroup createStalactites(double size, Color color) {
         GraphicsGroup titesGroup = new GraphicsGroup();
 
         double layerLeft = Helpers.randomDouble(-size, 0);
         double layerRight = CANVAS_WIDTH + size;
-        Color layerColor = Helpers.randomColorVariation(Color.BLUE, Helpers.randomInt(30, 50)); // change color to variable based upon instance var
+        Color layerColor = Helpers.randomColorVariation(color, Helpers.randomInt(30, 50)); // change color to variable based upon instance var
 
         double x = layerLeft;
         while (x < layerRight) {
@@ -97,8 +103,7 @@ public class Mine {
         return titesGroup;
     }
 
-    public static void generateRocks() {
-        rocksList = new ArrayList<>();
+    public void generateRocks() {
 
         int numRocks = 10; // number of rocks across top and bottom
 
@@ -108,14 +113,14 @@ public class Mine {
             Rock topRock = new Rock(
                 i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100), 
                 Helpers.randomDouble(10, 100));
-            group.add(topRock.getRockShape());
-            rocksList.add(topRock.getRockShape());
+            mineGroup.add(topRock);
+            rocksList.add(topRock);
 
             Rock bottomRock = new Rock(
                 i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100), 
                 CANVAS_HEIGHT - Helpers.randomDouble(50, 150));
-            group.add(bottomRock.getRockShape());
-            rocksList.add(bottomRock.getRockShape());
+            mineGroup.add(bottomRock);
+            rocksList.add(bottomRock);
         }
 
     }
