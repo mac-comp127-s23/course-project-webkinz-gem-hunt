@@ -33,6 +33,17 @@ public class Minecart {
         wheel2.setCenter(420, 590);
         minecart.add(wheel2);
 
+        Point p5 = new Point(3, 0);
+        Point p6 = new Point(48, -70);
+        Point p7 = new Point(67, -50);
+        Point p8 = new Point(95, -48);
+        Point p9 = new Point(147, 0);
+
+        Path slag = new Path(p5, p6, p7, p8, p9);
+        slag.setFillColor(Color.DARK_GRAY);
+        slag.setCenter(400, 475);
+        minecart.add(slag);
+
         return minecart;
     }
 

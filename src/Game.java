@@ -8,8 +8,11 @@ public class Game {
     private static Mine mine;
     private static Pickaxe axe;
     private static Minecart minecart;
-    private static final Color CAVE_BACKGROUND = new Color(9, 1, 64);
+
     private static CanvasWindow canvas;
+
+    private static final Color CAVE_BACKGROUND_BLUE = new Color(9, 1, 64);
+
 
         // for testing:
         public static void main(String[] args) {
@@ -17,7 +20,7 @@ public class Game {
             axe = new Pickaxe();
             minecart = new Minecart();
             CanvasWindow canvas = new CanvasWindow("Game", 800, 600);
-            canvas.setBackground(CAVE_BACKGROUND);
+            canvas.setBackground(CAVE_BACKGROUND_BLUE);
     
             Mine.addCave(300);
             Mine.generateRocks();
