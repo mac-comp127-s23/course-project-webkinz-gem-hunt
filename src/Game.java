@@ -21,11 +21,12 @@ public class Game {
             mine = new Mine(Color.BLUE);
             axe = new Pickaxe();
             CanvasWindow canvas = new CanvasWindow("Game", 800, 600);
+            backgrounds = new BackgroundManager("Mine", mine, canvas);
     
-            mine.addCave(300);
+            mine.addCave(300, Color.BLUE);
             mine.generateRocks();
-            canvas.add(mine.getGraphicsGroup());
-            canvas.draw();
+            backgrounds.drawBackround("Mine");
+            
 
             GraphicsObject axeShape = Pickaxe.drawAxe();
             canvas.add(axeShape, 100, 100); // arbitrary starting point

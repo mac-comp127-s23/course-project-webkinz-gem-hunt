@@ -26,7 +26,7 @@ public class Mine implements Background{
     }
 
     public GraphicsGroup getGraphicsGroup() {
-        return group;
+        return mineGroup;
     }
 
     /**
