@@ -6,7 +6,7 @@ import java.awt.Color;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Mine {
+public class Mine implements Background{
 
     private static GraphicsGroup group;
     private static List<Rock> rocks;
@@ -19,7 +19,7 @@ public class Mine {
         addCave(300);
     }
 
-    public static GraphicsGroup getGraphicsGroup() {
+    public GraphicsGroup getGraphicsGroup() {
         return group;
     }
 
