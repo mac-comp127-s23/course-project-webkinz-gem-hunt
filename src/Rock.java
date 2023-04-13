@@ -36,7 +36,7 @@ public class Rock {
         return oct; 
     }
 
-    public static Path getRockShape() {
+    public Path getRockShape() {
         return rockShape ;
     }
 

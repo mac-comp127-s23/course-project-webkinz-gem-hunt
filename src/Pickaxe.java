@@ -29,11 +29,11 @@ public class Pickaxe {
         return axe;
     }
 
-    public static GraphicsGroup getAxe() {
+    public GraphicsGroup getAxe() {
         return axe;
     }
 
-    public static GraphicsObject testRockHit(CanvasWindow canvas) {
+    public GraphicsObject testRockHit(CanvasWindow canvas) {
         Point p = axe.getCenter();
         Point testP = new Point(p.getX() - 5, p.getY()); // move the test point slightly off center so the pickaxe isn't detected
 

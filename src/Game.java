@@ -24,9 +24,9 @@ public class Game {
             canvas.add(Mine.getGraphicsGroup());
             canvas.draw();
 
-            canvas.add(minecart.drawMinecart());
+            canvas.add(Minecart.drawMinecart());
 
-            GraphicsObject axeShape = axe.drawAxe();
+            GraphicsObject axeShape = Pickaxe.drawAxe();
             canvas.add(axeShape, 100, 100); // arbitrary starting point
             canvas.draw();
 
@@ -35,8 +35,8 @@ public class Game {
             });
 
             canvas.onClick(event -> {
-                if (Pickaxe.testRockHit(canvas) != null){
-                    rockDissolve(canvas, Pickaxe.testRockHit(canvas));
+                if (axe.testRockHit(canvas) != null){
+                    rockDissolve(canvas, axe.testRockHit(canvas));
                 }
             });
     
