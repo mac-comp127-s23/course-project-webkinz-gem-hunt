@@ -23,7 +23,7 @@ public class Game {
             CanvasWindow canvas = new CanvasWindow("Game", 800, 600);
             backgrounds = new BackgroundManager("Mine", mine, canvas);
     
-            //mine.addCave(300, Color.BLUE);
+            mine.addCave(300, Color.BLUE);
             mine.generateRocks();
             backgrounds.drawBackround("Mine");
             

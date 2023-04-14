@@ -47,8 +47,8 @@ public class GemReader {
      * Reads through the gem descriptions file and converts it into a list of gems that is returned.
      * @return List of Gems.
      */
-    public List<Gem> readGems(){
-        List<Gem> gems = new ArrayList<Gem>();
+    public Set<Gem> readGems(){
+        Set<Gem> gems = new HashSet<Gem>();
 
         try {
             File file = new File("res/gem_descriptions.csv");
