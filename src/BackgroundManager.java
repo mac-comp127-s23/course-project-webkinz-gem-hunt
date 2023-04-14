@@ -39,4 +39,8 @@ public class BackgroundManager {
         canvas.add(currentBackground.getGraphicsGroup());
         canvas.draw();
     }
+
+    public GraphicsGroup getGraphicsGroup(){
+        return currentBackground.getGraphicsGroup();
+    }
 }

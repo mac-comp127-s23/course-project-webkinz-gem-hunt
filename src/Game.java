@@ -50,7 +50,7 @@ public class Game {
 
             // hit #1
             axe.getAxe().rotateBy(90);
-            // canvas.remove(rock);
+            mine.getGraphicsGroup().remove(rock);
             canvas.add(Rock.twoThirdsRock(rockPosition.getX(), rockPosition.getY()));
             // canvas.add(Rock.twoThirdsRock());
             // rock.twoThirds();
