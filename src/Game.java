@@ -47,13 +47,13 @@ public class Game {
 
         private static void rockDissolve(CanvasWindow canvas, GraphicsObject rock) {
             Point rockPosition = rock.getPosition();
+            GraphicsObject twoThirds = Rock.twoThirdsRock(rockPosition.getX(), rockPosition.getY());
+            GraphicsObject oneThird = Rock.oneThirdRock(rockPosition.getX(), rockPosition.getY());
 
             // hit #1
             axe.getAxe().rotateBy(90);
-            mine.getGraphicsGroup().remove(rock);
-            canvas.add(Rock.twoThirdsRock(rockPosition.getX(), rockPosition.getY()));
-            // canvas.add(Rock.twoThirdsRock());
-            // rock.twoThirds();
+            backgrounds.getGraphicsGroup().remove(rock);
+            backgrounds.getGraphicsGroup().add(twoThirds);
             canvas.draw();
 
             canvas.pause(150);
@@ -63,9 +63,8 @@ public class Game {
 
             // hit #2
             axe.getAxe().rotateBy(90);
-            // canvas.remove(twoThirds);
-            canvas.add(Rock.oneThirdRock(rockPosition.getX(), rockPosition.getY()));
-            // canvas.add(oneThird);
+            backgrounds.getGraphicsGroup().remove(twoThirds);
+            backgrounds.getGraphicsGroup().add(oneThird);
             canvas.draw();
 
             canvas.pause(150);
@@ -75,7 +74,7 @@ public class Game {
 
             // hit #3
             axe.getAxe().rotateBy(90);
-            // canvas.remove(Rock.oneThirdRock(rockPosition.getX(), rockPosition.getY()));
+            backgrounds.getGraphicsGroup().remove(oneThird);
             canvas.draw();
 
             canvas.pause(150);

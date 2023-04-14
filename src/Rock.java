@@ -11,7 +11,7 @@ public class Rock extends Path {
     private static double width = 10;
     private static double height = 20;
     // private static Color rockColor;
-    private static Color rockColor = Helpers.randomColorVariation(Color.BLUE, Helpers.randomInt(50,100));
+    private static Color rockColor;  //= Helpers.randomColorVariation(Color.BLUE, Helpers.randomInt(50,100));
 
     public Rock(double x, double y) {
         super(new Point(width, 0),
@@ -23,7 +23,7 @@ public class Rock extends Path {
             new Point(0, -height),
             new Point(width * Math.cos(Math.toRadians(45)), -height * Math.sin(Math.toRadians(45))) );
 
-        // Color rockColor = generateColor();
+        Color rockColor = generateColor();
         super.setPosition(x, y);
         super.setFillColor(rockColor);
         super.setStrokeColor(Color.BLACK);
