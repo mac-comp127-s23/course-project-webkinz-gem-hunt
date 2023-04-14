@@ -23,7 +23,7 @@ public class Rock extends Path {
             new Point(0, -height),
             new Point(width * Math.cos(Math.toRadians(45)), -height * Math.sin(Math.toRadians(45))) );
 
-        Color rockColor = generateColor();
+        rockColor = generateColor();
         super.setPosition(x, y);
         super.setFillColor(rockColor);
         super.setStrokeColor(Color.BLACK);
