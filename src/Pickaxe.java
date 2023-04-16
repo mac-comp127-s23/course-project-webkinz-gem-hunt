@@ -3,6 +3,7 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.GraphicsObject;
 import edu.macalester.graphics.Line;
+import edu.macalester.graphics.Path;
 import edu.macalester.graphics.Point;
 
 import java.awt.Color;
@@ -33,12 +34,12 @@ public class Pickaxe {
         return axe;
     }
 
-    public GraphicsObject testRockHit(CanvasWindow canvas) {
+    public Rock testRockHit(CanvasWindow canvas, Mine currentMine) {
         Point p = axe.getCenter();
         Point testP = new Point(p.getX() - 5, p.getY()); // move the test point slightly off center so the pickaxe isn't detected
-
-        if(Mine.getRockList().contains(canvas.getElementAt(testP))){
-            return canvas.getElementAt(testP);
+        GraphicsObject rock = canvas.getElementAt(testP);
+        if(rock instanceof Path && currentMine.hasRock(rock)){
+            return currentMine.getRock((Path) rock);
         }
 
         return null;

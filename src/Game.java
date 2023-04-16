@@ -23,8 +23,7 @@ public class Game {
             CanvasWindow canvas = new CanvasWindow("Game", 800, 600);
             backgrounds = new BackgroundManager("Mine", mine, canvas);
     
-            mine.addCave(300, Color.BLUE);
-            mine.generateRocks();
+            mine.generateMine();
             backgrounds.drawBackround("Mine");
             
 
@@ -37,22 +36,22 @@ public class Game {
             });
 
             canvas.onClick(event -> {
-                if (axe.testRockHit(canvas) != null){
-                    rockDissolve(canvas, axe.testRockHit(canvas));
+                if (axe.testRockHit(canvas, mine) != null){
+                    rockDissolve(canvas, axe.testRockHit(canvas, mine));
                 }
             });
     
 
         }
 
-        private static void rockDissolve(CanvasWindow canvas, GraphicsObject rock) {
+        private static void rockDissolve(CanvasWindow canvas, Rock rock) {
             Point rockPosition = rock.getPosition();
-            GraphicsObject twoThirds = Rock.twoThirdsRock(rockPosition.getX(), rockPosition.getY());
-            GraphicsObject oneThird = Rock.oneThirdRock(rockPosition.getX(), rockPosition.getY());
+            GraphicsObject twoThirds = rock.twoThirdsRock(rockPosition.getX(), rockPosition.getY());
+            GraphicsObject oneThird = rock.oneThirdRock(rockPosition.getX(), rockPosition.getY());
 
             // hit #1
             axe.getAxe().rotateBy(90);
-            backgrounds.getGraphicsGroup().remove(rock);
+            backgrounds.getGraphicsGroup().remove(rock.getRockShape());
             backgrounds.getGraphicsGroup().add(twoThirds);
             canvas.draw();
 

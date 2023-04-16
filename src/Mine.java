@@ -1,4 +1,5 @@
 import edu.macalester.graphics.GraphicsGroup;
+import edu.macalester.graphics.GraphicsObject;
 import edu.macalester.graphics.Path;
 
 import java.awt.Color;
@@ -7,9 +8,10 @@ import java.util.ArrayList;
 
 public class Mine implements Background{
 
+    private RockManager rocks;
+
     private static Color color;
     private static GraphicsGroup mineGroup;
-    private static List<Path> rocksList;
     private static double CANVAS_WIDTH = 800; // change this to pull from canvas settings in game class
     private static double CANVAS_HEIGHT = 600; // change this to pull from canvas settings in game class
 
@@ -17,16 +19,27 @@ public class Mine implements Background{
     public Mine(Color color) {
         Mine.color = color;
         mineGroup = new GraphicsGroup(0,0);
-        rocksList = new ArrayList<>();
     }
 
     public void generateMine() {
         addCave(300, color);
-        generateRocks();
+        rocks = new RockManager(10, CANVAS_HEIGHT, CANVAS_WIDTH);
+        rocks.drawRocks(mineGroup);
     }
 
     public GraphicsGroup getGraphicsGroup() {
         return mineGroup;
+    }
+
+    public boolean hasRock(GraphicsObject rock){
+        if(rocks.getRockShapes().contains(rock)){
+            return true;
+        }
+        return false;
+    }
+
+    public Rock getRock(Path rockShape){
+        return rocks.getRock(rockShape);
     }
 
     /**
@@ -103,31 +116,32 @@ public class Mine implements Background{
         return titesGroup;
     }
 
-    public void generateRocks() {
+    //NOW HANDLED IN ROCKMANAGER
+    // public void generateRocks() {
 
-        int numRocks = 10; // number of rocks across top and bottom
+    //     int numRocks = 10; // number of rocks across top and bottom
 
-        double totalWidth = CANVAS_WIDTH; // can be modified if scrolling implemented
+    //     double totalWidth = CANVAS_WIDTH; // can be modified if scrolling implemented
 
-        for (int i = 0; i < numRocks; i++){
-            Rock topRock = new Rock(
-                i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100), 
-                Helpers.randomDouble(10, 100));
-            mineGroup.add(topRock);
-            rocksList.add(topRock);
+    //     for (int i = 0; i < numRocks; i++){
+    //         Rock topRock = new Rock(
+    //             i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100), 
+    //             Helpers.randomDouble(10, 100));
+    //         mineGroup.add(topRock.getRockShape());
+    //         rocksList.add(topRock.getRockShape());
 
-            Rock bottomRock = new Rock(
-                i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100), 
-                CANVAS_HEIGHT - Helpers.randomDouble(50, 150));
-            mineGroup.add(bottomRock);
-            rocksList.add(bottomRock);
-        }
+    //         Rock bottomRock = new Rock(
+    //             i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100), 
+    //             CANVAS_HEIGHT - Helpers.randomDouble(50, 150));
+    //         mineGroup.add(bottomRock.getRockShape());
+    //         rocksList.add(bottomRock.getRockShape());
+    //     }
 
-    }
+    // }
 
-    public static List<Path> getRockList() {
-        return rocksList ;
-    }
+    // public static List<Path> getRockList() {
+    //     return rocksList ;
+    // }
 
     
     // // for testing:

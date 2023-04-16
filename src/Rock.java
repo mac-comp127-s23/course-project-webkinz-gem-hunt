@@ -5,16 +5,16 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Path;
 import edu.macalester.graphics.Point;
 
-public class Rock extends Path {
+public class Rock{
 
-    // private static Path rockShape;
+    private Path rockShape;
     private static double width = 10;
     private static double height = 20;
     // private static Color rockColor;
-    private static Color rockColor;  //= Helpers.randomColorVariation(Color.BLUE, Helpers.randomInt(50,100));
+    private Color rockColor;  //= Helpers.randomColorVariation(Color.BLUE, Helpers.randomInt(50,100));
 
     public Rock(double x, double y) {
-        super(new Point(width, 0),
+        rockShape = new Path(new Point(width, 0),
             new Point(width * Math.cos(Math.toRadians(45)), height * Math.sin(Math.toRadians(45))),
             new Point(0, height),
             new Point(-width * Math.cos(Math.toRadians(45)), height * Math.sin(Math.toRadians(45))),
@@ -24,21 +24,29 @@ public class Rock extends Path {
             new Point(width * Math.cos(Math.toRadians(45)), -height * Math.sin(Math.toRadians(45))) );
 
         rockColor = generateColor();
-        super.setPosition(x, y);
-        super.setFillColor(rockColor);
-        super.setStrokeColor(Color.BLACK);
-        super.setStrokeWidth(3);
+        rockShape.setPosition(x, y);
+        rockShape.setFillColor(rockColor);
+        rockShape.setStrokeColor(Color.BLACK);
+        rockShape.setStrokeWidth(3);
     }
 
     public static Color generateColor() {
         return Helpers.randomColorVariation(Color.BLUE, Helpers.randomInt(50,100));
     }
 
-    public static Color getColor() {
+    public Color getColor() {
         return rockColor;
     }
 
-    public static Path twoThirdsRock(double x, double y) {
+    public Path getRockShape(){
+        return rockShape;
+    }
+
+    public Point getPosition(){
+        return rockShape.getPosition();
+    }
+
+    public Path twoThirdsRock(double x, double y) {
         // double x = getX();
         // double y = getY();
 
@@ -51,7 +59,6 @@ public class Rock extends Path {
             new Point(-width * Math.cos(Math.toRadians(45)), -height * Math.sin(Math.toRadians(45))),
             new Point(width * Math.cos(Math.toRadians(45)), -height * Math.sin(Math.toRadians(45))) );
 
-        System.out.println(getColor());
         twoThirds.setFillColor(rockColor);
         twoThirds.setStrokeColor(Color.BLACK);
         twoThirds.setStrokeWidth(3);
@@ -61,7 +68,7 @@ public class Rock extends Path {
 
     }
 
-    public static Path oneThirdRock(double x, double y) {
+    public Path oneThirdRock(double x, double y) {
         // double x = getX();
         // double y = getY();
 
@@ -99,12 +106,12 @@ public class Rock extends Path {
         Rock rock = new Rock(100, 200);
         // Path twoThirds = rock.twoThirdsRock();
         // twoThirds.moveBy(40, 0);
-        Path twoThirds = twoThirdsRock(140, 200);
+        Path twoThirds = rock.twoThirdsRock(140, 200);
         // Path oneThird = rock.oneThirdRock();
         // oneThird.moveBy(80, 0);
-        Path oneThird = oneThirdRock(180, 200);
+        Path oneThird = rock.oneThirdRock(180, 200);
 
-        canvas.add(rock);
+        canvas.add(rock.getRockShape());
         canvas.add(twoThirds);
         canvas.add(oneThird);
         canvas.draw();
