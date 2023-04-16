@@ -71,6 +71,7 @@ public class GemReader {
                 gem.setRegLowPrice(Integer.parseInt(scanLines.next()));
                 gem.setRegHighPrice(Integer.parseInt(scanLines.next()));
                 gem.setGemOfDayPrice(Integer.parseInt(scanLines.next()));
+                gem.setImage(scanLines.next());
                 gems.add(gem);
 
                 scanLines.close();

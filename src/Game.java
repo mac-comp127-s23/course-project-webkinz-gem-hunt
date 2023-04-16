@@ -18,6 +18,9 @@ public class Game {
 
         // for testing:
         public static void main(String[] args) {
+
+            GemList.setList();
+            
             mine = new Mine(Color.BLUE);
             axe = new Pickaxe();
             CanvasWindow canvas = new CanvasWindow("Game", 800, 600);
@@ -25,6 +28,7 @@ public class Game {
     
             mine.generateMine();
             backgrounds.drawBackround("Mine");
+            mine.addGemSet("Blue");
             
 
             GraphicsObject axeShape = Pickaxe.drawAxe();
@@ -80,6 +84,9 @@ public class Game {
             axe.getAxe().rotateBy(-90);
             canvas.draw();
             canvas.pause(150);
+
+            NewGemPanel newGem = new NewGemPanel(rockPosition, mine.generateGem());
+            canvas.add(newGem.getGemPanel());
 
         }
     

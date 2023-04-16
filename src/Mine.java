@@ -4,11 +4,13 @@ import edu.macalester.graphics.Path;
 
 import java.awt.Color;
 import java.util.List;
+import java.util.Set;
 import java.util.ArrayList;
 
 public class Mine implements Background{
 
     private RockManager rocks;
+    private Set<Gem> gemSet;
 
     private static Color color;
     private static GraphicsGroup mineGroup;
@@ -27,6 +29,10 @@ public class Mine implements Background{
         rocks.drawRocks(mineGroup);
     }
 
+    public void addGemSet(String gemType){
+        gemSet = GemList.getGemSet(gemType);
+    }
+
     public GraphicsGroup getGraphicsGroup() {
         return mineGroup;
     }
@@ -40,6 +46,11 @@ public class Mine implements Background{
 
     public Rock getRock(Path rockShape){
         return rocks.getRock(rockShape);
+    }
+
+    public Gem generateGem(){
+        List<Gem> gemProbs = new ArrayList<>(gemSet);
+        return gemProbs.get(Helpers.randomInt(0, gemProbs.size() - 1));
     }
 
     /**

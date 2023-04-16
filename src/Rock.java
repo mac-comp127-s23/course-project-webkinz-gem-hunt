@@ -1,7 +1,7 @@
 import java.awt.Color;
 
 import edu.macalester.graphics.CanvasWindow;
-
+import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Path;
 import edu.macalester.graphics.Point;
 

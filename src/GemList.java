@@ -14,7 +14,7 @@ public class GemList {
     }
 
     //Creates a set of gems
-    public Set<Gem> getGemSet(String type){
+    public static Set<Gem> getGemSet(String type){
         Set<Gem> gemSet = new HashSet<>();
         for(Gem gem : gems){
             if(gem.getType().equals(type)){
