@@ -1,5 +1,6 @@
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.GraphicsObject;
+import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Path;
 
 import java.awt.Color;
@@ -24,9 +25,13 @@ public class Mine implements Background{
     }
 
     /**
-     * Generates and draws rocks in a mine.
+     * Generates visual elements of mine, including cave wall image and rocks.
      */
     public void generateMine() {
+        Image icon = new Image(0, 0);
+        icon.setImagePath("BlueCave.png");
+        mineGroup.add(icon);
+
         rocks = new RockManager(10, CANVAS_HEIGHT, CANVAS_WIDTH);
         rocks.drawRocks(mineGroup);
     }

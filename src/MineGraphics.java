@@ -9,8 +9,9 @@ public class MineGraphics {
 
     private static Color color;
     private static GraphicsGroup mineGroup;
-    private static double CANVAS_WIDTH = 800; // change this to pull from canvas settings in game class
-    private static double CANVAS_HEIGHT = 600; // change this to pull from canvas settings in game class
+    private static double CANVAS_WIDTH = 1600; // change this to pull from canvas settings in game class
+    private static double CANVAS_HEIGHT = 300; // change this to pull from canvas settings in game class
+    private static final Color CAVE_BACKGROUND_BLUE = new Color(9, 1, 64);
 
 
     public MineGraphics(Color color) {
@@ -20,10 +21,12 @@ public class MineGraphics {
 
     public static void main(String[] args) {
         MineGraphics graph = new MineGraphics(Color.BLUE);
-        CanvasWindow canvas = new CanvasWindow("Mine", 800, 600);
-        graph.addCave(300, color);
+        CanvasWindow canvas = new CanvasWindow("Mine", 1600, 300);
+        canvas.setBackground(CAVE_BACKGROUND_BLUE);
+        graph.addCave(150, color);
         canvas.add(mineGroup);
         canvas.draw();
+        canvas.screenShot("BlueCave.png");
     }
 
     /**

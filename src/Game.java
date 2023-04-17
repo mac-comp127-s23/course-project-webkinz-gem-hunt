@@ -13,8 +13,6 @@ public class Game {
 
     private static CanvasWindow canvas;
 
-    private static final Color CAVE_BACKGROUND_BLUE = new Color(9, 1, 64);
-
 
         // for testing:
         public static void main(String[] args) {
