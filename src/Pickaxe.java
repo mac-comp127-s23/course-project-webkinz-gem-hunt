@@ -34,6 +34,15 @@ public class Pickaxe {
         return axe;
     }
 
+    /**
+     * Checks what rock object the pickaxe has intersected with.
+     *
+     * @param canvas CanvasWindow to locate an object on.
+     * @param currentMine Mine whose objects are tested for intersection.
+     * 
+     * @return null if no rock is found.
+     * 
+     */
     public Rock testRockHit(CanvasWindow canvas, Mine currentMine) {
         Point p = axe.getCenter();
         Point testP = new Point(p.getX() - 5, p.getY()); // move the test point slightly off center so the pickaxe isn't detected
@@ -44,23 +53,5 @@ public class Pickaxe {
 
         return null;
     }
-
-    // // for testing:
-    // public static void main(String[] args) {
-    //     drawAxe();
-
-    //     CanvasWindow canvas = new CanvasWindow("Pickaxe", 800, 600);
-
-    //     canvas.add(axe, 100, 100); // arbitrary starting point
-    //     canvas.draw();
-
-    //     canvas.onMouseMove(event -> {
-    //         axe.setPosition(event.getPosition());
-    //     });
-
-    //     canvas.onClick(event -> {
-    //         mineAnimate(canvas);
-    //     });
-    // }
     
 }

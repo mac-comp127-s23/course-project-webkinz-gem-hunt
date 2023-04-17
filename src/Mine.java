@@ -23,6 +23,10 @@ public class Mine implements Background{
         mineGroup = new GraphicsGroup(0,0);
     }
 
+    /**
+     * Generates graphics associated with Mine, including cave walls and random set of rocks.
+     * 
+     */
     public void generateMine() {
         addCave(300, color);
         rocks = new RockManager(10, CANVAS_HEIGHT, CANVAS_WIDTH);
@@ -48,6 +52,11 @@ public class Mine implements Background{
         return rocks.getRock(rockShape);
     }
 
+    /**
+     * Generates a gem from the set of gems available for the active mine.
+     * Uses weighted probability to determine which gem is generated.
+     * 
+     */
     public Gem generateGem(){
         List<Gem> gemProbs = new ArrayList<>(gemSet);
         return gemProbs.get(Helpers.randomInt(0, gemProbs.size() - 1));
@@ -126,46 +135,4 @@ public class Mine implements Background{
         }
         return titesGroup;
     }
-
-    //NOW HANDLED IN ROCKMANAGER
-    // public void generateRocks() {
-
-    //     int numRocks = 10; // number of rocks across top and bottom
-
-    //     double totalWidth = CANVAS_WIDTH; // can be modified if scrolling implemented
-
-    //     for (int i = 0; i < numRocks; i++){
-    //         Rock topRock = new Rock(
-    //             i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100), 
-    //             Helpers.randomDouble(10, 100));
-    //         mineGroup.add(topRock.getRockShape());
-    //         rocksList.add(topRock.getRockShape());
-
-    //         Rock bottomRock = new Rock(
-    //             i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100), 
-    //             CANVAS_HEIGHT - Helpers.randomDouble(50, 150));
-    //         mineGroup.add(bottomRock.getRockShape());
-    //         rocksList.add(bottomRock.getRockShape());
-    //     }
-
-    // }
-
-    // public static List<Path> getRockList() {
-    //     return rocksList ;
-    // }
-
-    
-    // // for testing:
-    // public static void main(String[] args) {
-    //     group = new GraphicsGroup();
-    //     CanvasWindow canvas = new CanvasWindow("Mine", 800, 600);
-
-    //     addCave(300);
-    //     canvas.add(group);
-    //     canvas.draw();
-
-    //     generateRocks();
-    //     canvas.draw();
-    // }
-    
 }
