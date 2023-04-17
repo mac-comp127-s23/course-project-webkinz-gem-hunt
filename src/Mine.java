@@ -29,6 +29,10 @@ public class Mine implements Background{
         rocks.drawRocks(mineGroup);
     }
 
+    /**
+     * Adds a set of gems to this mine that all share a gem type.
+     * @param gemType
+     */
     public void addGemSet(String gemType){
         gemSet = GemList.getGemSet(gemType);
     }
@@ -37,6 +41,11 @@ public class Mine implements Background{
         return mineGroup;
     }
 
+    /**
+     * Checks if the given graphics object is a rock shape.
+     * @param Graphics object hit by pickaxe
+     * @return  returns true if the graphics object passed in corresponds to a rock managed by this class.
+     */
     public boolean hasRock(GraphicsObject rock){
         if(rocks.getRockShapes().contains(rock)){
             return true;
@@ -48,6 +57,10 @@ public class Mine implements Background{
         return rocks.getRock(rockShape);
     }
 
+    /**
+     * Picks a gem from this mine's gem set (Probabilities not implemented yet).
+     * @return Gem that the player has gained from breaking a rock.
+     */
     public Gem generateGem(){
         List<Gem> gemProbs = new ArrayList<>(gemSet);
         return gemProbs.get(Helpers.randomInt(0, gemProbs.size() - 1));

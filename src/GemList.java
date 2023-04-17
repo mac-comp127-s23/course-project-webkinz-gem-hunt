@@ -13,7 +13,7 @@ public class GemList {
         gems = new HashSet<Gem>(readGems.readGems());
     }
 
-    //Creates a set of gems
+    //Creates a set of gems of the particular type.
     public static Set<Gem> getGemSet(String type){
         Set<Gem> gemSet = new HashSet<>();
         for(Gem gem : gems){

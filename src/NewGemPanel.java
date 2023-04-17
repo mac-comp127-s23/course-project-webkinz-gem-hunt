@@ -35,6 +35,9 @@ public class NewGemPanel {
         panel.add(closePanel);
     }
     
+    /**
+     * Adds the gem panel to a canvas and prepares it to be closed.
+     */
     public void setUpGemPanel(CanvasWindow canvas){
         canvas.add(panel);
         closePanel.onClick((() -> canvas.remove(panel)));
