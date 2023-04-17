@@ -6,6 +6,12 @@ public class RockManager {
     
     private Map<Path, Rock> rocks = new HashMap<>();
 
+    /**
+     * Map of rocks that can handle rock interactions.
+     * @param numRocks Number of rocks to be drawn.
+     * @param canvasHeight Height of rock range.
+     * @param canvasWidth Width of rock range.
+     */
     public RockManager(int numRocks, double canvasHeight, double canvasWidth){
 
         double totalWidth = canvasWidth; // can be modified if scrolling implemented
@@ -23,6 +29,10 @@ public class RockManager {
         }
     }
 
+    /**
+     * Draws rocks onto a given graphics group.
+     * @param group
+     */
     public void drawRocks(GraphicsGroup group){
         for(Path rock : rocks.keySet()){
             group.add(rock);
