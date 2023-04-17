@@ -1,6 +1,5 @@
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
-import edu.macalester.graphics.GraphicsObject;
 import edu.macalester.graphics.Path;
 
 import java.awt.Color;
@@ -9,9 +8,13 @@ public class MineGraphics {
 
     private static Color color;
     private static GraphicsGroup mineGroup;
-    private static double CANVAS_WIDTH = 1600; // change this to pull from canvas settings in game class
+    private static double CANVAS_WIDTH = 2400; // change this to pull from canvas settings in game class
     private static double CANVAS_HEIGHT = 300; // change this to pull from canvas settings in game class
     private static final Color CAVE_BACKGROUND_BLUE = new Color(9, 1, 64);
+    private static final Color CAVE_BACKGROUND_GREEN = new Color(10, 40, 3);
+    private static final Color CAVE_BACKGROUND_RED = new Color(75, 10, 5);
+    private static final Color CAVE_BACKGROUND_YELLOW = new Color(120, 105, 15);
+    private static final Color CAVE_BACKGROUND_WHITE = Color.darkGray;
 
 
     public MineGraphics(Color color) {
@@ -19,14 +22,20 @@ public class MineGraphics {
         mineGroup = new GraphicsGroup(0,0);
     }
 
+    // running main method will produce and save a background image for the mine in the uncommented color scheme
     public static void main(String[] args) {
-        MineGraphics graph = new MineGraphics(Color.BLUE);
+        MineGraphics graph = new MineGraphics(Color.BLUE); // blue
+        // MineGraphics graph = new MineGraphics(new Color(20, 137, 15)); // green
+        // MineGraphics graph = new MineGraphics(Color.RED); // red
+        // MineGraphics graph = new MineGraphics(Color.YELLOW); // yellow
+        // MineGraphics graph = new MineGraphics(Color.lightGray); // white, NOTE CHANGE COLOR VAR TO 20-30 IN CAVES
+
         CanvasWindow canvas = new CanvasWindow("Mine", 1600, 300);
         canvas.setBackground(CAVE_BACKGROUND_BLUE);
         graph.addCave(150, color);
         canvas.add(mineGroup);
         canvas.draw();
-        canvas.screenShot("BlueCave.png");
+        // canvas.screenShot("WhiteCave.png");
     }
 
     /**

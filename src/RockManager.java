@@ -14,7 +14,7 @@ public class RockManager {
      */
     public RockManager(int numRocks, double canvasHeight, double canvasWidth){
 
-        double totalWidth = canvasWidth; // can be modified if scrolling implemented
+        double totalWidth = 2400; // 2400 is length of entire canvas, with scrolling
 
         for (int i = 0; i < numRocks; i++){
             Rock topRock = new Rock(

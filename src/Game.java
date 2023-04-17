@@ -3,6 +3,7 @@ import java.awt.Color;
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsObject;
 import edu.macalester.graphics.Point;
+import edu.macalester.graphics.events.Key;
 
 public class Game {
     private static Mine mine;
@@ -42,6 +43,14 @@ public class Game {
                     rockDissolve(canvas, axe.testRockHit(canvas, mine));
                 }
             });
+
+            canvas.onKeyDown( event -> {
+                if(event.getKey() == Key.LEFT_ARROW )
+                    mine.getGraphicsGroup().moveBy(5, 0); // change delta x depending on how fast cart should move
+    
+                if(event.getKey() == Key.RIGHT_ARROW ) 
+                    mine.getGraphicsGroup().moveBy(-5, 0); // change delta x depending on how fast cart should move
+                });
     
 
         }

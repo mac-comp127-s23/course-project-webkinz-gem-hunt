@@ -28,11 +28,11 @@ public class Mine implements Background{
      * Generates visual elements of mine, including cave wall image and rocks.
      */
     public void generateMine() {
-        Image icon = new Image(0, 0);
+        Image icon = new Image(-800, 0);
         icon.setImagePath("BlueCave.png");
         mineGroup.add(icon);
 
-        rocks = new RockManager(10, CANVAS_HEIGHT, CANVAS_WIDTH);
+        rocks = new RockManager(30, CANVAS_HEIGHT, CANVAS_WIDTH);
         rocks.drawRocks(mineGroup);
     }
 
