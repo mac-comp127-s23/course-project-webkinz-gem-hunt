@@ -1,11 +1,14 @@
 import java.awt.Color;
 
+
 import edu.macalester.graphics.*;
+import edu.macalester.graphics.ui.Button;
 
 public class Minecart {
 
     private static GraphicsGroup minecart;
     private static final Color CART_COLOR = new Color(22, 0, 117);
+    private static final Color BUTTON_COLOR = new Color(240, 197, 58);
 
     public Minecart() {
     }
@@ -44,7 +47,41 @@ public class Minecart {
         slag.setCenter(400, 475);
         minecart.add(slag);
 
+
+        Path leftButton = new Path(new Point(-10,15), new Point(0,0), new Point(75,0), new Point(75,30), new Point(0,30));
+        leftButton.setCenter(280, 550);
+        leftButton.setFillColor(BUTTON_COLOR);
+
+        GraphicsText leftText = new GraphicsText("LEFT");
+        leftText.setFont(FontStyle.BOLD_ITALIC, 12);
+        leftText.setCenter(282, 550);
+
+        minecart.add(leftButton);
+        minecart.add(leftText);
+
+        Path rightButton = new Path(new Point(0,0), new Point(75,0), new Point(85, 15), new Point(75,30), new Point(0,30));
+        rightButton.setFillColor(BUTTON_COLOR);
+        rightButton.setCenter(520, 550);
+        minecart.add(rightButton);
+
+        GraphicsText rightText = new GraphicsText("RIGHT");
+        rightText.setFont(FontStyle.BOLD_ITALIC, 12);
+        rightText.setCenter(517, 550);
+        minecart.add(rightText);
+        
+
+        // Button leftButton = new Button("LEFT");
+        // leftButton.setCenter(290, 550);
+        // minecart.add(leftButton);
+
+        // Button rightButton = new Button("RIGHT");
+        // rightButton.setCenter(510, 550);
+        // minecart.add(rightButton);
+        
+        
         return minecart;
+
+
     }
 
     //for testing
