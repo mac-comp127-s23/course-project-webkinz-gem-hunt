@@ -35,6 +35,7 @@ public class RockManager {
      */
     public void drawRocks(GraphicsGroup group){
         for(Path rock : rocks.keySet()){
+            rock.moveBy(-800, 0); // shift rock set to start at far left of mine
             group.add(rock);
         }
     }

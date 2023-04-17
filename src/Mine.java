@@ -1,6 +1,7 @@
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.GraphicsObject;
 import edu.macalester.graphics.Image;
+import edu.macalester.graphics.Line;
 import edu.macalester.graphics.Path;
 
 import java.awt.Color;
@@ -18,6 +19,12 @@ public class Mine implements Background{
     private static double CANVAS_WIDTH = 800; // change this to pull from canvas settings in game class
     private static double CANVAS_HEIGHT = 600; // change this to pull from canvas settings in game class
 
+    // private static Line leftBound = new Line(-800,0,-800,600);
+    // private static Line rightBound = new Line(1600,0,1600,600);
+
+    private static Line leftBound ;
+    private static Line rightBound ;
+
 
     public Mine(Color color) {
         Mine.color = color;
@@ -32,8 +39,21 @@ public class Mine implements Background{
         icon.setImagePath("BlueCave.png");
         mineGroup.add(icon);
 
+        leftBound = new Line(-800,0,-800,600);
+        rightBound = new Line(1600,0,1600,600);
+        mineGroup.add(leftBound);
+        mineGroup.add(rightBound);
+
         rocks = new RockManager(30, CANVAS_HEIGHT, CANVAS_WIDTH);
         rocks.drawRocks(mineGroup);
+    }
+
+    public static double getLeftBound() {
+        return leftBound.getX();
+    }
+
+    public static double getRightBound() {
+        return rightBound.getX();
     }
 
     /**

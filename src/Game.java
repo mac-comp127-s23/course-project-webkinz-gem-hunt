@@ -24,11 +24,13 @@ public class Game {
             axe = new Pickaxe();
             CanvasWindow canvas = new CanvasWindow("Game", 800, 600);
             backgrounds = new BackgroundManager("Mine", mine, canvas);
+            
     
             mine.generateMine();
             backgrounds.drawBackround("Mine");
             mine.addGemSet("Blue");
             
+            canvas.add(Minecart.drawMinecart());
 
             GraphicsObject axeShape = Pickaxe.drawAxe();
             canvas.add(axeShape, 100, 100); // arbitrary starting point
@@ -44,13 +46,15 @@ public class Game {
                 }
             });
 
+            // side scrolling lambda, add button presses!
             canvas.onKeyDown( event -> {
-                if(event.getKey() == Key.LEFT_ARROW )
+                if(event.getKey() == Key.LEFT_ARROW && Mine.getLeftBound() <= 0){
                     mine.getGraphicsGroup().moveBy(5, 0); // change delta x depending on how fast cart should move
-    
-                if(event.getKey() == Key.RIGHT_ARROW ) 
+                }
+                if(event.getKey() == Key.RIGHT_ARROW && Mine.getRightBound() >= 800) {
                     mine.getGraphicsGroup().moveBy(-5, 0); // change delta x depending on how fast cart should move
-                });
+                }
+            });
     
 
         }
