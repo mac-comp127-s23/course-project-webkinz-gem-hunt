@@ -40,6 +40,7 @@ public class NewGemPanel {
      */
     public void setUpGemPanel(CanvasWindow canvas){
         canvas.add(panel);
+        panel.setCenter(canvas.getCenter());
         closePanel.onClick((() -> canvas.remove(panel)));
     }
 
