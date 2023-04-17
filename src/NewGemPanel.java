@@ -2,6 +2,7 @@
 import java.awt.Color;
 
 import edu.macalester.graphics.*;
+import edu.macalester.graphics.ui.Button;
 
 public class NewGemPanel {
     
@@ -10,6 +11,7 @@ public class NewGemPanel {
     private GraphicsText gemName;
     private GraphicsText gemDescription;
     private Image gemImage;
+    private Button closePanel;
 
     public NewGemPanel(Point position, Gem gem){
         panelBackground = new Rectangle(0, 0, 200, 100);
@@ -28,9 +30,15 @@ public class NewGemPanel {
         gemDescription.setWrappingWidth(90);
         gemDescription.setFontSize(10);
         panel.add(gemDescription);
+        closePanel = new Button("X");
+        closePanel.setPosition(200 - closePanel.getWidth(), 0);
+        panel.add(closePanel);
     }
     
-    public GraphicsGroup getGemPanel(){
-        return panel;
+    public void setUpGemPanel(CanvasWindow canvas){
+        canvas.add(panel);
+        closePanel.onClick((() -> canvas.remove(panel)));
     }
+
+
 }

@@ -86,7 +86,7 @@ public class Game {
             canvas.pause(150);
 
             NewGemPanel newGem = new NewGemPanel(rockPosition, mine.generateGem());
-            canvas.add(newGem.getGemPanel());
+            newGem.setUpGemPanel(canvas);
 
         }
     
