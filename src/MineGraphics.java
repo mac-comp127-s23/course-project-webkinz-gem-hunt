@@ -1,3 +1,4 @@
+import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.GraphicsObject;
 import edu.macalester.graphics.Path;
@@ -17,14 +18,13 @@ public class MineGraphics {
         mineGroup = new GraphicsGroup(0,0);
     }
 
-    /**
-     * Generates graphics associated with Mine, including cave walls and random set of rocks.
-     * 
-     */
-    public void generateMine() {
-        addCave(300, color);
+    public static void main(String[] args) {
+        MineGraphics graph = new MineGraphics(Color.BLUE);
+        CanvasWindow canvas = new CanvasWindow("Mine", 800, 600);
+        graph.addCave(300, color);
+        canvas.add(mineGroup);
+        canvas.draw();
     }
-
 
     /**
      * Adds stalactites and stalagmites to GraphicsGroup
