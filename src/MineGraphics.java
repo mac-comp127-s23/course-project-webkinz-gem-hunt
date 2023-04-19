@@ -8,8 +8,8 @@ public class MineGraphics {
 
     private static Color color;
     private static GraphicsGroup mineGroup;
-    private static double CANVAS_WIDTH = 2400; // change this to pull from canvas settings in game class
-    private static double CANVAS_HEIGHT = 300; // change this to pull from canvas settings in game class
+    private static double CANVAS_WIDTH = 2400; 
+    private static double CANVAS_HEIGHT = 300; 
     private static final Color CAVE_BACKGROUND_BLUE = new Color(9, 1, 64);
     private static final Color CAVE_BACKGROUND_GREEN = new Color(10, 40, 3);
     private static final Color CAVE_BACKGROUND_RED = new Color(75, 10, 5);

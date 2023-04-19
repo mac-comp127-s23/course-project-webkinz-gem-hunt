@@ -16,8 +16,8 @@ public class Mine implements Background{
 
     private static Color color;
     private static GraphicsGroup mineGroup;
-    private static double CANVAS_WIDTH = 800; // change this to pull from canvas settings in game class
-    private static double CANVAS_HEIGHT = 600; // change this to pull from canvas settings in game class
+    private static double CANVAS_WIDTH = 800; 
+    private static double CANVAS_HEIGHT = 600;
 
     // private static Line leftBound = new Line(-800,0,-800,600);
     // private static Line rightBound = new Line(1600,0,1600,600);

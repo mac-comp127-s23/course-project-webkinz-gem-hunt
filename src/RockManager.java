@@ -18,12 +18,14 @@ public class RockManager {
 
         for (int i = 0; i < numRocks; i++){
             Rock topRock = new Rock(
-                i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100), 
+                (i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100)) 
+                    - 800, // shift rock set to start at far left of mine
                 Helpers.randomDouble(10, 100));
             rocks.put(topRock.getRockShape(), topRock);
 
             Rock bottomRock = new Rock(
-                i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100), 
+                (i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100)) 
+                    - 800, // shift rock set to start at far left of mine
                 canvasHeight - Helpers.randomDouble(50, 150));
             rocks.put(bottomRock.getRockShape(), bottomRock);
         }
@@ -35,7 +37,6 @@ public class RockManager {
      */
     public void drawRocks(GraphicsGroup group){
         for(Path rock : rocks.keySet()){
-            rock.moveBy(-800, 0); // shift rock set to start at far left of mine
             group.add(rock);
         }
     }
