@@ -44,6 +44,7 @@ public class Game {
                 if (axe.testRockHit(canvas, mine) != null){
                     rockDissolve(canvas, axe.testRockHit(canvas, mine));
                 }
+                NewGemPanel.testPanel(event, canvas);
             });
 
             // side scrolling lambda, add button presses!

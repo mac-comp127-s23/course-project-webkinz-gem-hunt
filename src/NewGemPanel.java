@@ -1,17 +1,22 @@
 
 import java.awt.Color;
 
+import javax.security.auth.callback.TextInputCallback;
+
 import edu.macalester.graphics.*;
+import edu.macalester.graphics.events.MouseButtonEvent;
 import edu.macalester.graphics.ui.Button;
 
 public class NewGemPanel {
     
-    private GraphicsGroup panel;
-    private Rectangle panelBackground;
-    private GraphicsText gemName;
-    private GraphicsText gemDescription;
-    private Image gemImage;
-    private Button closePanel;
+    private static GraphicsGroup panel;
+    private static Rectangle panelBackground;
+    private static GraphicsText gemName;
+    private static GraphicsText gemDescription;
+    private static Image gemImage;
+    private static Button closePanel;
+    private static Rectangle closeRectangle;
+    private static boolean drawn = false;
 
     public NewGemPanel(Point position, Gem gem){
         panelBackground = new Rectangle(0, 0, 200, 100);
@@ -24,15 +29,27 @@ public class NewGemPanel {
         panel.add(gemImage);
         gemName = new GraphicsText(gem.getName(), 100, 20);
         gemName.setFontStyle(FontStyle.BOLD);
-        gemName.setFontSize(10);
+        int nameFontSize = 10;
+        gemName.setFontSize(nameFontSize);
+        while(gemName.getWidth() > 90){
+            nameFontSize --;
+            gemDescription.setFontSize(nameFontSize);
+        }
         panel.add(gemName);
         gemDescription = new GraphicsText(gem.getDescription(), 100, 40);
         gemDescription.setWrappingWidth(90);
-        gemDescription.setFontSize(10);
+        int descriptionFontSize = 10;
+        gemDescription.setFontSize(descriptionFontSize);
+        while(gemDescription.getHeight() > 60){
+            descriptionFontSize --;
+            gemDescription.setFontSize(descriptionFontSize);
+        }
         panel.add(gemDescription);
-        closePanel = new Button("X");
-        closePanel.setPosition(200 - closePanel.getWidth(), 0);
-        panel.add(closePanel);
+        // closePanel = new Button("X");
+        // closePanel.setPosition(200 - closePanel.getWidth(), 0);
+        closeRectangle = new Rectangle(190, 0, 10, 10);
+        closeRectangle.setFillColor(Color.RED);
+        panel.add(closeRectangle);
     }
     
     /**
@@ -40,8 +57,17 @@ public class NewGemPanel {
      */
     public void setUpGemPanel(CanvasWindow canvas){
         canvas.add(panel);
+        drawn = true;
         panel.setCenter(canvas.getCenter());
-        closePanel.onClick((() -> canvas.remove(panel)));
+    }
+
+    public static void testPanel(MouseButtonEvent event, CanvasWindow canvas){
+        if(drawn && panel.testHit(event.getPosition().getX(), event.getPosition().getY())
+        && panel.getElementAt(event.getPosition()).equals(closeRectangle)){
+            canvas.remove(panel);
+            drawn = false;
+        }
+        
     }
 
 
