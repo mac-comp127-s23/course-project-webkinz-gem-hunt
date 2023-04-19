@@ -36,7 +36,6 @@ public class Game {
             });
 
             canvas.onClick(event -> {
-                System.out.println(Mine.getLeftBound());
                 if (axe.testRockHit(canvas, mine) != null){
                     rockDissolve(canvas, axe.testRockHit(canvas, mine));
                 }

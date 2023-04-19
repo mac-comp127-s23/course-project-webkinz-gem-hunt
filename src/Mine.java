@@ -10,22 +10,22 @@ import edu.macalester.graphics.events.MouseButtonEvent;
 
 import java.awt.Color;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Mine implements Background{
 
     private RockManager rocks;
     private Set<Gem> gemSet;
+    Map<Color, String> mines;
 
     private static Color color;
     private static GraphicsGroup mineGroup;
     private static GraphicsGroup fullGroup;
     private static double CANVAS_WIDTH = 800; 
     private static double CANVAS_HEIGHT = 600;
-
-    // private static Line leftBound = new Line(-800,0,-800,600);
-    // private static Line rightBound = new Line(1600,0,1600,600);
 
     private static Line leftBound ;
     private static Line rightBound ;
@@ -38,6 +38,17 @@ public class Mine implements Background{
         Mine.color = color;
         mineGroup = new GraphicsGroup(0,0);
         fullGroup = new GraphicsGroup(0, 0);
+        createMineMap();
+    }
+
+    public void createMineMap() {
+        mines = new HashMap<>();
+
+        mines.put(Color.BLUE, "BlueCave.png");
+        mines.put(Color.RED, "RedCave.png");
+        mines.put(Color.GREEN, "GreenCave.png");
+        mines.put(Color.YELLOW, "YellowCave.png");
+        mines.put(Color.WHITE, "WhiteCave.png");
     }
 
     /**
@@ -45,7 +56,7 @@ public class Mine implements Background{
      */
     public void generateMine() {
         Image icon = new Image(-800, 0);
-        icon.setImagePath("BlueCave.png");
+        icon.setImagePath(mines.get(color));
         mineGroup.add(icon);
 
         leftBound = new Line(-800,0,-800,600);
