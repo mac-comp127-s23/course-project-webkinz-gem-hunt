@@ -1,6 +1,7 @@
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Line;
+import edu.macalester.graphics.Rectangle;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -19,19 +20,25 @@ public class MineMap {
         mapGroup = new GraphicsGroup(0,0);
     }
 
-    // running main method will produce and save a background image for the mine in the uncommented color scheme
     public static void main(String[] args) {
         MineMap map = new MineMap();
         CanvasWindow canvas = new CanvasWindow("Mine", 800, 600);
         canvas.setBackground(MAP_BACKGROUND);
 
         map.addMountains();
+        map.addMines();
+
+        mapGroup.add(map.addCluster(30,300));
+        mapGroup.add(map.addCluster(425,450));
+        mapGroup.add(map.addCluster(325,200));
+        mapGroup.add(map.addCluster(700,250));
+        mapGroup.add(map.addCluster(100,510));
+
         canvas.add(mapGroup);
         canvas.draw();
-        // canvas.screenShot("WhiteCave.png");
     }
 
-    private static void addMountains() {
+    private void addMountains() {
         List<Line> lineList = new ArrayList<>();
 
         Line line1 = new Line(-50, 200, 110, 75);
@@ -53,6 +60,55 @@ public class MineMap {
             mapGroup.add(l);
         }
 
+    }
+
+    private GraphicsGroup addCluster(double x, double y) {
+        GraphicsGroup cluster = new GraphicsGroup(x,y);
+        List<Line> clusterList = new ArrayList<>();
+
+        Line lineA = new Line(0,12, 19,0);
+        clusterList.add(lineA);
+        Line lineB = new Line(19,0, 38,12);
+        clusterList.add(lineB);
+        Line lineC = new Line(47,12, 66,0);
+        clusterList.add(lineC);
+        Line lineD = new Line(66,0, 85,12);
+        clusterList.add(lineD);
+        Line lineE = new Line(30,0, 42.5,-7);
+        clusterList.add(lineE);
+        Line lineF = new Line(42.5,-7, 55,0);
+        clusterList.add(lineF);
+
+        for (Line l: clusterList){
+            l.setStrokeColor(new Color(185, 168, 116));
+            l.setStrokeWidth(3);
+            cluster.add(l);
+        }
+
+        return cluster;
+
+    }
+
+    private void addMines() {
+        Rectangle blueRect = new Rectangle(80, 120, 60, 60);
+        blueRect.setFillColor(Color.BLUE);
+        mapGroup.add(blueRect);
+
+        Rectangle redRect = new Rectangle(570, 140, 60, 60);
+        redRect.setFillColor(Color.RED);
+        mapGroup.add(redRect);
+
+        Rectangle greenRect = new Rectangle(280, 250, 60, 60);
+        greenRect.setFillColor(Color.GREEN);
+        mapGroup.add(greenRect);
+
+        Rectangle yellowRect = new Rectangle(270, 480, 60, 60);
+        yellowRect.setFillColor(Color.YELLOW);
+        mapGroup.add(yellowRect);
+
+        Rectangle whiteRect = new Rectangle(660, 380, 60, 60);
+        whiteRect.setFillColor(Color.LIGHT_GRAY);
+        mapGroup.add(whiteRect);
     }
 
     
