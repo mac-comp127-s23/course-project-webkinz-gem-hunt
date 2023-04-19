@@ -10,9 +10,6 @@ public class Game {
     private static Pickaxe axe;
     private static BackgroundManager backgrounds;
     
-    private static Minecart minecart;
-
-    private static CanvasWindow canvas;
 
 
         // for testing:

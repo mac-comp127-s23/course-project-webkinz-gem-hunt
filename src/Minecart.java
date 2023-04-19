@@ -2,8 +2,8 @@ import java.awt.Color;
 
 
 import edu.macalester.graphics.*;
-import edu.macalester.graphics.ui.Button;
 
+/** Minecart used in the Webkinz Gem Hunt with buttons to implement side-scrolling */
 public class Minecart {
 
     private static GraphicsGroup minecart;
@@ -13,6 +13,9 @@ public class Minecart {
     public Minecart() {
     }
 
+    /** Creates a minecart graphics group and buttons with callback functions
+     * to create side-scrolling within gameplay
+     */
     public static GraphicsGroup drawMinecart() {
         minecart = new GraphicsGroup();
         Point p1 = new Point(0, 0);
@@ -36,13 +39,7 @@ public class Minecart {
         wheel2.setCenter(420, 590);
         minecart.add(wheel2);
 
-        Point p5 = new Point(3, 0);
-        Point p6 = new Point(48, -70);
-        Point p7 = new Point(67, -50);
-        Point p8 = new Point(95, -48);
-        Point p9 = new Point(147, 0);
-
-        Path slag = new Path(p5, p6, p7, p8, p9);
+        Path slag = new Path(new Point(3,0), new Point(48,-70), new Point(67,-50), new Point(95,-48), new Point(147,0));
         slag.setFillColor(Color.DARK_GRAY);
         slag.setCenter(400, 475);
         minecart.add(slag);
@@ -68,15 +65,6 @@ public class Minecart {
         rightText.setFont(FontStyle.BOLD_ITALIC, 12);
         rightText.setCenter(517, 550);
         minecart.add(rightText);
-        
-
-        // Button leftButton = new Button("LEFT");
-        // leftButton.setCenter(290, 550);
-        // minecart.add(leftButton);
-
-        // Button rightButton = new Button("RIGHT");
-        // rightButton.setCenter(510, 550);
-        // minecart.add(rightButton);
         
         
         return minecart;
