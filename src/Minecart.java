@@ -9,6 +9,8 @@ public class Minecart {
     private static GraphicsGroup minecart;
     private static final Color CART_COLOR = new Color(22, 0, 117);
     private static final Color BUTTON_COLOR = new Color(240, 197, 58);
+    private static Path leftButton;
+    private static Path rightButton;
 
     public Minecart() {
     }
@@ -45,7 +47,7 @@ public class Minecart {
         minecart.add(slag);
 
 
-        Path leftButton = new Path(new Point(-10,15), new Point(0,0), new Point(75,0), new Point(75,30), new Point(0,30));
+        leftButton = new Path(new Point(-10,15), new Point(0,0), new Point(75,0), new Point(75,30), new Point(0,30));
         leftButton.setCenter(280, 550);
         leftButton.setFillColor(BUTTON_COLOR);
 
@@ -56,7 +58,7 @@ public class Minecart {
         minecart.add(leftButton);
         minecart.add(leftText);
 
-        Path rightButton = new Path(new Point(0,0), new Point(75,0), new Point(85, 15), new Point(75,30), new Point(0,30));
+        rightButton = new Path(new Point(0,0), new Point(75,0), new Point(85, 15), new Point(75,30), new Point(0,30));
         rightButton.setFillColor(BUTTON_COLOR);
         rightButton.setCenter(520, 550);
         minecart.add(rightButton);
@@ -72,6 +74,17 @@ public class Minecart {
 
     }
 
+    public static GraphicsGroup getMinecart(){
+        return minecart;
+    }
+
+    public static Path getLeftButton(){
+        return leftButton;
+    }
+
+    public static Path getRightButton(){
+        return rightButton;
+    }
     //for testing
 
     public static void main(String[] args) {

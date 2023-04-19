@@ -1,8 +1,12 @@
+import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.GraphicsObject;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Line;
 import edu.macalester.graphics.Path;
+import edu.macalester.graphics.events.Key;
+import edu.macalester.graphics.events.KeyboardEvent;
+import edu.macalester.graphics.events.MouseButtonEvent;
 
 import java.awt.Color;
 import java.util.List;
@@ -16,6 +20,7 @@ public class Mine implements Background{
 
     private static Color color;
     private static GraphicsGroup mineGroup;
+    private static GraphicsGroup fullGroup;
     private static double CANVAS_WIDTH = 800; 
     private static double CANVAS_HEIGHT = 600;
 
@@ -24,11 +29,15 @@ public class Mine implements Background{
 
     private static Line leftBound ;
     private static Line rightBound ;
+    private static double groupPosition;
+
+    private Minecart minecart;
 
 
     public Mine(Color color) {
         Mine.color = color;
         mineGroup = new GraphicsGroup(0,0);
+        fullGroup = new GraphicsGroup(0, 0);
     }
 
     /**
@@ -43,9 +52,13 @@ public class Mine implements Background{
         rightBound = new Line(1600,0,1600,600);
         mineGroup.add(leftBound);
         mineGroup.add(rightBound);
+        groupPosition = 400;
 
         rocks = new RockManager(30, CANVAS_HEIGHT, CANVAS_WIDTH);
         rocks.drawRocks(mineGroup);
+
+        fullGroup.add(mineGroup);
+        fullGroup.add(minecart.drawMinecart());
     }
 
     public static double getLeftBound() {
@@ -54,6 +67,35 @@ public class Mine implements Background{
 
     public static double getRightBound() {
         return rightBound.getX();
+    }
+
+    // public void moveGroup(KeyboardEvent event, CanvasWindow canvas){
+    //     if(event.getKey() == Key.LEFT_ARROW && groupPosition >= -350){
+    //         this.getGraphicsGroup().moveBy(5, 0); // change delta x depending on how fast cart should move
+    //         groupPosition -= 5;
+    //     }
+    //     if(event.getKey() == Key.RIGHT_ARROW && groupPosition <= 1150) {
+    //         this.getGraphicsGroup().moveBy(-5, 0); // change delta x depending on how fast cart should move
+    //         groupPosition += 5;
+    //     }
+    // }
+
+    public void moveGroup(MouseButtonEvent event, CanvasWindow canvas){
+        if(Minecart.getMinecart().testHit(event.getPosition().getX(), event.getPosition().getY())
+        && Minecart.getMinecart().getElementAt(event.getPosition()).equals(Minecart.getLeftButton())){
+            mineGroup.moveBy(5, 0); // change delta x depending on how fast cart should move
+            groupPosition -= 5;
+        }
+        if(Minecart.getMinecart().testHit(event.getPosition().getX(), event.getPosition().getY())
+        && Minecart.getMinecart().getElementAt(event.getPosition()).equals(Minecart.getRightButton())){
+            mineGroup.moveBy(-5, 0); // change delta x depending on how fast cart should move
+            groupPosition += 5;
+        }
+        }
+
+    public static double getGroupPosition()
+    {
+        return groupPosition;
     }
 
     /**
@@ -65,7 +107,7 @@ public class Mine implements Background{
     }
 
     public GraphicsGroup getGraphicsGroup() {
-        return mineGroup;
+        return fullGroup;
     }
 
     /**
