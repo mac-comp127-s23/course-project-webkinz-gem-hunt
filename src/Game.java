@@ -31,6 +31,8 @@ public class Game {
             canvas.add(axeShape, 100, 100); // arbitrary starting point
             canvas.draw();
 
+            canvas.add(Minecart.getMinecart());
+
             canvas.onMouseMove(event -> {
                 axeShape.setCenter(event.getPosition());
             });
