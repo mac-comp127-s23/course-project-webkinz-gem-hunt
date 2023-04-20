@@ -56,6 +56,7 @@ public class Mine implements Background{
         rocks.drawRocks(mineGroup);
 
         Minecart.drawMinecart();
+        mineGroup.add(Button.drawBackButton());
     }
 
     public static double getLeftBound() {
