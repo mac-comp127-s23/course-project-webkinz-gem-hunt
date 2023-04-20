@@ -1,7 +1,4 @@
-import edu.macalester.graphics.CanvasWindow;
-import edu.macalester.graphics.GraphicsGroup;
-import edu.macalester.graphics.Line;
-import edu.macalester.graphics.Rectangle;
+import edu.macalester.graphics.*;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -11,8 +8,6 @@ public class MineMap {
 
     private static GraphicsGroup mapGroup;
     private static List<GraphicsGroup> doors;
-    private static double CANVAS_WIDTH = 800; 
-    private static double CANVAS_HEIGHT = 600;
     private static final Color MAP_BACKGROUND = new Color(242, 223, 169);
     private static final Color CAVE_BACKGROUND_BLUE = new Color(9, 1, 64);
     private static final Color CAVE_BACKGROUND_GREEN = new Color(10, 40, 3);
@@ -26,6 +21,7 @@ public class MineMap {
         mapGroup = new GraphicsGroup(0,0);
     }
 
+    // for testing
     public static void main(String[] args) {
         MineMap map = new MineMap();
         CanvasWindow canvas = new CanvasWindow("Mine", 800, 600);
@@ -48,6 +44,9 @@ public class MineMap {
         mapGroup.add(addCluster(100,510));
     }
 
+    /**
+     * Adds graphical representation of map's mountains to GraphicsGroup of map objects.
+     */
     private void addMountains() {
         List<Line> lineList = new ArrayList<>();
 
@@ -72,6 +71,13 @@ public class MineMap {
 
     }
 
+    /**
+     * Generates a GraphicsGroup of Lines which draw a small mountain cluster of fixed size.
+     * 
+     * @param x horizontal coordinate of upper left corner of cluster's bounding box
+     * @param y vertical coordinate of upper left corner of cluster's bounding box
+     * @return GraphicsGroup of Lines
+     */
     private GraphicsGroup addCluster(double x, double y) {
         GraphicsGroup cluster = new GraphicsGroup(x,y);
         List<Line> clusterList = new ArrayList<>();
@@ -99,6 +105,9 @@ public class MineMap {
 
     }
 
+    /**
+     * Adds graphical representation of mine doors to GraphicsGroup of map objects.
+     */
     private void addMines() {
         doors = new ArrayList<>();
 
@@ -114,10 +123,21 @@ public class MineMap {
 
     }
 
+    /**
+     * @return List of mine doors on map
+     */
     private List<GraphicsGroup> getDoors() {
         return doors;
     }
 
+    /**
+     * Generates graphical representation of mine doors of fixed size
+     * 
+     * @param mineColor Color of linked Mine
+     * @param x horizontal coordinate of upper left corner of door's bounding box
+     * @param y vertical coordinate of upper left corner of door's bounding box
+     * @return GraphicsGroup with door frame and colored interior
+     */
     private GraphicsGroup mineDoor(Color mineColor, double x, double y) {
         GraphicsGroup door = new GraphicsGroup(x, y);
 

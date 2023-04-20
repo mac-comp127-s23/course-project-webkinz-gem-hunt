@@ -15,7 +15,8 @@ public class Minecart {
     public Minecart() {
     }
 
-    /** Creates a minecart graphics group and buttons with callback functions
+    /** 
+     * Creates a minecart graphics group and buttons with callback functions
      * to create side-scrolling within gameplay
      */
     public static void drawMinecart() {

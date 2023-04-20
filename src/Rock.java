@@ -1,8 +1,5 @@
 import java.awt.Color;
-
-import edu.macalester.graphics.Image;
-import edu.macalester.graphics.Path;
-import edu.macalester.graphics.Point;
+import edu.macalester.graphics.*;
 
 public class Rock{
 
@@ -39,10 +36,6 @@ public class Rock{
      */
     public static Color generateColor() {
         return Helpers.randomColorVariation(Color.BLUE, Helpers.randomInt(50,100));
-    }
-
-    public Color getColor() {
-        return rockColor;
     }
 
     public Path getRockShape(){

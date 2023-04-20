@@ -1,19 +1,8 @@
-import edu.macalester.graphics.CanvasWindow;
-import edu.macalester.graphics.GraphicsGroup;
-import edu.macalester.graphics.GraphicsObject;
-import edu.macalester.graphics.Image;
-import edu.macalester.graphics.Line;
-import edu.macalester.graphics.Path;
-import edu.macalester.graphics.events.Key;
-import edu.macalester.graphics.events.KeyboardEvent;
-import edu.macalester.graphics.events.MouseButtonEvent;
+import edu.macalester.graphics.*;
+import edu.macalester.graphics.events.*;
 
 import java.awt.Color;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class Mine implements Background{
 
@@ -36,6 +25,9 @@ public class Mine implements Background{
         createMineMap();
     }
 
+    /**
+     * Creates HashMap between Mine colors and their respective background images in res folder.
+     */
     public void createMineMap() {
         mines = new HashMap<>();
 
@@ -47,7 +39,7 @@ public class Mine implements Background{
     }
 
     /**
-     * Generates visual elements of mine, including cave wall image and rocks.
+     * Generates visual elements of mine, including cave wall image, rocks, and minecart.
      */
     public void generateMine() {
         Image icon = new Image(-800, 0);

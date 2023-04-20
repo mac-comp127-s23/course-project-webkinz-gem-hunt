@@ -1,9 +1,7 @@
 import java.awt.Color;
 
-import edu.macalester.graphics.CanvasWindow;
-import edu.macalester.graphics.GraphicsObject;
-import edu.macalester.graphics.Point;
-import edu.macalester.graphics.events.Key;
+import edu.macalester.graphics.*;
+import edu.macalester.graphics.events.*;
 
 public class Game {
     private static Mine mine;
@@ -53,6 +51,13 @@ public class Game {
 
         }
 
+        /**
+         * Destroys rock by dissolving its graphics and animating pickaxe. 
+         * Generates a gem from the dissolved rock.
+         * 
+         * @param canvas Canvas containing rock being dissolved
+         * @param rock Rock being dissolved
+         */
         private static void rockDissolve(CanvasWindow canvas, Rock rock) {
             Point rockPosition = rock.getPosition();
             GraphicsObject twoThirds = rock.twoThirdsRock(rockPosition.getX(), rockPosition.getY());
