@@ -6,7 +6,6 @@ import java.util.*;
 public class MineMap {
 
     private static GraphicsGroup mapGroup;
-    private static List<GraphicsGroup> doors;
     Map<Rectangle, Color> mineDoors;
 
     public static final Color MAP_BACKGROUND = new Color(242, 223, 169);

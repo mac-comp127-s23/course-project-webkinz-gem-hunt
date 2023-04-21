@@ -1,7 +1,6 @@
 import java.awt.Color;
 
 import edu.macalester.graphics.*;
-import edu.macalester.graphics.events.*;
 
 public class Game {
     private static MineMap startMap;
@@ -40,7 +39,7 @@ public class Game {
         mine.generateMine();
         backgrounds.drawBackround("Mine");
         GemList.setList();
-        mine.addGemSet("Blue"); // change this to depend on mine color
+        mine.addGemSet(color);
 
         axe = new Pickaxe();
         GraphicsObject axeShape = Pickaxe.drawAxe();

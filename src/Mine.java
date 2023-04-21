@@ -8,7 +8,8 @@ public class Mine implements Background{
 
     private RockManager rocks;
     private Set<Gem> gemSet;
-    Map<Color, String> mines;
+    Map<Color, String> images;
+    Map<Color, String> colors;
 
     private static Color color;
     private static GraphicsGroup mineGroup;
@@ -22,20 +23,34 @@ public class Mine implements Background{
     public Mine(Color color) {
         Mine.color = color;
         mineGroup = new GraphicsGroup(0,0);
-        createMineMap();
+        createImageMap();
+        createColorMap();
     }
 
     /**
      * Creates HashMap between Mine colors and their respective background images in res folder.
      */
-    public void createMineMap() {
-        mines = new HashMap<>();
+    public void createImageMap() {
+        images = new HashMap<>();
 
-        mines.put(Color.BLUE, "BlueCave.png");
-        mines.put(Color.RED, "RedCave.png");
-        mines.put(Color.GREEN, "GreenCave.png");
-        mines.put(Color.YELLOW, "YellowCave.png");
-        mines.put(Color.WHITE, "WhiteCave.png");
+        images.put(Color.BLUE, "BlueCave.png");
+        images.put(Color.RED, "RedCave.png");
+        images.put(Color.GREEN, "GreenCave.png");
+        images.put(Color.YELLOW, "YellowCave.png");
+        images.put(Color.WHITE, "WhiteCave.png");
+    }
+
+     /**
+     * Creates HashMap between Mine colors and string containing color (for use by gem classes)
+     */
+    public void createColorMap() {
+        colors = new HashMap<>();
+
+        colors.put(Color.BLUE, "Blue");
+        colors.put(Color.RED, "Red");
+        colors.put(Color.GREEN, "Green");
+        colors.put(Color.YELLOW, "Yellow");
+        colors.put(Color.WHITE, "White");
     }
 
     /**
@@ -43,7 +58,7 @@ public class Mine implements Background{
      */
     public void generateMine() {
         Image icon = new Image(-800, 0);
-        icon.setImagePath(mines.get(color));
+        icon.setImagePath(images.get(color));
         mineGroup.add(icon);
 
         leftBound = new Line(-800,0,-800,600);
@@ -102,7 +117,8 @@ public class Mine implements Background{
      * Adds a set of gems to this mine that all share a gem type.
      * @param gemType
      */
-    public void addGemSet(String gemType){
+    public void addGemSet(Color color){
+        String gemType = colors.get(color);
         gemSet = GemList.getGemSet(gemType);
     }
 

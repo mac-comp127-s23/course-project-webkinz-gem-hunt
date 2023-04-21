@@ -45,7 +45,7 @@ public class RockManager {
         }
     }
 
-    public Set getRockShapes(){
+    public Set<Path> getRockShapes(){
         return rocks.keySet();
     }
 
