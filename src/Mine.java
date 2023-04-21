@@ -52,7 +52,7 @@ public class Mine implements Background{
         mineGroup.add(rightBound);
         groupPosition = 400;
 
-        rocks = new RockManager(30, CANVAS_HEIGHT, CANVAS_WIDTH);
+        rocks = new RockManager(30, color, CANVAS_HEIGHT, CANVAS_WIDTH);
         rocks.drawRocks(mineGroup);
 
         Minecart.drawMinecart();

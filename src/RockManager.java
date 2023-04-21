@@ -1,5 +1,7 @@
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Path;
+
+import java.awt.Color;
 import java.util.*;
 
 public class RockManager {
@@ -12,18 +14,20 @@ public class RockManager {
      * @param canvasHeight Height of rock range.
      * @param canvasWidth Width of rock range.
      */
-    public RockManager(int numRocks, double canvasHeight, double canvasWidth){
+    public RockManager(int numRocks, Color color, double canvasHeight, double canvasWidth){
 
         double totalWidth = 2400; // 2400 is length of entire canvas, with scrolling
 
         for (int i = 0; i < numRocks; i++){
             Rock topRock = new Rock(
+                color,
                 (i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100)) 
                     - 800, // shift rock set to start at far left of mine
                 Helpers.randomDouble(10, 100));
             rocks.put(topRock.getRockShape(), topRock);
 
             Rock bottomRock = new Rock(
+                color,
                 (i * (totalWidth / numRocks) + Helpers.randomDouble(50, 100)) 
                     - 800, // shift rock set to start at far left of mine
                 canvasHeight - Helpers.randomDouble(50, 150));

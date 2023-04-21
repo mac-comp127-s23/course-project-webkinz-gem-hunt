@@ -14,7 +14,7 @@ public class Rock{
      * @param (x,y) Position from upper left corner of bounding box. 
      * 
      */
-    public Rock(double x, double y) {
+    public Rock(Color color, double x, double y) {
         rockShape = new Path(new Point(width, 0),
             new Point(width * Math.cos(Math.toRadians(45)), height * Math.sin(Math.toRadians(45))),
             new Point(0, height),
@@ -24,7 +24,7 @@ public class Rock{
             new Point(0, -height),
             new Point(width * Math.cos(Math.toRadians(45)), -height * Math.sin(Math.toRadians(45))) );
 
-        rockColor = generateColor();
+        rockColor = generateColor(color);
         rockShape.setPosition(x, y);
         rockShape.setFillColor(rockColor);
         rockShape.setStrokeColor(Color.BLACK);
@@ -34,8 +34,8 @@ public class Rock{
     /**
      * Generates a random hue of the base color of active mine.
      */
-    public static Color generateColor() {
-        return Helpers.randomColorVariation(Color.BLUE, Helpers.randomInt(50,100));
+    public static Color generateColor(Color color) {
+        return Helpers.randomColorVariation(color, Helpers.randomInt(50,100));
     }
 
     public Path getRockShape(){

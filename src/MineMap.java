@@ -1,14 +1,15 @@
 import edu.macalester.graphics.*;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class MineMap {
 
     private static GraphicsGroup mapGroup;
     private static List<GraphicsGroup> doors;
-    private static final Color MAP_BACKGROUND = new Color(242, 223, 169);
+    Map<Rectangle, Color> mineDoors;
+
+    public static final Color MAP_BACKGROUND = new Color(242, 223, 169);
     private static final Color CAVE_BACKGROUND_BLUE = new Color(9, 1, 64);
     private static final Color CAVE_BACKGROUND_GREEN = new Color(10, 40, 3);
     private static final Color CAVE_BACKGROUND_RED = new Color(75, 10, 5);
@@ -27,13 +28,11 @@ public class MineMap {
         CanvasWindow canvas = new CanvasWindow("Mine", 800, 600);
         canvas.setBackground(MAP_BACKGROUND);
     
-        map.drawMap();
-
-        canvas.add(mapGroup);
+        canvas.add(map.drawMap());
         canvas.draw();
     }
 
-    private void drawMap() {
+    public GraphicsGroup drawMap() {
         addMountains();
         addMines();
 
@@ -42,6 +41,8 @@ public class MineMap {
         mapGroup.add(addCluster(325,200));
         mapGroup.add(addCluster(700,250));
         mapGroup.add(addCluster(100,510));
+
+        return mapGroup;
     }
 
     /**
@@ -109,25 +110,20 @@ public class MineMap {
      * Adds graphical representation of mine doors to GraphicsGroup of map objects.
      */
     private void addMines() {
-        doors = new ArrayList<>();
+        mineDoors = new HashMap<>();
 
-        doors.add(mineDoor(CAVE_BACKGROUND_BLUE, 80, 120));
-        doors.add(mineDoor(CAVE_BACKGROUND_RED, 570, 140));
-        doors.add(mineDoor(CAVE_BACKGROUND_GREEN, 280, 250));
-        doors.add(mineDoor(CAVE_BACKGROUND_YELLOW, 270, 480));
-        doors.add(mineDoor(CAVE_BACKGROUND_WHITE, 660, 380));
-
-        for (GraphicsGroup d : doors){
-            mapGroup.add(d);
-        }
-
+        mapGroup.add(mineDoor(Color.BLUE, CAVE_BACKGROUND_BLUE, 80, 120));
+        mapGroup.add(mineDoor(Color.RED, CAVE_BACKGROUND_RED, 570, 140));
+        mapGroup.add(mineDoor(Color.GREEN, CAVE_BACKGROUND_GREEN, 280, 250));
+        mapGroup.add(mineDoor(Color.YELLOW, CAVE_BACKGROUND_YELLOW, 270, 480));
+        mapGroup.add(mineDoor(Color.WHITE, CAVE_BACKGROUND_WHITE, 660, 380));
     }
 
     /**
-     * @return List of mine doors on map
+     * @return Map of mine doors on map and their colors
      */
-    private List<GraphicsGroup> getDoors() {
-        return doors;
+    public Map<Rectangle, Color> getDoors() {
+        return mineDoors;
     }
 
     /**
@@ -138,26 +134,27 @@ public class MineMap {
      * @param y vertical coordinate of upper left corner of door's bounding box
      * @return GraphicsGroup with door frame and colored interior
      */
-    private GraphicsGroup mineDoor(Color mineColor, double x, double y) {
-        GraphicsGroup door = new GraphicsGroup(x, y);
+    private GraphicsGroup mineDoor(Color mineColor, Color backColor, double x, double y) {
+        GraphicsGroup door = new GraphicsGroup(0, 0);
 
-        Rectangle inside = new Rectangle(0,0, 60, 60);
-        inside.setFillColor(mineColor);
+        Rectangle inside = new Rectangle(x,y, 60, 60);
+        inside.setFillColor(backColor);
         door.add(inside);
+        mineDoors.put(inside, mineColor);
 
-        Rectangle left = new Rectangle(-5, 0, 5, 60);
+        Rectangle left = new Rectangle(x-5, y, 5, 60);
         left.setFillColor(MAP_BACKGROUND);
         left.setStrokeColor(MAP_LINE_COLOR);
         left.setStrokeWidth(2);
         door.add(left);
 
-        Rectangle right = new Rectangle(60, 0, 5, 60);
+        Rectangle right = new Rectangle(x+60, y, 5, 60);
         right.setFillColor(MAP_BACKGROUND);
         right.setStrokeColor(MAP_LINE_COLOR);
         right.setStrokeWidth(2);
         door.add(right);
         
-        Rectangle top = new Rectangle(-7, -5, 74, 7);
+        Rectangle top = new Rectangle(x-7, y-5, 74, 7);
         top.setFillColor(MAP_BACKGROUND);
         top.setStrokeColor(MAP_LINE_COLOR);
         top.setStrokeWidth(2);
