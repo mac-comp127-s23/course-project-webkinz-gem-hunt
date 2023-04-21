@@ -85,8 +85,8 @@ public class Game {
 
             // hit #1
             axe.getAxe().rotateBy(90);
-            backgrounds.getGraphicsGroup().remove(rock.getRockShape());
-            backgrounds.getGraphicsGroup().add(twoThirds);
+            Mine.getMineGroup().remove(rock.getRockShape());
+            Mine.getMineGroup().add(twoThirds);
             canvas.draw();
 
             canvas.pause(150);
@@ -96,8 +96,8 @@ public class Game {
 
             // hit #2
             axe.getAxe().rotateBy(90);
-            backgrounds.getGraphicsGroup().remove(twoThirds);
-            backgrounds.getGraphicsGroup().add(oneThird);
+            Mine.getMineGroup().remove(twoThirds);
+            Mine.getMineGroup().add(oneThird);
             canvas.draw();
 
             canvas.pause(150);
@@ -107,7 +107,7 @@ public class Game {
 
             // hit #3
             axe.getAxe().rotateBy(90);
-            backgrounds.getGraphicsGroup().remove(oneThird);
+            Mine.getMineGroup().remove(oneThird);
             canvas.draw();
 
             canvas.pause(150);

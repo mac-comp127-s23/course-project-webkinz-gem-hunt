@@ -19,7 +19,7 @@ public class Minecart {
      * Creates a minecart graphics group and buttons with callback functions
      * to create side-scrolling within gameplay
      */
-    public static void drawMinecart() {
+    public static GraphicsGroup drawMinecart() {
         minecart = new GraphicsGroup();
         Point p1 = new Point(0, 0);
         Point p2 = new Point(150, 0);
@@ -68,6 +68,8 @@ public class Minecart {
         rightText.setFont(FontStyle.BOLD_ITALIC, 12);
         rightText.setCenter(517, 550);
         minecart.add(rightText);
+
+        return minecart;
     }
 
     public static GraphicsGroup getMinecart(){

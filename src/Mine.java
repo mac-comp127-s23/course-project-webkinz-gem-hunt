@@ -13,6 +13,8 @@ public class Mine implements Background{
 
     private static Color color;
     private static GraphicsGroup mineGroup;
+    private static GraphicsGroup mineUI;
+    private static GraphicsGroup fullMine;
     private static double CANVAS_WIDTH = 800; 
     private static double CANVAS_HEIGHT = 600;
 
@@ -23,6 +25,8 @@ public class Mine implements Background{
     public Mine(Color color) {
         Mine.color = color;
         mineGroup = new GraphicsGroup(0,0);
+        mineUI = new GraphicsGroup(0,0);
+        fullMine = new GraphicsGroup(0,0);
         createImageMap();
         createColorMap();
     }
@@ -70,8 +74,14 @@ public class Mine implements Background{
         rocks = new RockManager(30, color, CANVAS_HEIGHT, CANVAS_WIDTH);
         rocks.drawRocks(mineGroup);
 
-        Minecart.drawMinecart();
-        mineGroup.add(Button.drawBackButton());
+        mineUI.add(Minecart.drawMinecart());
+        mineUI.add(Button.drawBackButton());
+        fullMine.add(mineGroup);
+        fullMine.add(mineUI);
+    }
+
+    public static GraphicsGroup getMineGroup(){
+        return mineGroup;
     }
 
     public static double getLeftBound() {
@@ -97,13 +107,11 @@ public class Mine implements Background{
         if(Minecart.getMinecart().testHit(event.getPosition().getX(), event.getPosition().getY())
         && Minecart.getMinecart().getElementAt(event.getPosition()).equals(Minecart.getLeftButton())){
             mineGroup.moveBy(50, 0); // change delta x depending on how fast cart should move
-            Minecart.getMinecart().moveBy(-50, 0);
             groupPosition -= 5;
         }
         if(Minecart.getMinecart().testHit(event.getPosition().getX(), event.getPosition().getY())
         && Minecart.getMinecart().getElementAt(event.getPosition()).equals(Minecart.getRightButton())){
             mineGroup.moveBy(-50, 0); // change delta x depending on how fast cart should move
-            Minecart.getMinecart().moveBy(50, 0);
             groupPosition += 5;
         }
         }
@@ -123,7 +131,7 @@ public class Mine implements Background{
     }
 
     public GraphicsGroup getGraphicsGroup() {
-        return mineGroup;
+        return fullMine;
     }
 
     /**
