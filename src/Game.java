@@ -4,28 +4,46 @@ import edu.macalester.graphics.*;
 import edu.macalester.graphics.events.*;
 
 public class Game {
+    private static MineMap startMap;
     private static Mine mine;
+    private static CanvasWindow canvas;
     private static Pickaxe axe;
     private static BackgroundManager backgrounds;
-    
 
 
-        // for testing:
-        public static void main(String[] args) {
+    public static void main(String[] args) {
+        canvas = new CanvasWindow("Gem Hunt", 800, 600);
+        activateMap();
 
-            GemList.setList();
-            
-            mine = new Mine(Color.BLUE);
-            axe = new Pickaxe();
-            CanvasWindow canvas = new CanvasWindow("Game", 800, 600);
-            backgrounds = new BackgroundManager("Mine", mine, canvas);
-            
-    
-            mine.generateMine();
-            backgrounds.drawBackround("Mine");
-            mine.addGemSet("Blue");
+        // to skip map and do testing within a mine, uncomment this:
+        // activateMine(Color.BLUE);
+    }
 
-            GraphicsObject axeShape = Pickaxe.drawAxe();
+    private static void activateMap() {
+        startMap = new MineMap();
+        canvas.setBackground(MineMap.MAP_BACKGROUND);
+        canvas.add(startMap.drawMap());
+        canvas.draw();
+
+        canvas.onClick(event -> {
+            if (startMap.getDoors().keySet().contains(canvas.getElementAt(event.getPosition()))){
+                activateMine(startMap.getDoors().get(canvas.getElementAt(event.getPosition())));
+            }
+        });
+    }
+
+    private static void activateMine(Color color) {
+        canvas.removeAll();
+
+        mine = new Mine(color);
+        backgrounds = new BackgroundManager("Mine", mine, canvas);
+        mine.generateMine();
+        backgrounds.drawBackround("Mine");
+        GemList.setList();
+        mine.addGemSet("Blue"); // change this to depend on mine color
+
+        axe = new Pickaxe();
+        GraphicsObject axeShape = Pickaxe.drawAxe();
             canvas.add(axeShape, 100, 100); // arbitrary starting point
             canvas.draw();
 
@@ -36,10 +54,15 @@ public class Game {
             });
 
             canvas.onClick(event -> {
+                if (canvas.getElementAt(event.getPosition()) == Button.getButton()){
+                    canvas.removeAll();
+                    activateMap();
+                }
+
                 if (axe.testRockHit(canvas, mine) != null){
                     rockDissolve(canvas, axe.testRockHit(canvas, mine));
+                    NewGemPanel.testPanel(event, canvas);
                 }
-                NewGemPanel.testPanel(event, canvas);
                 mine.moveGroup(event, canvas);
             });
 
@@ -47,11 +70,9 @@ public class Game {
             // canvas.onKeyDown( event -> {
             //     mine.moveGroup(event, canvas);
             // });
+    }
     
-
-        }
-
-        /**
+    /**
          * Destroys rock by dissolving its graphics and animating pickaxe. 
          * Generates a gem from the dissolved rock.
          * 
@@ -99,5 +120,4 @@ public class Game {
             newGem.setUpGemPanel(canvas);
 
         }
-    
 }
