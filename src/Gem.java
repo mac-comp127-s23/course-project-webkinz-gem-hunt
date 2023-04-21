@@ -13,10 +13,13 @@ public class Gem {
     private String type;
     private double rarity;
     private Image image;
+    private boolean blue;
+    private boolean green;
+    private boolean red;
+    private boolean yellow;
+    private boolean white;
 
-    public Gem() {
-
-    }
+    public Gem() {}
 
     public void setName(String name) {
         this.name = name;
@@ -80,6 +83,46 @@ public class Gem {
 
     public Image getImage() {
         return this.image;
+    }
+
+    public void setBlue(String indic) {
+        this.blue = (indic.equals("Y"));
+    }
+
+    public boolean getBlue() {
+        return this.blue;
+    }
+
+    public void setGreen(String indic) {
+        this.green = (indic == "Y");
+    }
+
+    public boolean getGreen() {
+        return this.green;
+    }
+
+    public void setRed(String indic) {
+        this.red = (indic == "Y");
+    }
+
+    public boolean getRed() {
+        return this.red;
+    }
+
+    public void setYellow(String indic) {
+        this.yellow = (indic == "Y");
+    }
+
+    public boolean getYellow() {
+        return this.yellow;
+    }
+
+    public void setWhite(String indic) {
+        this.white = (indic == "Y");
+    }
+
+    public boolean getWhite() {
+        return this.white;
     }
 
     public String toString(){

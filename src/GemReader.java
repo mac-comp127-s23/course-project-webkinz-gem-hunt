@@ -24,6 +24,11 @@ public class GemReader {
                 gem.setRegLowPrice(Integer.parseInt(scanLines.next()));
                 gem.setRegHighPrice(Integer.parseInt(scanLines.next()));
                 gem.setGemOfDayPrice(Integer.parseInt(scanLines.next()));
+                gem.setBlue(scanLines.next());
+                gem.setGreen(scanLines.next());
+                gem.setRed(scanLines.next());
+                gem.setYellow(scanLines.next());
+                gem.setWhite(scanLines.next());
                 System.out.println(gem.toString());
                 gems.add(gem);
                 scanLines.close();
@@ -72,6 +77,11 @@ public class GemReader {
                 gem.setRegHighPrice(Integer.parseInt(scanLines.next()));
                 gem.setGemOfDayPrice(Integer.parseInt(scanLines.next()));
                 gem.setImage(scanLines.next());
+                gem.setBlue(scanLines.next());
+                gem.setGreen(scanLines.next());
+                gem.setRed(scanLines.next());
+                gem.setYellow(scanLines.next());
+                gem.setWhite(scanLines.next());
                 gems.add(gem);
 
                 scanLines.close();

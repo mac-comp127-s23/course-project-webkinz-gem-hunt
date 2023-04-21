@@ -18,6 +18,9 @@ public class Game {
         // activateMine(Color.BLUE);
     }
 
+    /**
+     * Generates map graphics and components on canvas.
+     */
     private static void activateMap() {
         startMap = new MineMap();
         canvas.setBackground(MineMap.MAP_BACKGROUND);
@@ -31,6 +34,12 @@ public class Game {
         });
     }
 
+    /**
+     * Generates mine graphics and components, and activates mine gameplay by enabling
+     * lambdas and rock dissolving methods.
+     * 
+     * @param color Color of mine player is in
+     */
     private static void activateMine(Color color) {
         canvas.removeAll();
 
