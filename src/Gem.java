@@ -1,4 +1,3 @@
-import java.util.TooManyListenersException;
 
 import edu.macalester.graphics.*;
 
