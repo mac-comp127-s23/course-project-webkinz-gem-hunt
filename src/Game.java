@@ -1,6 +1,7 @@
 import java.awt.Color;
 
 import edu.macalester.graphics.*;
+import edu.macalester.graphics.events.MouseButtonEvent;
 
 public class Game {
     private static MineMap startMap;
@@ -8,6 +9,8 @@ public class Game {
     private static CanvasWindow canvas;
     private static Pickaxe axe;
     private static BackgroundManager backgrounds;
+    private static Boolean scrollingLeft = false;
+    private static Boolean scrollingRight = false;
 
 
     public static void main(String[] args) {
@@ -71,7 +74,31 @@ public class Game {
                     rockDissolve(canvas, axe.testRockHit(canvas, mine));
                 }
                 NewGemPanel.testPanel(event, canvas);
-                mine.moveGroup(event, canvas);
+                //mine.moveGroup(event, canvas);
+            });
+            
+            canvas.onMouseDown(event -> {
+                if(mine.testRightButton(event)){
+                    scrollingRight = true;
+                }
+                if(mine.testLeftButton(event)){
+                    scrollingLeft = true;
+                }
+            });
+            
+
+            canvas.onMouseUp(event -> {
+                scrollingLeft = false;
+                scrollingRight = false;
+            });
+
+            canvas.animate(() -> {
+                if(scrollingLeft){
+                    mine.scrollLeft();
+                }
+                else if(scrollingRight){
+                    mine.scrollRight();
+                }
             });
 
             // // side scrolling lambda, add button presses!
