@@ -21,11 +21,8 @@ public class Minecart {
      */
     public static GraphicsGroup drawMinecart() {
         minecart = new GraphicsGroup();
-        Point p1 = new Point(0, 0);
-        Point p2 = new Point(150, 0);
-        Point p3 = new Point(125, 80);
-        Point p4 = new Point(25, 80);
-        Path cart = new Path(p1, p2, p3, p4);
+        
+        Path cart = new Path(new Point(0,0), new Point(150,0), new Point(125,80), new Point(25,80));
         cart.setFillColor(CART_COLOR);
         cart.setStrokeWidth(3);
         cart.setStrokeColor(Color.BLACK);
