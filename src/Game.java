@@ -11,6 +11,7 @@ public class Game {
     private static BackgroundManager backgrounds;
     private static Boolean scrollingLeft = false;
     private static Boolean scrollingRight = false;
+    private static NewGemPanel newGem = new NewGemPanel();
 
 
     public static void main(String[] args) {
@@ -151,7 +152,7 @@ public class Game {
             canvas.draw();
             canvas.pause(150);
 
-            NewGemPanel newGem = new NewGemPanel(rockPosition, mine.generateGem());
+            newGem.drawGemPanel(rockPosition, mine.generateGem());
             newGem.setUpGemPanel(canvas);
 
         }
