@@ -55,7 +55,7 @@ public class Game {
 
         axe = new Pickaxe();
         GraphicsObject axeShape = Pickaxe.drawAxe();
-            canvas.add(axeShape, 100, 100); // arbitrary starting point
+            canvas.add(axeShape, 400, 300); // arbitrary starting point
             canvas.draw();
 
             canvas.add(Minecart.getMinecart());

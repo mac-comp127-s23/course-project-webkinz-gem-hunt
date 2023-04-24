@@ -92,33 +92,6 @@ public class Mine implements Background{
         return rightBound.getX();
     }
 
-    // public void moveGroup(KeyboardEvent event, CanvasWindow canvas){
-    //     if(event.getKey() == Key.LEFT_ARROW && groupPosition >= -350){
-    //         this.getGraphicsGroup().moveBy(5, 0); // change delta x depending on how fast cart should move
-    //         groupPosition -= 5;
-    //     }
-    //     if(event.getKey() == Key.RIGHT_ARROW && groupPosition <= 1150) {
-    //         this.getGraphicsGroup().moveBy(-5, 0); // change delta x depending on how fast cart should move
-    //         groupPosition += 5;
-    //     }
-    // }
-
-    // public boolean moveGroup(MouseButtonEvent event, CanvasWindow canvas){
-    //     if(Minecart.getMinecart().testHit(event.getPosition().getX(), event.getPosition().getY())
-    //     && Minecart.getMinecart().getElementAt(event.getPosition()).equals(Minecart.getLeftButton())){
-    //         mineGroup.moveBy(50, 0); // change delta x depending on how fast cart should move
-    //         groupPosition -= 5;
-    //         return true;
-    //     }
-    //     if(Minecart.getMinecart().testHit(event.getPosition().getX(), event.getPosition().getY())
-    //     && Minecart.getMinecart().getElementAt(event.getPosition()).equals(Minecart.getRightButton())){
-    //         mineGroup.moveBy(-50, 0); // change delta x depending on how fast cart should move
-    //         groupPosition += 5;
-    //         return true;
-    //     }
-    //     return false;
-    // }
-
     public boolean testLeftButton(MouseButtonEvent event){
         return Minecart.getMinecart().testHit(event.getPosition().getX(), event.getPosition().getY())
         && Minecart.getMinecart().getElementAt(event.getPosition()).equals(Minecart.getLeftButton());

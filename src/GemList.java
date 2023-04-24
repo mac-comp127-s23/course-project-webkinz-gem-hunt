@@ -47,9 +47,8 @@ public class GemList {
                 }
             }
         }
+
         return gemSet;
     }
-
-    
 
 }

@@ -93,7 +93,7 @@ public class Gem {
     }
 
     public void setGreen(String indic) {
-        this.green = (indic == "Y");
+        this.green = (indic.equals("Y"));
     }
 
     public boolean getGreen() {
@@ -101,7 +101,7 @@ public class Gem {
     }
 
     public void setRed(String indic) {
-        this.red = (indic == "Y");
+        this.red = (indic.equals("Y"));
     }
 
     public boolean getRed() {
@@ -109,7 +109,7 @@ public class Gem {
     }
 
     public void setYellow(String indic) {
-        this.yellow = (indic == "Y");
+        this.yellow = (indic.equals("Y"));
     }
 
     public boolean getYellow() {
@@ -117,7 +117,7 @@ public class Gem {
     }
 
     public void setWhite(String indic) {
-        this.white = (indic == "Y");
+        this.white = (indic.equals("Y"));
     }
 
     public boolean getWhite() {
