@@ -155,8 +155,18 @@ public class Mine implements Background{
      * @return Gem that the player has gained from breaking a rock.
      */
     public Gem generateGem(){
-        List<Gem> gemProbs = new ArrayList<>(gemSet);
-        return gemProbs.get(Helpers.randomInt(0, gemProbs.size() - 1));
+        List<Gem> weightList = new ArrayList<>();
+
+        for (Gem g : gemSet){
+            int weight = (int) (g.getRarity() * 1000);
+
+            for (int i = 0; i < weight; i++){
+                weightList.add(g);
+            }
+        }
+
+        return weightList.get(Helpers.randomInt(0, weightList.size() - 1));
+
     }
 
 
