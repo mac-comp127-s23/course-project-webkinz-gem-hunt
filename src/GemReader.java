@@ -32,11 +32,6 @@ public class GemReader {
                 System.out.println(gem.toString());
                 gems.add(gem);
                 scanLines.close();
-                //System.out.println(scanLines.next() + " ");
-                
-                //gems.add(new Gem());
-
-                //System.out.println(data);
             }
             scanner.close();
         }
