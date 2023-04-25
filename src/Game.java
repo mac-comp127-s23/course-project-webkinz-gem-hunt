@@ -11,11 +11,17 @@ public class Game {
     private static BackgroundManager backgrounds;
     private static Boolean scrollingLeft = false;
     private static Boolean scrollingRight = false;
-    private static NewGemPanel newGem = new NewGemPanel();
+    private static NewGemPanel newGem;
 
 
     public static void main(String[] args) {
         canvas = new CanvasWindow("Gem Hunt", 800, 600);
+        mine = new Mine();
+        startMap = new MineMap();
+        backgrounds = new BackgroundManager("Mine", mine, canvas);
+        backgrounds.addBackground("Map", startMap);
+        newGem = new NewGemPanel();
+        GemList.setList();
         activateMap();
 
         // to skip map and do testing within a mine, uncomment this:
@@ -26,10 +32,8 @@ public class Game {
      * Generates map graphics and components on canvas.
      */
     private static void activateMap() {
-        startMap = new MineMap();
         canvas.setBackground(MineMap.MAP_BACKGROUND);
-        canvas.add(startMap.drawMap());
-        canvas.draw();
+        backgrounds.drawBackround("Map");
 
         canvas.onClick(event -> {
             if (startMap.getDoors().keySet().contains(canvas.getElementAt(event.getPosition()))){
@@ -45,34 +49,26 @@ public class Game {
      * @param color Color of mine player is in
      */
     private static void activateMine(Color color) {
-        canvas.removeAll();
 
-        mine = new Mine(color);
-        backgrounds = new BackgroundManager("Mine", mine, canvas);
-        mine.generateMine();
+        mine.generateMine(color);
         backgrounds.drawBackround("Mine");
-        GemList.setList();
         mine.addGemSet(color);
 
-        axe = new Pickaxe();
-        GraphicsObject axeShape = Pickaxe.drawAxe();
-            canvas.add(axeShape, 400, 300); // arbitrary starting point
-            canvas.draw();
-
-            canvas.add(Minecart.getMinecart());
-
             canvas.onMouseMove(event -> {
-                axeShape.setCenter(event.getPosition());
+                mine.moveAxe(event);
             });
 
             canvas.onClick(event -> {
-                if (canvas.getElementAt(event.getPosition()) == Button.getButton()){
-                    canvas.removeAll();
+    
+                if(mine.testBackButton(event, canvas)){
                     activateMap();
                 }
 
-                if (axe.testRockHit(canvas, mine) != null){
-                    rockDissolve(canvas, axe.testRockHit(canvas, mine));
+                Rock schrodingersRock = mine.testRockHit(canvas, mine);
+                if (schrodingersRock != null){
+                    mine.rockDissolve(canvas, schrodingersRock);
+                    newGem.drawGemPanel(mine.generateGem());
+                    newGem.setUpGemPanel(canvas);
                 }
                 NewGemPanel.testPanel(event, canvas);
                 //mine.moveGroup(event, canvas);
@@ -107,53 +103,4 @@ public class Game {
             //     mine.moveGroup(event, canvas);
             // });
     }
-    
-    /**
-         * Destroys rock by dissolving its graphics and animating pickaxe. 
-         * Generates a gem from the dissolved rock.
-         * 
-         * @param canvas Canvas containing rock being dissolved
-         * @param rock Rock being dissolved
-         */
-        private static void rockDissolve(CanvasWindow canvas, Rock rock) {
-            Point rockPosition = rock.getPosition();
-            GraphicsObject twoThirds = rock.twoThirdsRock(rockPosition.getX(), rockPosition.getY());
-            GraphicsObject oneThird = rock.oneThirdRock(rockPosition.getX(), rockPosition.getY());
-
-            // hit #1
-            axe.getAxe().rotateBy(90);
-            Mine.getMineGroup().remove(rock.getRockShape());
-            Mine.getMineGroup().add(twoThirds);
-            canvas.draw();
-
-            canvas.pause(150);
-            axe.getAxe().rotateBy(-90);
-            canvas.draw();
-            canvas.pause(150);
-
-            // hit #2
-            axe.getAxe().rotateBy(90);
-            Mine.getMineGroup().remove(twoThirds);
-            Mine.getMineGroup().add(oneThird);
-            canvas.draw();
-
-            canvas.pause(150);
-            axe.getAxe().rotateBy(-90);
-            canvas.draw();
-            canvas.pause(150);
-
-            // hit #3
-            axe.getAxe().rotateBy(90);
-            Mine.getMineGroup().remove(oneThird);
-            canvas.draw();
-
-            canvas.pause(150);
-            axe.getAxe().rotateBy(-90);
-            canvas.draw();
-            canvas.pause(150);
-
-            newGem.drawGemPanel(rockPosition, mine.generateGem());
-            newGem.setUpGemPanel(canvas);
-
-        }
 }

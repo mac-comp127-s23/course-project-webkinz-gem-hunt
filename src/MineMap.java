@@ -3,9 +3,9 @@ import edu.macalester.graphics.*;
 import java.awt.Color;
 import java.util.*;
 
-public class MineMap {
+public class MineMap implements Background {
 
-    private static GraphicsGroup mapGroup;
+    private GraphicsGroup mapGroup;
     Map<Rectangle, Color> mineDoors;
 
     public static final Color MAP_BACKGROUND = new Color(242, 223, 169);
@@ -19,6 +19,11 @@ public class MineMap {
 
     public MineMap() {
         mapGroup = new GraphicsGroup(0,0);
+        drawMap();
+    }
+
+    public GraphicsGroup getGraphicsGroup(){
+        return mapGroup;
     }
 
     // for testing
@@ -27,11 +32,11 @@ public class MineMap {
         CanvasWindow canvas = new CanvasWindow("Mine", 800, 600);
         canvas.setBackground(MAP_BACKGROUND);
     
-        canvas.add(map.drawMap());
+        //canvas.add(map.drawMap());
         canvas.draw();
     }
 
-    public GraphicsGroup drawMap() {
+    public void drawMap() {
         addMountains();
         addMines();
 
@@ -40,8 +45,6 @@ public class MineMap {
         mapGroup.add(addCluster(325,200));
         mapGroup.add(addCluster(700,250));
         mapGroup.add(addCluster(100,510));
-
-        return mapGroup;
     }
 
     /**

@@ -21,12 +21,17 @@ public class Mine implements Background{
     private static Line leftBound ;
     private static Line rightBound ;
     private static double groupPosition;
+    private static Button backButton;
+    private static Minecart minecart;
+    private static Pickaxe axe;
 
-    public Mine(Color color) {
-        Mine.color = color;
+    public Mine() {
         mineGroup = new GraphicsGroup(0,0);
         mineUI = new GraphicsGroup(0,0);
         fullMine = new GraphicsGroup(0,0);
+        backButton = new Button();
+        minecart = new Minecart();
+        axe = new Pickaxe();
         createImageMap();
         createColorMap();
     }
@@ -60,7 +65,11 @@ public class Mine implements Background{
     /**
      * Generates visual elements of mine, including cave wall image, rocks, and minecart.
      */
-    public void generateMine() {
+    public void generateMine(Color color) {
+        mineGroup.removeAll();
+        mineUI.removeAll();
+        fullMine.removeAll();
+        this.color = color;
         Image icon = new Image(-800, 0);
         icon.setImagePath(images.get(color));
         mineGroup.add(icon);
@@ -74,8 +83,9 @@ public class Mine implements Background{
         rocks = new RockManager(30, color, CANVAS_HEIGHT, CANVAS_WIDTH);
         rocks.drawRocks(mineGroup);
 
-        mineUI.add(Minecart.drawMinecart());
-        mineUI.add(Button.drawBackButton());
+        minecart.drawMinecart(mineUI);
+        backButton.drawBackButton(mineUI);
+        axe.drawAxe(mineUI);
         fullMine.add(mineGroup);
         fullMine.add(mineUI);
     }
@@ -93,13 +103,13 @@ public class Mine implements Background{
     }
 
     public boolean testLeftButton(MouseButtonEvent event){
-        return Minecart.getMinecart().testHit(event.getPosition().getX(), event.getPosition().getY())
-        && Minecart.getMinecart().getElementAt(event.getPosition()).equals(Minecart.getLeftButton());
+        return minecart.getMinecart().testHit(event.getPosition().getX(), event.getPosition().getY())
+        && minecart.getMinecart().getElementAt(event.getPosition()).equals(minecart.getLeftButton());
     }
 
     public boolean testRightButton(MouseButtonEvent event){
-        return Minecart.getMinecart().testHit(event.getPosition().getX(), event.getPosition().getY())
-        && Minecart.getMinecart().getElementAt(event.getPosition()).equals(Minecart.getRightButton());
+        return minecart.getMinecart().testHit(event.getPosition().getX(), event.getPosition().getY())
+        && minecart.getMinecart().getElementAt(event.getPosition()).equals(minecart.getRightButton());
     }
 
     public void scrollLeft(){
@@ -157,6 +167,67 @@ public class Mine implements Background{
     public Gem generateGem(){
         List<Gem> gemProbs = new ArrayList<>(gemSet);
         return gemProbs.get(Helpers.randomInt(0, gemProbs.size() - 1));
+    }
+
+    public boolean testBackButton(MouseButtonEvent event, CanvasWindow canvas){
+        if (mineUI.getElementAt(event.getPosition()) == backButton.getButton()){
+            return true;
+        }
+        return false;
+    }
+
+    public void moveAxe(MouseMotionEvent event){
+        axe.getAxe().setCenter(event.getPosition());
+    }
+
+    public Rock testRockHit(CanvasWindow canvas, Mine currentMine) {
+        Point p = axe.getAxe().getCenter();
+        Point testP = new Point(p.getX() - 5, p.getY()); // move the test point slightly off center so the pickaxe isn't detected
+        GraphicsObject rock = canvas.getElementAt(testP);
+        if(rock instanceof Path && currentMine.hasRock(rock)){
+            return currentMine.getRock((Path) rock);
+        }
+
+        return null;
+    }
+
+    public static void rockDissolve(CanvasWindow canvas, Rock rock) {
+        Point rockPosition = rock.getPosition();
+        GraphicsObject twoThirds = rock.twoThirdsRock(rockPosition.getX(), rockPosition.getY());
+        GraphicsObject oneThird = rock.oneThirdRock(rockPosition.getX(), rockPosition.getY());
+
+        // hit #1
+        axe.getAxe().rotateBy(90);
+        Mine.getMineGroup().remove(rock.getRockShape());
+        Mine.getMineGroup().add(twoThirds);
+        canvas.draw();
+
+        canvas.pause(150);
+        axe.getAxe().rotateBy(-90);
+        canvas.draw();
+        canvas.pause(150);
+
+        // hit #2
+        axe.getAxe().rotateBy(90);
+        Mine.getMineGroup().remove(twoThirds);
+        Mine.getMineGroup().add(oneThird);
+        canvas.draw();
+
+        canvas.pause(150);
+        axe.getAxe().rotateBy(-90);
+        canvas.draw();
+        canvas.pause(150);
+
+        // hit #3
+        axe.getAxe().rotateBy(90);
+        Mine.getMineGroup().remove(oneThird);
+        canvas.draw();
+
+        canvas.pause(150);
+        axe.getAxe().rotateBy(-90);
+        canvas.draw();
+        canvas.pause(150);
+
     }
 
 

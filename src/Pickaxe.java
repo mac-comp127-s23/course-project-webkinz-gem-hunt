@@ -9,12 +9,9 @@ import edu.macalester.graphics.Point;
 import java.awt.Color;
 
 public class Pickaxe {
-    private static GraphicsGroup axe;
+    private GraphicsGroup axe;
 
     public Pickaxe() {
-    }
-
-    public static GraphicsGroup drawAxe() {
         axe = new GraphicsGroup();
 
         Arc blade = new Arc(-40,-50, 50, 50, 160, -80); 
@@ -26,13 +23,16 @@ public class Pickaxe {
         handle.setStrokeColor(Color.ORANGE);
         handle.setStrokeWidth(7);
         axe.add(handle);
+    }
 
-        return axe;
+    public void drawAxe(GraphicsGroup group) {
+        group.add(axe);
     }
 
     public GraphicsGroup getAxe() {
         return axe;
     }
+
 
     /**
      * Checks what rock object the pickaxe has intersected with.
@@ -43,15 +43,15 @@ public class Pickaxe {
      * @return null if no rock is found.
      * 
      */
-    public Rock testRockHit(CanvasWindow canvas, Mine currentMine) {
-        Point p = axe.getCenter();
-        Point testP = new Point(p.getX() - 5, p.getY()); // move the test point slightly off center so the pickaxe isn't detected
-        GraphicsObject rock = canvas.getElementAt(testP);
-        if(rock instanceof Path && currentMine.hasRock(rock)){
-            return currentMine.getRock((Path) rock);
-        }
+    // public Rock testRockHit(CanvasWindow canvas, Mine currentMine) {
+    //     Point p = axe.getCenter();
+    //     Point testP = new Point(p.getX() - 5, p.getY()); // move the test point slightly off center so the pickaxe isn't detected
+    //     GraphicsObject rock = canvas.getElementAt(testP);
+    //     if(rock instanceof Path && currentMine.hasRock(rock)){
+    //         return currentMine.getRock((Path) rock);
+    //     }
 
-        return null;
-    }
+    //     return null;
+    // }
     
 }

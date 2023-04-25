@@ -27,12 +27,11 @@ public class NewGemPanel {
         closeRectangle.setFillColor(Color.RED);
     }
 
-    public void drawGemPanel(Point position, Gem gem){
+    public void drawGemPanel(Gem gem){
         panel.removeAll();
         //panelBackground = new Rectangle(0, 0, 200, 100);
         panelBackground.setFillColor(Color.LIGHT_GRAY);
         //panel = new GraphicsGroup((int) position.getX(), (int) position.getY());
-        panel.setPosition(position);
         panel.add(panelBackground);
         gemImage = gem.getImage();
         //gemImage.setScale(90, 90);

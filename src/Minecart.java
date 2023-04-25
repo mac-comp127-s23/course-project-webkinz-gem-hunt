@@ -6,22 +6,15 @@ import edu.macalester.graphics.*;
 /** Minecart used in the Webkinz Gem Hunt with buttons to implement side-scrolling */
 public class Minecart {
 
-    private static GraphicsGroup minecart;
+    private GraphicsGroup minecart;
     private static final Color CART_COLOR = new Color(22, 0, 117);
     private static final Color BUTTON_COLOR = new Color(240, 197, 58);
     private static Path leftButton;
     private static Path rightButton;
 
     public Minecart() {
-    }
-
-    /** 
-     * Creates a minecart graphics group and buttons with callback functions
-     * to create side-scrolling within gameplay
-     */
-    public static GraphicsGroup drawMinecart() {
         minecart = new GraphicsGroup();
-        
+
         Path cart = new Path(new Point(0,0), new Point(150,0), new Point(125,80), new Point(25,80));
         cart.setFillColor(CART_COLOR);
         cart.setStrokeWidth(3);
@@ -66,27 +59,34 @@ public class Minecart {
         rightText.setCenter(517, 550);
         minecart.add(rightText);
 
+    }
+
+    /** 
+     * Creates a minecart graphics group and buttons with callback functions
+     * to create side-scrolling within gameplay
+     */
+    public void drawMinecart(GraphicsGroup group) {
+        group.add(minecart);
+    }
+
+    public GraphicsGroup getMinecart(){
         return minecart;
     }
 
-    public static GraphicsGroup getMinecart(){
-        return minecart;
-    }
-
-    public static Path getLeftButton(){
+    public Path getLeftButton(){
         return leftButton;
     }
 
-    public static Path getRightButton(){
+    public Path getRightButton(){
         return rightButton;
     }
     //for testing
 
     public static void main(String[] args) {
-        drawMinecart();
+        //drawMinecart();
 
         CanvasWindow canvas = new CanvasWindow("minecrart", 800, 600);
-        canvas.add(minecart);
+        //canvas.add(minecart);
         canvas.draw();
     }
     
