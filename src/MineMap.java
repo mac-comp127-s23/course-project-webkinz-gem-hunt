@@ -1,4 +1,5 @@
 import edu.macalester.graphics.*;
+import edu.macalester.graphics.events.MouseButtonEvent;
 
 import java.awt.Color;
 import java.util.*;
@@ -15,15 +16,22 @@ public class MineMap implements Background {
     private static final Color CAVE_BACKGROUND_YELLOW = new Color(120, 105, 15);
     private static final Color CAVE_BACKGROUND_WHITE = Color.darkGray;
     private static final Color MAP_LINE_COLOR = new Color(185, 168, 116);
+    private static CollectionButton button;
 
 
     public MineMap() {
         mapGroup = new GraphicsGroup(0,0);
+        button = new CollectionButton();
+        button.drawBackButton(mapGroup);
         drawMap();
     }
 
     public GraphicsGroup getGraphicsGroup(){
         return mapGroup;
+    }
+
+    public boolean checkCollectionButton(MouseButtonEvent event){
+        return (button.getButton().testHit(event.getPosition().getX(), event.getPosition().getY()));
     }
 
     // for testing
@@ -45,6 +53,7 @@ public class MineMap implements Background {
         mapGroup.add(addCluster(325,200));
         mapGroup.add(addCluster(700,250));
         mapGroup.add(addCluster(100,510));
+
     }
 
     /**

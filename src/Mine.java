@@ -180,10 +180,9 @@ public class Mine implements Background{
     }
 
     public boolean testBackButton(MouseButtonEvent event, CanvasWindow canvas){
-        if (mineUI.getElementAt(event.getPosition()) == backButton.getButton()){
-            return true;
-        }
-        return false;
+
+        return (backButton.getButton().testHit(event.getPosition().getX(), event.getPosition().getY()));
+
     }
 
     public void moveAxe(MouseMotionEvent event){

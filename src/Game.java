@@ -12,6 +12,7 @@ public class Game {
     private static Boolean scrollingLeft = false;
     private static Boolean scrollingRight = false;
     private static NewGemPanel newGem;
+    private static Player player;
 
 
     public static void main(String[] args) {
@@ -23,6 +24,7 @@ public class Game {
         newGem = new NewGemPanel();
         GemList.setList();
         activateMap();
+        player = new Player("Alex");
 
         // to skip map and do testing within a mine, uncomment this:
         // activateMine(Color.BLUE);
@@ -38,6 +40,9 @@ public class Game {
         canvas.onClick(event -> {
             if (startMap.getDoors().keySet().contains(canvas.getElementAt(event.getPosition()))){
                 activateMine(startMap.getDoors().get(canvas.getElementAt(event.getPosition())));
+            }
+            if(startMap.checkCollectionButton(event)){
+                player.printGemSet();
             }
         });
     }
@@ -67,7 +72,9 @@ public class Game {
                 Rock schrodingersRock = mine.testRockHit(canvas, mine);
                 if (schrodingersRock != null){
                     mine.rockDissolve(canvas, schrodingersRock);
-                    newGem.drawGemPanel(mine.generateGem());
+                    Gem receivedGem = mine.generateGem();
+                    player.newGemFound(receivedGem);
+                    newGem.drawGemPanel(receivedGem);
                     newGem.setUpGemPanel(canvas);
                 }
                 NewGemPanel.testPanel(event, canvas);

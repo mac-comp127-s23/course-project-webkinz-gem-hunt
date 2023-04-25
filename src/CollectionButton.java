@@ -2,23 +2,22 @@ import java.awt.Color;
 
 import edu.macalester.graphics.*;
 
-public class Button {
-    
+public class CollectionButton {
+
     private GraphicsGroup button;
-    private Ellipse circle;
+    private Rectangle rectangle;
     private final Color BUTTON_COLOR = new Color(240, 197, 58);
     private GraphicsText backText;
 
-    public Button() {
-        button = new GraphicsGroup();
-        circle = new Ellipse(0, 0, 30, 30);
-        circle.setFillColor(BUTTON_COLOR);
-        circle.setCenter(30, 25);
-        button.add(circle);
-        backText = new GraphicsText("X");
+    public CollectionButton() {
+        button = new GraphicsGroup(0,570);
+        rectangle = new Rectangle(0, 0, 100, 30);
+        rectangle.setFillColor(BUTTON_COLOR);
+        button.add(rectangle);
+        backText = new GraphicsText("Collection");
         backText.setFillColor(Color.BLACK);
         backText.setFont(FontStyle.BOLD, 18);
-        backText.setCenter(30, 25);
+        backText.setCenter(rectangle.getCenter());
         button.add(backText);
     }
 
@@ -31,3 +30,4 @@ public class Button {
     }
 
 }
+

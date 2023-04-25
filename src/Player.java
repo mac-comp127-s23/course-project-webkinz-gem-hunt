@@ -11,4 +11,18 @@ public class Player {
         gems = new HashMap<>();
         rocksMined = 0;
     }
+
+    public void newGemFound(Gem gem){
+        rocksMined ++;
+        if(gems.keySet().contains(gem)){
+            gems.put(gem, gems.get(gem) + 1);
+        }
+        else{
+           gems.put(gem, 1); 
+        }
+    }
+
+    public void printGemSet(){
+        System.out.println(gems);
+    }
 }
