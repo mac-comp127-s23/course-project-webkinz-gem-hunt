@@ -8,6 +8,7 @@ public class MineMap implements Background {
 
     private GraphicsGroup mapGroup;
     Map<Rectangle, Color> mineDoors;
+    Map<Color, String> names;
 
     public static final Color MAP_BACKGROUND = new Color(242, 223, 169);
     private static final Color CAVE_BACKGROUND_BLUE = new Color(9, 1, 64);
@@ -23,6 +24,7 @@ public class MineMap implements Background {
         mapGroup = new GraphicsGroup(0,0);
         button = new CollectionButton();
         button.drawBackButton(mapGroup);
+        createNameMap();
         drawMap();
     }
 
@@ -123,6 +125,19 @@ public class MineMap implements Background {
         mapGroup.add(mineDoor(Color.WHITE, CAVE_BACKGROUND_WHITE, 660, 380));
     }
 
+     /**
+     * Creates HashMap between Mine colors and string containing Mine name
+     */
+    private void createNameMap() {
+        names = new HashMap<>();
+
+        names.put(Color.BLUE, "Howling Horse Mine");
+        names.put(Color.RED, "Muzzle Mouth Mine");
+        names.put(Color.GREEN, "Flea Floater Mine");
+        names.put(Color.YELLOW, "Barking Mad Mine");
+        names.put(Color.WHITE, "Buried Bones Mine");
+    }
+
     /**
      * @return Map of mine doors on map and their colors
      */
@@ -163,6 +178,19 @@ public class MineMap implements Background {
         top.setStrokeColor(MAP_LINE_COLOR);
         top.setStrokeWidth(2);
         door.add(top);
+        
+        GraphicsText nameText = new GraphicsText(names.get(mineColor));
+        nameText.setFillColor(Color.BLACK);
+        nameText.setFont(FontStyle.BOLD, 11);
+        nameText.setCenter(x+30, y+75);
+        door.add(nameText);
+
+        double textWidth = nameText.getWidth();
+        double textCenterX = nameText.getCenter().getX();
+        Rectangle textLabel = new Rectangle(textCenterX - 0.5*textWidth - 5, y+65, textWidth + 10, 20);
+        textLabel.setStrokeColor(MAP_LINE_COLOR);  
+        textLabel.setStrokeWidth(2);
+        door.add(textLabel);  
 
         return door;
     }
