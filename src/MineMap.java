@@ -38,11 +38,13 @@ public class MineMap implements Background {
 
     /**
      * Adds all graphical objects on map to the map's GraphicsGroup.
-     * Includes mountains, clusters, and mine doors.
+     * Includes mountains, clusters, mine doors, and text.
      */
     public void drawMap() {
         addMountains();
         addMines();
+        addLabel();
+        addAxes();
 
         mapGroup.add(addCluster(30,300));
         mapGroup.add(addCluster(425,450));
@@ -110,6 +112,100 @@ public class MineMap implements Background {
 
         return cluster;
 
+    }
+
+    /**
+     * Generates title text at top of map
+     */
+    private void addLabel() {
+        GraphicsText labelText = new GraphicsText("Map to the Secret Gem Mines");
+        labelText.setFillColor(Color.BLACK);
+        labelText.setFont(FontStyle.BOLD, 20);
+        labelText.setCenter(400, 40);
+        mapGroup.add(labelText);
+
+        Rectangle labelBox = new Rectangle(
+            labelText.getCenter().getX() - 0.5*labelText.getWidth() - 10, 
+            labelText.getCenter().getY() - 0.5*labelText.getHeight() - 10, 
+            labelText.getWidth() + 20, 
+            labelText.getHeight() + 20);
+        labelBox.setStrokeColor(MAP_LINE_COLOR);  
+        labelBox.setStrokeWidth(2);
+        mapGroup.add(labelBox);  
+        mapGroup.add(addParchmentLines(labelBox, 20));
+
+        GraphicsText descripText = new GraphicsText("Choose which mine to search.");
+        descripText.setFillColor(Color.BLACK);
+        descripText.setFont(FontStyle.BOLD, 14);
+        descripText.setCenter(
+            labelText.getCenter().getX(), 
+            labelText.getCenter().getY() + labelText.getHeight() + 15);
+        mapGroup.add(descripText);
+
+    }
+
+    /**
+     * Creates parchment fold lines for a rectangle
+     * 
+     * @param rect Rectangle to add parchment folds to
+     * @param size Size of folds (text padding is a good parameter to use)
+     * @return GraphicsGroup containing parchment fold lines
+     */
+    private GraphicsGroup addParchmentLines(Rectangle rect, double size) {
+        GraphicsGroup parchLines = new GraphicsGroup();
+
+        Path leftLine = new Path(
+            new Point(rect.getPosition().getX(), rect.getPosition().getY() + rect.getHeight()), 
+            new Point(rect.getPosition().getX() + size, rect.getPosition().getY() + rect.getHeight() + 0.5*size), 
+            new Point(rect.getPosition().getX() + size, rect.getPosition().getY() + rect.getHeight()));
+        leftLine.setStrokeColor(MAP_LINE_COLOR);  
+        leftLine.setStrokeWidth(2);
+        parchLines.add(leftLine); 
+        
+        Path rightLine = new Path(
+            new Point(rect.getPosition().getX() + rect.getWidth(), rect.getPosition().getY() + rect.getHeight()), 
+            new Point(rect.getPosition().getX() + rect.getWidth() - size, rect.getPosition().getY() + rect.getHeight() + 0.5*size), 
+            new Point(rect.getPosition().getX() + rect.getWidth() - size, rect.getPosition().getY() + rect.getHeight()));
+        rightLine.setStrokeColor(MAP_LINE_COLOR);  
+        rightLine.setStrokeWidth(2);
+        parchLines.add(rightLine); 
+
+        return parchLines;
+    }
+
+    /**
+     * Generates decorative axes on either side of the title text on map
+     */
+    private void addAxes() {
+        GraphicsGroup leftAxe = new GraphicsGroup();
+
+        Arc leftBlade = new Arc(-40,-50, 50, 50, 160, -80); 
+        leftBlade.setStrokeColor(MAP_LINE_COLOR);
+        leftBlade.setStrokeWidth(10);
+        leftAxe.add(leftBlade);
+
+        Line leftHandle = new Line(0, 0, -30, -50); 
+        leftHandle.setStrokeColor(Color.BLACK);
+        leftHandle.setStrokeWidth(7);
+        leftAxe.add(leftHandle);
+
+        leftAxe.setCenter(220, 55);
+        mapGroup.add(leftAxe);
+
+        GraphicsGroup rightAxe = new GraphicsGroup();
+
+        Arc rightBlade = new Arc(-10,-50, 50, 50, 20, 80); 
+        rightBlade.setStrokeColor(MAP_LINE_COLOR);
+        rightBlade.setStrokeWidth(10);
+        rightAxe.add(rightBlade);
+
+        Line rightHandle = new Line(0, 0, 30, -50); 
+        rightHandle.setStrokeColor(Color.BLACK);
+        rightHandle.setStrokeWidth(7);
+        rightAxe.add(rightHandle);
+
+        rightAxe.setCenter(580, 55);
+        mapGroup.add(rightAxe);
     }
 
     /**
@@ -182,14 +278,15 @@ public class MineMap implements Background {
         GraphicsText nameText = new GraphicsText(names.get(mineColor));
         nameText.setFillColor(Color.BLACK);
         nameText.setFont(FontStyle.BOLD, 11);
-        nameText.setCenter(x+30, y+75);
+        nameText.setCenter(x+30, y+80);
         door.add(nameText);
 
-        double textWidth = nameText.getWidth();
-        double textCenterX = nameText.getCenter().getX();
-        Rectangle textLabel = new Rectangle(textCenterX - 0.5*textWidth - 5, y+65, textWidth + 10, 20);
+        Rectangle textLabel = new Rectangle(
+            nameText.getCenter().getX() - 0.5*nameText.getWidth() - 5, 
+            y+70, nameText.getWidth() + 10, 20);
         textLabel.setStrokeColor(MAP_LINE_COLOR);  
         textLabel.setStrokeWidth(2);
+        door.add(addParchmentLines(textLabel, 10));
         door.add(textLabel);  
 
         return door;
