@@ -18,8 +18,6 @@ public class Mine implements Background{
     private static double CANVAS_WIDTH = 800; 
     private static double CANVAS_HEIGHT = 600;
 
-    private static Line leftBound ;
-    private static Line rightBound ;
     private static double groupPosition;
     private static Button backButton;
     private static Minecart minecart;
@@ -73,11 +71,6 @@ public class Mine implements Background{
         Image icon = new Image(-800, 0);
         icon.setImagePath(images.get(color));
         mineGroup.add(icon);
-
-        leftBound = new Line(-800,0,-800,600);
-        rightBound = new Line(1600,0,1600,600);
-        mineGroup.add(leftBound);
-        mineGroup.add(rightBound);
         groupPosition = 400;
 
         rocks = new RockManager(30, color, CANVAS_HEIGHT, CANVAS_WIDTH);
@@ -92,14 +85,6 @@ public class Mine implements Background{
 
     public static GraphicsGroup getMineGroup(){
         return mineGroup;
-    }
-
-    public static double getLeftBound() {
-        return leftBound.getX();
-    }
-
-    public static double getRightBound() {
-        return rightBound.getX();
     }
 
     public boolean testLeftButton(MouseButtonEvent event){
@@ -180,15 +165,22 @@ public class Mine implements Background{
     }
 
     public boolean testBackButton(MouseButtonEvent event, CanvasWindow canvas){
-
         return (backButton.getButton().testHit(event.getPosition().getX(), event.getPosition().getY()));
-
     }
 
     public void moveAxe(MouseMotionEvent event){
         axe.getAxe().setCenter(event.getPosition());
     }
 
+    /**
+     * Checks what rock object the pickaxe has intersected with.
+     *
+     * @param canvas CanvasWindow to locate an object on.
+     * @param currentMine Mine whose objects are tested for intersection.
+     * 
+     * @return null if no rock is found.
+     * 
+     */
     public Rock testRockHit(CanvasWindow canvas, Mine currentMine) {
         Point p = axe.getAxe().getCenter();
         Point testP = new Point(p.getX() - 5, p.getY()); // move the test point slightly off center so the pickaxe isn't detected
@@ -200,7 +192,13 @@ public class Mine implements Background{
         return null;
     }
 
-    public static void rockDissolve(CanvasWindow canvas, Rock rock) {
+    /**
+     * Animates axe motion and rock disintegration from intersection.
+     * 
+     * @param canvas Canvas where dissolving rock will be drawn
+     * @param rock Rock being hit
+     */
+    public void rockDissolve(CanvasWindow canvas, Rock rock) {
         Point rockPosition = rock.getPosition();
         GraphicsObject twoThirds = rock.twoThirdsRock(rockPosition.getX(), rockPosition.getY());
         GraphicsObject oneThird = rock.oneThirdRock(rockPosition.getX(), rockPosition.getY());

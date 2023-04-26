@@ -34,16 +34,10 @@ public class MineMap implements Background {
         return (button.getButton().testHit(event.getPosition().getX(), event.getPosition().getY()));
     }
 
-    // for testing
-    public static void main(String[] args) {
-        MineMap map = new MineMap();
-        CanvasWindow canvas = new CanvasWindow("Mine", 800, 600);
-        canvas.setBackground(MAP_BACKGROUND);
-    
-        //canvas.add(map.drawMap());
-        canvas.draw();
-    }
-
+    /**
+     * Adds all graphical objects on map to the map's GraphicsGroup.
+     * Includes mountains, clusters, and mine doors.
+     */
     public void drawMap() {
         addMountains();
         addMines();
@@ -53,7 +47,6 @@ public class MineMap implements Background {
         mapGroup.add(addCluster(325,200));
         mapGroup.add(addCluster(700,250));
         mapGroup.add(addCluster(100,510));
-
     }
 
     /**

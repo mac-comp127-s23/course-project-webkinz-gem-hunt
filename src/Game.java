@@ -1,19 +1,16 @@
 import java.awt.Color;
 
 import edu.macalester.graphics.*;
-import edu.macalester.graphics.events.MouseButtonEvent;
 
 public class Game {
     private static MineMap startMap;
     private static Mine mine;
     private static CanvasWindow canvas;
-    private static Pickaxe axe;
     private static BackgroundManager backgrounds;
     private static Boolean scrollingLeft = false;
     private static Boolean scrollingRight = false;
     private static NewGemPanel newGem;
     private static Player player;
-
 
     public static void main(String[] args) {
         canvas = new CanvasWindow("Gem Hunt", 800, 600);
@@ -64,13 +61,12 @@ public class Game {
             });
 
             canvas.onClick(event -> {
-    
-                if(mine.testBackButton(event, canvas)){
+                if(mine.testBackButton(event, canvas) && !NewGemPanel.isDrawn()){
                     activateMap();
                 }
 
                 Rock schrodingersRock = mine.testRockHit(canvas, mine);
-                if (schrodingersRock != null){
+                if (schrodingersRock != null  && !NewGemPanel.isDrawn()){
                     mine.rockDissolve(canvas, schrodingersRock);
                     Gem receivedGem = mine.generateGem();
                     player.newGemFound(receivedGem);
@@ -78,15 +74,16 @@ public class Game {
                     newGem.setUpGemPanel(canvas);
                 }
                 NewGemPanel.testPanel(event, canvas);
-                //mine.moveGroup(event, canvas);
             });
             
             canvas.onMouseDown(event -> {
-                if(mine.testRightButton(event)){
-                    scrollingRight = true;
-                }
-                if(mine.testLeftButton(event)){
-                    scrollingLeft = true;
+                if(!NewGemPanel.isDrawn()){
+                    if(mine.testRightButton(event)){
+                        scrollingRight = true;
+                    }
+                    if(mine.testLeftButton(event)){
+                        scrollingLeft = true;
+                    }
                 }
             });
             
@@ -104,10 +101,5 @@ public class Game {
                     mine.scrollRight();
                 }
             });
-
-            // // side scrolling lambda, add button presses!
-            // canvas.onKeyDown( event -> {
-            //     mine.moveGroup(event, canvas);
-            // });
     }
 }
