@@ -88,13 +88,11 @@ public class Mine implements Background{
     }
 
     public boolean testLeftButton(MouseButtonEvent event){
-        return minecart.getMinecart().testHit(event.getPosition().getX(), event.getPosition().getY())
-        && minecart.getMinecart().getElementAt(event.getPosition()).equals(minecart.getLeftButton());
+        return minecart.getLeftButton().testHit(event.getPosition().getX(), event.getPosition().getY());
     }
 
     public boolean testRightButton(MouseButtonEvent event){
-        return minecart.getMinecart().testHit(event.getPosition().getX(), event.getPosition().getY())
-        && minecart.getMinecart().getElementAt(event.getPosition()).equals(minecart.getRightButton());
+        return minecart.getRightButton().testHit(event.getPosition().getX(), event.getPosition().getY());
     }
 
     public void scrollLeft(){

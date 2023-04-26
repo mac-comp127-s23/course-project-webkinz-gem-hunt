@@ -7,6 +7,8 @@ import edu.macalester.graphics.*;
 public class Minecart {
 
     private GraphicsGroup minecart;
+    private GraphicsGroup leftButtonGroup;
+    private GraphicsGroup rightButtonGroup;
     private static final Color CART_COLOR = new Color(22, 0, 117);
     private static final Color BUTTON_COLOR = new Color(240, 197, 58);
     private static Path leftButton;
@@ -14,6 +16,8 @@ public class Minecart {
 
     public Minecart() {
         minecart = new GraphicsGroup();
+        leftButtonGroup = new GraphicsGroup();
+        rightButtonGroup = new GraphicsGroup();
 
         Path cart = new Path(new Point(0,0), new Point(150,0), new Point(125,80), new Point(25,80));
         cart.setFillColor(CART_COLOR);
@@ -46,18 +50,24 @@ public class Minecart {
         leftText.setFont(FontStyle.BOLD_ITALIC, 12);
         leftText.setCenter(282, 550);
 
-        minecart.add(leftButton);
-        minecart.add(leftText);
+        leftButtonGroup.add(leftButton);
+        leftButtonGroup.add(leftText);
+
+        minecart.add(leftButtonGroup);
 
         rightButton = new Path(new Point(0,0), new Point(75,0), new Point(85, 15), new Point(75,30), new Point(0,30));
         rightButton.setFillColor(BUTTON_COLOR);
         rightButton.setCenter(520, 550);
-        minecart.add(rightButton);
+        
 
         GraphicsText rightText = new GraphicsText("RIGHT");
         rightText.setFont(FontStyle.BOLD_ITALIC, 12);
         rightText.setCenter(517, 550);
-        minecart.add(rightText);
+        
+        rightButtonGroup.add(rightButton);
+        rightButtonGroup.add(rightText);
+        
+        minecart.add(rightButtonGroup);
 
     }
 
@@ -73,12 +83,12 @@ public class Minecart {
         return minecart;
     }
 
-    public Path getLeftButton(){
-        return leftButton;
+    public GraphicsGroup getLeftButton(){
+        return leftButtonGroup;
     }
 
-    public Path getRightButton(){
-        return rightButton;
+    public GraphicsGroup getRightButton(){
+        return rightButtonGroup;
     }
     //for testing
 
