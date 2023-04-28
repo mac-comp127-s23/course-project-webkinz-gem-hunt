@@ -90,6 +90,7 @@ public class Minecart {
     public GraphicsGroup getRightButton(){
         return rightButtonGroup;
     }
+    
     //for testing
 
     public static void main(String[] args) {
