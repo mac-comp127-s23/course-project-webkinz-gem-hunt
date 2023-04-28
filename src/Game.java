@@ -1,6 +1,7 @@
 import java.awt.Color;
 
 import edu.macalester.graphics.*;
+import edu.macalester.graphics.events.Key;
 
 public class Game {
     private static MineMap startMap;
@@ -22,9 +23,6 @@ public class Game {
         GemList.setList();
         activateMap();
         player = new Player("Alex");
-
-        // to skip map and do testing within a mine, uncomment this:
-        // activateMine(Color.BLUE);
     }
 
     /**
@@ -67,13 +65,23 @@ public class Game {
 
                 Rock schrodingersRock = mine.testRockHit(canvas, mine);
                 if (schrodingersRock != null  && !NewGemPanel.isDrawn()){
-                    mine.rockDissolve(canvas, schrodingersRock);
-                    Gem receivedGem = mine.generateGem();
-                    player.newGemFound(receivedGem);
-                    newGem.drawGemPanel(receivedGem);
-                    newGem.setUpGemPanel(canvas);
+
+                    if (Helpers.randomInt(0, 1) == 0){ // 50% of the time, generate slag
+                        mine.rockDissolve(canvas, schrodingersRock);
+                        newGem.drawSlagPanel();
+                        newGem.setUpGemPanel(canvas);
+                    }
+
+                    else {
+                        mine.rockDissolve(canvas, schrodingersRock);
+                        Gem receivedGem = mine.generateGem();
+                        player.newGemFound(receivedGem);
+                        newGem.drawGemPanel(receivedGem);
+                        newGem.setUpGemPanel(canvas);
+                    }
                 }
                 NewGemPanel.testPanel(event, canvas);
+                NewGemPanel.testCrownPanel(event, canvas);
             });
             
             canvas.onMouseDown(event -> {
@@ -101,5 +109,12 @@ public class Game {
                     mine.scrollRight();
                 }
             });
+
+            canvas.onKeyDown(event -> {
+                if(event.getKey() == Key.RETURN_OR_ENTER ) {
+                    newGem.drawCrownPanel();
+                    newGem.setUpCrownPanel(canvas);
+                }
+            }  );
     }
 }

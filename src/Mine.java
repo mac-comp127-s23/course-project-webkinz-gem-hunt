@@ -10,8 +10,7 @@ public class Mine implements Background{
     private Set<Gem> gemSet;
     Map<Color, String> images;
     Map<Color, String> colors;
-
-    private static Color color;
+    
     private static GraphicsGroup mineGroup;
     private static GraphicsGroup mineUI;
     private static GraphicsGroup fullMine;
@@ -67,7 +66,6 @@ public class Mine implements Background{
         mineGroup.removeAll();
         mineUI.removeAll();
         fullMine.removeAll();
-        this.color = color;
         Image icon = new Image(-800, 0);
         icon.setImagePath(images.get(color));
         mineGroup.add(icon);
@@ -109,8 +107,7 @@ public class Mine implements Background{
         }
     }
 
-    public static double getGroupPosition()
-    {
+    public static double getGroupPosition(){
         return groupPosition;
     }
 
