@@ -75,6 +75,9 @@ public class NewGemPanel {
         panel.add(closeRectangle);
     }
 
+    /**
+     * Sets the gem panel to reflect the generation of slag rather than a gem.
+     */
     public void drawSlagPanel(){
         panel.removeAll();
         panelBackground.setFillColor(Color.LIGHT_GRAY);
@@ -103,6 +106,9 @@ public class NewGemPanel {
         panel.add(closeRectangle);
     }
 
+    /**
+     * Sets a pop-up panel indicating the Crown of Wonder achievement
+     */
     public void drawCrownPanel(){
         crownPanel.removeAll();
         crownPanelBackground.setFillColor(Color.LIGHT_GRAY);
@@ -136,6 +142,9 @@ public class NewGemPanel {
         panel.setCenter(canvas.getCenter());
     }
 
+    /**
+     * Adds the crown panel to a canvas and prepares it to be closed.
+     */
     public void setUpCrownPanel(CanvasWindow canvas){
         canvas.add(crownPanel);
         drawn = true;
@@ -169,6 +178,12 @@ public class NewGemPanel {
         
     }
 
+    /**
+     * Tests whether the exit button on the crown panel has been hit by any particular click, 
+     * and removes the panel if it has.
+     * @param event
+     * @param canvas
+     */
     public static void testCrownPanel(MouseButtonEvent event, CanvasWindow canvas){
         if(drawn && crownPanel.testHit(event.getPosition().getX(), event.getPosition().getY())
         && crownPanel.getElementAt(event.getPosition()).equals(closeCrownRectangle)){
