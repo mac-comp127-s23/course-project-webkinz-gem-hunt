@@ -20,7 +20,6 @@ public class NewGemPanel {
         gemDescription = new GraphicsText("", 100, 40);
         closeRectangle = new Rectangle(190, 0, 10, 10);
         closeRectangle.setFillColor(Color.RED);
-        panel.add(closeRectangle);
     }
 
     /**
@@ -55,6 +54,8 @@ public class NewGemPanel {
             gemDescription.setFontSize(descriptionFontSize);
         }
         panel.add(gemDescription);
+        
+        panel.add(closeRectangle);
     }
     
     /**
