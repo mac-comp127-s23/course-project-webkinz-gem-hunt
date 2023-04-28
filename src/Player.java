@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Set;
 
 public class Player {
     
@@ -24,5 +25,18 @@ public class Player {
 
     public void printGemSet(){
         System.out.println(gems);
+    }
+
+    public Set getPlayerGems(){
+        return gems.keySet();
+    }
+
+    public int getCountForGem(Gem gem){
+        if(gems.keySet().contains(gem)){
+            return gems.get(gem);
+        } 
+        else{
+            return 0;
+        }
     }
 }
