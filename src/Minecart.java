@@ -90,14 +90,14 @@ public class Minecart {
     public GraphicsGroup getRightButton(){
         return rightButtonGroup;
     }
-    
+
     //for testing
 
     public static void main(String[] args) {
-        //drawMinecart();
 
         CanvasWindow canvas = new CanvasWindow("minecrart", 800, 600);
-        //canvas.add(minecart);
+        Minecart cart = new Minecart();
+        canvas.add(cart.getMinecart());
         canvas.draw();
     }
     
