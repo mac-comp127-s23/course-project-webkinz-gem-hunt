@@ -23,7 +23,7 @@ public class MineMap implements Background {
     public MineMap() {
         mapGroup = new GraphicsGroup(0,0);
         button = new CollectionButton();
-        button.drawBackButton(mapGroup);
+        button.drawCollectionButton(mapGroup);
         createNameMap();
         drawMap();
     }
