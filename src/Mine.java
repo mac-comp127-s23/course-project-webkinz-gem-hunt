@@ -87,12 +87,27 @@ public class Mine implements Background{
         return mineGroup;
     }
 
+    //------------------------------------------Button Testers--------------------------------------------
+
+    /**
+     * Determines whether the left button on the minecart has been clicked for any given clicking action.
+     */
     public boolean testLeftButton(MouseButtonEvent event){
         return minecart.getLeftButton().testHit(event.getPosition().getX(), event.getPosition().getY());
     }
 
+    /**
+     * Determines whether the right button on the minecart has been clicked for any given clicking action.
+     */
     public boolean testRightButton(MouseButtonEvent event){
         return minecart.getRightButton().testHit(event.getPosition().getX(), event.getPosition().getY());
+    }
+
+    /**
+     * Determines whether the back button on the minecart has been clicked for any given clicking action.
+     */
+    public boolean testBackButton(MouseButtonEvent event, CanvasWindow canvas){
+        return (backButton.getButton().testHit(event.getPosition().getX(), event.getPosition().getY()));
     }
 
     public void scrollLeft(){
@@ -162,10 +177,10 @@ public class Mine implements Background{
 
     }
 
-    public boolean testBackButton(MouseButtonEvent event, CanvasWindow canvas){
-        return (backButton.getButton().testHit(event.getPosition().getX(), event.getPosition().getY()));
-    }
-
+    /**
+     * Moves the pickaxe to the mouse's location.
+     * @param event
+     */
     public void moveAxe(MouseMotionEvent event){
         axe.getAxe().setCenter(event.getPosition());
     }

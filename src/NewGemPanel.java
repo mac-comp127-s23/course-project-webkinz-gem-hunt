@@ -20,15 +20,22 @@ public class NewGemPanel {
         gemDescription = new GraphicsText("", 100, 40);
         closeRectangle = new Rectangle(190, 0, 10, 10);
         closeRectangle.setFillColor(Color.RED);
+        panel.add(closeRectangle);
     }
 
+    /**
+     * Sets the gem panel to reflect the information contained by a particular gem object.
+     * @param gem
+     */
     public void drawGemPanel(Gem gem){
         panel.removeAll();
         panelBackground.setFillColor(Color.LIGHT_GRAY);
         panel.add(panelBackground);
+
         gemImage = gem.getImage();
         gemImage.setAnchor(5, 5);
         panel.add(gemImage);
+
         gemName.setText(gem.getName());
         gemName.setFontStyle(FontStyle.BOLD);
         int nameFontSize = 10;
@@ -38,6 +45,7 @@ public class NewGemPanel {
             gemDescription.setFontSize(nameFontSize);
         }
         panel.add(gemName);
+
         gemDescription.setText(gem.getDescription());
         gemDescription.setWrappingWidth(90);
         int descriptionFontSize = 10;
@@ -47,7 +55,6 @@ public class NewGemPanel {
             gemDescription.setFontSize(descriptionFontSize);
         }
         panel.add(gemDescription);
-        panel.add(closeRectangle);
     }
     
     /**
@@ -59,6 +66,10 @@ public class NewGemPanel {
         panel.setCenter(canvas.getCenter());
     }
 
+    /**
+     * Removes the gem panel from the canvas.
+     * @param canvas
+     */
     public void removeDuplicatePanel(CanvasWindow canvas){
         if(drawn)
         {
@@ -67,6 +78,12 @@ public class NewGemPanel {
         }
     }
 
+    /**
+     * Tests whether the exit button on the panel has been hit by any particular click, 
+     * and removes the panel if it has.
+     * @param event
+     * @param canvas
+     */
     public static void testPanel(MouseButtonEvent event, CanvasWindow canvas){
         if(drawn && panel.testHit(event.getPosition().getX(), event.getPosition().getY())
         && panel.getElementAt(event.getPosition()).equals(closeRectangle)){
