@@ -21,7 +21,7 @@ public class CollectionButton {
         button.add(backText);
     }
 
-    public void drawBackButton(GraphicsGroup group) {
+    public void drawCollectionButton(GraphicsGroup group) {
         group.add(button);
     }
 

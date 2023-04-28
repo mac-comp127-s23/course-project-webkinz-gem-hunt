@@ -8,13 +8,17 @@ public class GemList {
         gems.add(gem);
     }
 
-    //Sets the gem list using gem reader.
+    /**
+     * Sets the gem list using gem reader.
+     */
     public static void setList(){
         GemReader readGems = new GemReader();
         gems = new HashSet<Gem>(readGems.readGems());
     }
 
-    //Creates a set of gems of the particular type.
+    /**
+     * Creates a set of gems based on whether they appear in a particular mine in the webkinz game.
+     */
     public static Set<Gem> getGemSet(String type){
         for(Gem gem : gems){
             if (type.equals("Blue")){

@@ -3,7 +3,7 @@ import edu.macalester.graphics.*;
 
 /** Information for each gemstone */
 public class Gem {
-    
+
     private String name;
     private String description;
     private int regLowPrice;
@@ -18,7 +18,8 @@ public class Gem {
     private boolean yellow;
     private boolean white;
 
-    public Gem() {}
+    public Gem() {
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -124,9 +125,12 @@ public class Gem {
         return this.white;
     }
 
-    public String toString(){
-        return "Name: " + name + "\n Description: " + description + "\n Type: "
-        + type + "\n Low Price: " + regLowPrice + "\n High Price: " + regHighPrice 
-        + "\n Gem of the Day Price: " + gemOfDayPrice + "\n Rarity: " + rarity;
+    @Override
+    public String toString() {
+        return "Gem [name=" + name + ", description=" + description + ", regLowPrice=" + regLowPrice + ", regHighPrice="
+            + regHighPrice + ", gemOfDayPrice=" + gemOfDayPrice + ", type=" + type + ", rarity=" + rarity + ", image="
+            + image + ", blue=" + blue + ", green=" + green + ", red=" + red + ", yellow=" + yellow + ", white=" + white
+            + "]";
     }
+    
 }
