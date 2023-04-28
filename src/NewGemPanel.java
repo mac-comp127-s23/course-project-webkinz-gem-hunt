@@ -142,12 +142,6 @@ public class NewGemPanel {
         crownPanel.setCenter(canvas.getCenter());
     }
 
-    public void setUpCrownPanel(CanvasWindow canvas){
-        canvas.add(crownPanel);
-        drawn = true;
-        crownPanel.setCenter(canvas.getCenter());
-    }
-
     /**
      * Removes the gem panel from the canvas.
      * @param canvas
