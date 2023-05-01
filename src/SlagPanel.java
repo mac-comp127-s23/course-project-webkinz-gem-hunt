@@ -11,7 +11,7 @@ public class SlagPanel extends Panel {
     private static Rectangle closeRectangle;
 
     public SlagPanel() {
-        panelBackground = new Rectangle(0, 0, 200, 100);
+        panelBackground = new Rectangle(0, 0, 200, 60);
         panel = new GraphicsGroup();
         name = new GraphicsText("SLAG", 10, 20);
         description = new GraphicsText("You have found SLAG.", 10, 40);
@@ -31,7 +31,7 @@ public class SlagPanel extends Panel {
             description.setFontSize(nameFontSize);
         }
         panel.add(name);
-        description.setWrappingWidth(90);
+        description.setWrappingWidth(180);
         int descriptionFontSize = 10;
         description.setFontSize(descriptionFontSize);
         while(description.getHeight() > 60){

@@ -11,10 +11,18 @@ public class Panel {
         panel = new GraphicsGroup();
     }
 
+    /**
+     * Generates graphical components of panel windows.
+     * @param gem Randomly generated gem or null for slag/crown
+     * @return GraphicsGroup with all graphic components.
+     */
     public GraphicsGroup draw(Gem gem){
         return panel;
     }
 
+    /**
+     * @return Rectangle corresponding to close button
+     */
     public Rectangle getClose(){
         return closeRectangle;
     }
