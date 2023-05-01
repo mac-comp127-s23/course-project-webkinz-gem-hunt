@@ -29,6 +29,13 @@ public class CollectionPopUp {
     private GraphicsText gem5Description;
     private GraphicsText gem6Description;
 
+    private GraphicsText gem1Count;
+    private GraphicsText gem2Count;
+    private GraphicsText gem3Count;
+    private GraphicsText gem4Count;
+    private GraphicsText gem5Count;
+    private GraphicsText gem6Count;
+
     private Image gem1;
     private Image gem2;
     private Image gem3;
@@ -119,6 +126,53 @@ public class CollectionPopUp {
         collectionText = new GraphicsText("GEM COLLECTION");
         collectionText.setFont(FontStyle.BOLD, 24);
         collection.add(collectionText, 185, 25);
+
+        gem1 = new Image(50, 36);
+        gem1.setImagePath("Earth_Emerald.png");
+        gem1.setScale(1);
+        collection.add(gem1);
+
+        gem2 = new Image(250, 36);
+        gem2.setImagePath("Moss_Marble.png");
+        gem2.setScale(1);
+        collection.add(gem2);
+
+        gem3 = new Image(450, 36);
+        gem3.setImagePath("Cat_Eye_Glint.png");
+        gem3.setScale(1);
+        collection.add(gem3);
+
+        gem4 = new Image(50, 172);
+        gem4.setImagePath("Jaded_Envy.png");
+        gem4.setScale(1);
+        collection.add(gem4);
+
+        gem5 = new Image(250, 172);
+        gem5.setImagePath("Pearl_Egg.png");
+        gem5.setScale(1);
+        collection.add(gem5);
+
+        gem6 = new Image(450, 172);
+        gem6.setImagePath("Terra_Tectonic.png");
+        gem6.setScale(1);
+        collection.add(gem6);
+
+        gem1Description = new GraphicsText("Earth Emerald");
+        gem1Description.setCenter(100, 145);
+        collection.add(gem1Description);
+
+        gem2Description = new GraphicsText("Moss Marble");
+        gem2Description.setCenter(300, 145);
+        collection.add(gem2Description);
+
+        gem3Description = new GraphicsText("Cat's Eye Glint");
+        gem3Description.setCenter(500, 145);
+        collection.add(gem3Description);
+
+        gem4Description = new GraphicsText("Jaded Envy");
+        //gem4.setCenter(100, 400);
+        collection.add(gem4Description);
+
 
     }
 
