@@ -175,7 +175,7 @@ public class CollectionPopUp {
         collection.add(gem3Description);
 
         gem4Description = new GraphicsText("Jaded Envy");
-        //gem4.setCenter(100, 400);
+        gem4Description.setCenter(100, 285);
         collection.add(gem4Description);
 
 
