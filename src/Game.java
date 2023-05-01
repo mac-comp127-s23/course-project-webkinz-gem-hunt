@@ -2,6 +2,8 @@ import java.awt.Color;
 
 import edu.macalester.graphics.*;
 import edu.macalester.graphics.events.Key;
+import edu.macalester.graphics.events.MouseButtonEvent;
+import edu.macalester.graphics.events.MouseMotionEvent;
 
 public class Game {
     private static MineMap startMap;
@@ -23,6 +25,39 @@ public class Game {
         GemList.setList();
         activateMap();
         player = new Player("Alex");
+
+        canvas.onClick(event -> {
+            if(backgrounds.getCurrentBackgroundName().equals("Mine")){
+                mineClickables(event);
+            }
+            if(backgrounds.getCurrentBackgroundName().equals("Map")){
+                mapClickables(event);
+            }
+        });
+
+        canvas.onMouseDown(event -> {
+            if(backgrounds.getCurrentBackgroundName().equals("Mine")){
+                mineOnMouseDownEvents(event);
+            }
+        });
+
+        canvas.onMouseUp(event -> {
+            if(backgrounds.getCurrentBackgroundName().equals("Mine")){
+                mineOnMouseUpEvents(event);
+            }
+        });
+
+        canvas.animate(() -> {
+            if(backgrounds.getCurrentBackgroundName().equals("Mine")){
+                mineAnimateEvents();
+            }
+        });
+
+        canvas.onMouseMove(event -> {
+            if(backgrounds.getCurrentBackgroundName().equals("Mine")){
+                mineMouseMovementEvents(event);
+            }
+        });
     }
 
     /**
@@ -31,15 +66,6 @@ public class Game {
     private static void activateMap() {
         canvas.setBackground(MineMap.MAP_BACKGROUND);
         backgrounds.drawBackround("Map");
-
-        canvas.onClick(event -> {
-            if (startMap.getDoors().keySet().contains(canvas.getElementAt(event.getPosition()))){
-                activateMine(startMap.getDoors().get(canvas.getElementAt(event.getPosition())));
-            }
-            if(startMap.checkCollectionButton(event)){
-                player.printGemSet();
-            }
-        });
     }
 
     /**
@@ -53,68 +79,70 @@ public class Game {
         mine.generateMine(color);
         backgrounds.drawBackround("Mine");
         mine.addGemSet(color);
-
-            canvas.onMouseMove(event -> {
-                mine.moveAxe(event);
-            });
-
-            canvas.onClick(event -> {
-                if(mine.testBackButton(event, canvas) && !NewGemPanel.isDrawn()){
-                    activateMap();
-                }
-
-                Rock schrodingersRock = mine.testRockHit(canvas, mine);
-                if (schrodingersRock != null  && !NewGemPanel.isDrawn()){
-
-                    if (Helpers.randomInt(0, 1) == 0){ // 50% of the time, generate slag
-                        mine.rockDissolve(canvas, schrodingersRock);
-                        newGem.drawSlagPanel();
-                        newGem.setUpGemPanel(canvas);
-                    }
-
-                    else {
-                        mine.rockDissolve(canvas, schrodingersRock);
-                        Gem receivedGem = mine.generateGem();
-                        player.newGemFound(receivedGem);
-                        newGem.drawGemPanel(receivedGem);
-                        newGem.setUpGemPanel(canvas);
-                    }
-                }
-                NewGemPanel.testPanel(event, canvas);
-                NewGemPanel.testCrownPanel(event, canvas);
-            });
-            
-            canvas.onMouseDown(event -> {
-                if(!NewGemPanel.isDrawn()){
-                    if(mine.testRightButton(event)){
-                        scrollingRight = true;
-                    }
-                    if(mine.testLeftButton(event)){
-                        scrollingLeft = true;
-                    }
-                }
-            });
-            
-
-            canvas.onMouseUp(event -> {
-                scrollingLeft = false;
-                scrollingRight = false;
-            });
-
-            canvas.animate(() -> {
-                if(scrollingLeft){
-                    mine.scrollLeft();
-                }
-                else if(scrollingRight){
-                    mine.scrollRight();
-                }
-            });
-
-            canvas.onKeyDown(event -> {
-                if(event.getKey() == Key.RETURN_OR_ENTER ) {
-                    newGem.drawCrownPanel();
-                    newGem.setUpCrownPanel(canvas);
-                }
-            }  );
     }
+
+    private static void mineClickables(MouseButtonEvent event){
+        if(mine.testBackButton(event, canvas) && !NewGemPanel.isDrawn()){
+            activateMap();
+        }
+
+        Rock schrodingersRock = mine.testRockHit(canvas, mine);
+        if (schrodingersRock != null  && !NewGemPanel.isDrawn()){
+
+            if (Helpers.randomInt(0, 1) == 0){ // 50% of the time, generate slag
+                mine.rockDissolve(canvas, schrodingersRock);
+                newGem.drawSlagPanel();
+                newGem.setUpGemPanel(canvas);
+            }
+
+            else {
+                mine.rockDissolve(canvas, schrodingersRock);
+                Gem receivedGem = mine.generateGem();
+                player.newGemFound(receivedGem);
+                newGem.drawGemPanel(receivedGem);
+                newGem.setUpGemPanel(canvas);
+            }
+        }
+        NewGemPanel.testPanel(event, canvas);
+        NewGemPanel.testCrownPanel(event, canvas);
+    }
+
+    private static void mapClickables(MouseButtonEvent event){
+        if (startMap.getDoors().keySet().contains(canvas.getElementAt(event.getPosition()))){
+            activateMine(startMap.getDoors().get(canvas.getElementAt(event.getPosition())));
+        }
+        if(startMap.checkCollectionButton(event)){
+            player.printGemSet();
+        }
+    }
+
+    private static void mineOnMouseDownEvents(MouseButtonEvent event){
+        if(!NewGemPanel.isDrawn()){
+            if(mine.testRightButton(event)){
+                scrollingRight = true;
+            }
+            if(mine.testLeftButton(event)){
+                scrollingLeft = true;
+            }
+        }
+    }
+
+    private static void mineOnMouseUpEvents(MouseButtonEvent event){
+        scrollingLeft = false;
+        scrollingRight = false;
+    }
+
+    private static void mineAnimateEvents(){
+        if(scrollingLeft){
+            mine.scrollLeft();
+        }
+        else if(scrollingRight){
+            mine.scrollRight();
+        }
+    }
+
+    private static void mineMouseMovementEvents(MouseMotionEvent event){
+        mine.moveAxe(event);
+    }
+
 }

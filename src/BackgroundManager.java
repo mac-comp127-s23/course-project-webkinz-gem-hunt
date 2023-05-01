@@ -11,6 +11,7 @@ public class BackgroundManager {
     private Map<String, Background> backgrounds = new HashMap<>(); //Map of existing backgrounds.
     private Background currentBackground; //Background being displayed now.
     private CanvasWindow canvas; //Game canvas window
+    private String currentBackgroundName;
 
     /**
      * Creates a Background Manager with a starting background and canvas.
@@ -34,7 +35,8 @@ public class BackgroundManager {
      * Changes the displayed background, removing the previous one.
      */
     public void drawBackround(String key){
-        canvas.remove(currentBackground.getGraphicsGroup());
+        currentBackgroundName = key;
+        canvas.removeAll();
         currentBackground = backgrounds.get(key);
         canvas.add(currentBackground.getGraphicsGroup());
         canvas.draw();
@@ -42,5 +44,9 @@ public class BackgroundManager {
 
     public GraphicsGroup getGraphicsGroup(){
         return currentBackground.getGraphicsGroup();
+    }
+
+    public String getCurrentBackgroundName(){
+        return currentBackgroundName;
     }
 }

@@ -79,6 +79,15 @@ public class Mine implements Background{
         axe.drawAxe(mineUI);
         fullMine.add(mineGroup);
         fullMine.add(mineUI);
+
+        // Iterator mineGroupIterator = mineUI.iterator();
+        // int objectCount = 0;
+
+        // while(mineGroupIterator.hasNext()){
+        //     System.out.println(mineGroupIterator.next());
+        //     objectCount ++;
+        // }
+        // System.out.println(objectCount);
     }
 
     public static GraphicsGroup getMineGroup(){
