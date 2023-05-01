@@ -86,7 +86,7 @@ public class Game {
             activateMap();
         }
 
-        Rock schrodingersRock = mine.testRockHit(canvas, mine);
+        Rock schrodingersRock = mine.testRockHit(event);
         if (schrodingersRock != null  && !NewGemPanel.isDrawn()){
 
             if (Helpers.randomInt(0, 1) == 0){ // 50% of the time, generate slag

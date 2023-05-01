@@ -79,15 +79,6 @@ public class Mine implements Background{
         axe.drawAxe(mineUI);
         fullMine.add(mineGroup);
         fullMine.add(mineUI);
-
-        // Iterator mineGroupIterator = mineUI.iterator();
-        // int objectCount = 0;
-
-        // while(mineGroupIterator.hasNext()){
-        //     System.out.println(mineGroupIterator.next());
-        //     objectCount ++;
-        // }
-        // System.out.println(objectCount);
     }
 
     public static GraphicsGroup getMineGroup(){
@@ -200,12 +191,10 @@ public class Mine implements Background{
      * @return null if no rock is found.
      * 
      */
-    public Rock testRockHit(CanvasWindow canvas, Mine currentMine) {
-        Point p = axe.getAxe().getCenter();
-        Point testP = new Point(p.getX() - 5, p.getY()); // move the test point slightly off center so the pickaxe isn't detected
-        GraphicsObject rock = canvas.getElementAt(testP);
-        if(rock instanceof Path && currentMine.hasRock(rock)){
-            return currentMine.getRock((Path) rock);
+    public Rock testRockHit(MouseButtonEvent event) { // move the test point slightly off center so the pickaxe isn't detected
+        GraphicsObject rock = mineGroup.getElementAt(event.getPosition().getX(), event.getPosition().getY());
+        if(rock instanceof Path && this.hasRock(rock)){
+            return this.getRock((Path) rock);
         }
 
         return null;
