@@ -111,6 +111,15 @@ public class CollectionPopUp {
         redButton.add(redText);
         collection.add(redButton, 300, 350);
 
+        closeRectangle = new Rectangle(0, 0, 20, 20);
+        closeRectangle.setFillColor(Color.RED);
+
+        collection.add(closeRectangle, 580, 0);
+
+        collectionText = new GraphicsText("GEM COLLECTION");
+        collectionText.setFont(FontStyle.BOLD, 24);
+        collection.add(collectionText, 185, 25);
+
     }
 
     public void drawCollectionPopup(GraphicsGroup group) {
