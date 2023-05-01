@@ -1,7 +1,6 @@
 import java.awt.Color;
 
 import edu.macalester.graphics.*;
-import edu.macalester.graphics.events.Key;
 import edu.macalester.graphics.events.MouseButtonEvent;
 import edu.macalester.graphics.events.MouseMotionEvent;
 
@@ -12,7 +11,9 @@ public class Game {
     private static BackgroundManager backgrounds;
     private static Boolean scrollingLeft = false;
     private static Boolean scrollingRight = false;
-    private static NewGemPanel newGem;
+    private static GemPanel gemPopUp;
+    private static CrownPanel crownPopUp;
+    private static SlagPanel slagPopUp;
     private static Player player;
 
     public static void main(String[] args) {
@@ -21,7 +22,9 @@ public class Game {
         startMap = new MineMap();
         backgrounds = new BackgroundManager("Mine", mine, canvas);
         backgrounds.addBackground("Map", startMap);
-        newGem = new NewGemPanel();
+        gemPopUp = new GemPanel();
+        slagPopUp = new SlagPanel();
+        crownPopUp = new CrownPanel();
         GemList.setList();
         activateMap();
         player = new Player("Alex");
@@ -75,36 +78,36 @@ public class Game {
      * @param color Color of mine player is in
      */
     private static void activateMine(Color color) {
-
         mine.generateMine(color);
         backgrounds.drawBackround("Mine");
         mine.addGemSet(color);
     }
 
     private static void mineClickables(MouseButtonEvent event){
-        if(mine.testBackButton(event, canvas) && !NewGemPanel.isDrawn()){
+        if(mine.testBackButton(event, canvas) && !Panel.isDrawn()){
             activateMap();
         }
 
         Rock schrodingersRock = mine.testRockHit(event);
-        if (schrodingersRock != null  && !NewGemPanel.isDrawn()){
+        if (schrodingersRock != null  && !Panel.isDrawn()){
 
             if (Helpers.randomInt(0, 1) == 0){ // 50% of the time, generate slag
                 mine.rockDissolve(canvas, schrodingersRock);
-                newGem.drawSlagPanel();
-                newGem.setUpGemPanel(canvas);
+                slagPopUp.draw(null);
+                slagPopUp.setUp(canvas, null);
             }
 
             else {
                 mine.rockDissolve(canvas, schrodingersRock);
                 Gem receivedGem = mine.generateGem();
                 player.newGemFound(receivedGem);
-                newGem.drawGemPanel(receivedGem);
-                newGem.setUpGemPanel(canvas);
+                gemPopUp.draw(receivedGem);
+                gemPopUp.setUp(canvas, receivedGem);
             }
         }
-        NewGemPanel.testPanel(event, canvas);
-        NewGemPanel.testCrownPanel(event, canvas);
+        slagPopUp.test(event, canvas);
+        gemPopUp.test(event, canvas);
+        crownPopUp.test(event, canvas);
     }
 
     private static void mapClickables(MouseButtonEvent event){
@@ -117,7 +120,7 @@ public class Game {
     }
 
     private static void mineOnMouseDownEvents(MouseButtonEvent event){
-        if(!NewGemPanel.isDrawn()){
+        if(!Panel.isDrawn()){
             if(mine.testRightButton(event)){
                 scrollingRight = true;
             }
