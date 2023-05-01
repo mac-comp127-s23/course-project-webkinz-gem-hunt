@@ -7,6 +7,8 @@ import edu.macalester.graphics.GraphicsText;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Rectangle;
 
+/** A window that pops up during the main game when the player clicks on the collection button.
+ * This displays the amount of gems (separated via color) that the player has currently found. */
 public class CollectionPopUp {
 
     private static final Color BACKGROUND_COLOR = new Color(219, 203, 160);
@@ -43,6 +45,9 @@ public class CollectionPopUp {
     private Image gem5;
     private Image gem6;
 
+    /** Creates the collection pop up window where each button is its own graphics group that is later added onto
+     * the overall collection graphics group. The image/text descriptions are added and their coordinates are set.
+     */
     public CollectionPopUp() {
 
         whiteButton = new GraphicsGroup();
@@ -176,6 +181,8 @@ public class CollectionPopUp {
 
     }
 
+    /** Creates the gemstone collection pop-window that displays the player's current gemstone count
+     * for the color of the button they have clicked. */
     public void drawCollectionPopup(GraphicsGroup group) {
         group.add(collection);
     }

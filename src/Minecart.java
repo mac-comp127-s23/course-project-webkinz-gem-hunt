@@ -14,7 +14,9 @@ public class Minecart {
     private static Path leftButton;
     private static Path rightButton;
 
+    /** Constructs the minecart and its buttons through three separate graphics groups. */
     public Minecart() {
+        
         minecart = new GraphicsGroup();
         leftButtonGroup = new GraphicsGroup();
         rightButtonGroup = new GraphicsGroup();
@@ -92,7 +94,6 @@ public class Minecart {
     }
 
     //for testing
-
     public static void main(String[] args) {
 
         CanvasWindow canvas = new CanvasWindow("minecrart", 800, 600);
