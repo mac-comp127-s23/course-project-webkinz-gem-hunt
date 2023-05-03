@@ -2,7 +2,6 @@
 
 ## __Group Members: Aurora Hiveley, James McConnell, and Stephanie Miles__
 
----
 
 ## __Product Description__
 
@@ -17,19 +16,18 @@ __How to run the program:__
 3. Make sure the main method is present (if commented out, please uncomment it)
 4. Hit the "run" button.
 
----
+
 
 ## __Known Issues:__
 
 insert text here
 
----
+
 
 ## __Societal Impact:__
 
 insert text here
 
----
 
 ## __Goals:__
 
