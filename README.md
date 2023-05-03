@@ -7,6 +7,9 @@
 
 Our team created a replica of Webkinz's daily gem hunt with minor tweaks to improve user experience. The game starts off with a map that allows the user to choose from five different mines. There is also a collection button present that shows which gemstones the user currently has obtained when clicked on. Once the user chooses a map, the canvas will be redrawn to the corresponding cave. Side-scrolling has been enabled, so the user is able to scroll and choose which rocks they want to attempt to mine. Once a rock is clicked on, there are some rock-breaking graphics implemented and the screen will show what has been found (either SLAG or a gemstone). The user can then decide to mine for more gems in that cave, or return to the main map and choose a different mine. The "winning: objective is to have the user collect all 30 gemstones. Once this has been achieved, the user will recieve a crown.
 
+![Image](<img width="801" alt="Screen Shot 2023-05-03 at 4 19 56 PM" src="https://user-images.githubusercontent.com/118240368/236052728-3cc3ec82-f975-4443-aec4-723561042911.png">)
+
+
 > Technical Requirements: Java 17 and a Java-friendly IDE (we used VS Code) installed.
 
 __How to run the program:__
