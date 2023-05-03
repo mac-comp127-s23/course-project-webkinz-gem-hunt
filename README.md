@@ -9,6 +9,7 @@ Our team created a replica of Webkinz's daily gem hunt with minor tweaks to impr
 
 ![Image](https://user-images.githubusercontent.com/118240368/236052728-3cc3ec82-f975-4443-aec4-723561042911.png)
 
+![Image](https://user-images.githubusercontent.com/118240368/236053136-c2a352ba-39d8-402d-80bf-3b909069050a.png)
 
 > Technical Requirements: Java 17 and a Java-friendly IDE (we used VS Code) installed.
 
