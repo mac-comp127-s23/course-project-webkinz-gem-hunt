@@ -11,7 +11,8 @@ public class Rock{
     /**
      * Creates octagonal rock shape with fill color according to the active mine.
      *
-     * @param (x,y) Position from upper left corner of bounding box. 
+     * @param x Horizontal position from upper left corner of bounding box. 
+     * @param y Vertical position from upper left corner of bounding box. 
      * 
      */
     public Rock(Color color, double x, double y) {

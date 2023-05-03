@@ -4,6 +4,9 @@ import edu.macalester.graphics.Line;
 
 import java.awt.Color;
 
+/**
+ * Graphical representation of pickaxe. Has fixed shape, size, and colors
+ */
 public class Pickaxe {
     private GraphicsGroup axe;
 

@@ -84,6 +84,14 @@ public class Mine implements Background{
     public static GraphicsGroup getMineGroup(){
         return mineGroup;
     }
+    
+    public GraphicsGroup getGraphicsGroup() {
+        return fullMine;
+    }
+    
+    public static double getGroupPosition(){
+        return groupPosition;
+    }
 
     //------------------------------------------Button Testers--------------------------------------------
 
@@ -122,12 +130,11 @@ public class Mine implements Background{
         }
     }
 
-    public static double getGroupPosition(){
-        return groupPosition;
-    }
+    //------------------------------------------Rock Breaking & Gem Generation--------------------------------------------
 
     /**
      * Adds a set of gems to this mine that all share a gem type.
+     * 
      * @param gemType
      */
     public void addGemSet(Color color){
@@ -135,14 +142,11 @@ public class Mine implements Background{
         gemSet = GemList.getGemSet(gemType);
     }
 
-    public GraphicsGroup getGraphicsGroup() {
-        return fullMine;
-    }
-
     /**
      * Checks if the given graphics object is a rock shape.
-     * @param Graphics object hit by pickaxe
-     * @return  returns true if the graphics object passed in corresponds to a rock managed by this class.
+     * 
+     * @param rock hit by pickaxe
+     * @return true if the graphics object passed in corresponds to a rock managed by this class.
      */
     public boolean hasRock(GraphicsObject rock){
         if(rocks.getRockShapes().contains(rock)){
@@ -157,6 +161,7 @@ public class Mine implements Background{
 
     /**
      * Picks a gem from this mine's gem set (Probabilities not implemented yet).
+     * 
      * @return Gem that the player has gained from breaking a rock.
      */
     public Gem generateGem(){

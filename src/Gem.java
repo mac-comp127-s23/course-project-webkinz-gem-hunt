@@ -4,6 +4,7 @@ import edu.macalester.graphics.*;
 /** Information for each gemstone */
 public class Gem {
 
+    // parameters from Webkinz
     private String name;
     private String description;
     private int regLowPrice;
@@ -12,6 +13,8 @@ public class Gem {
     private String type;
     private double rarity;
     private Image image;
+
+    // indicators of whether gem is found in the mine of that color (T/F)
     private boolean blue;
     private boolean green;
     private boolean red;

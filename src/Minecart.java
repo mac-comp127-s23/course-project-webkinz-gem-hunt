@@ -1,6 +1,5 @@
 import java.awt.Color;
 
-
 import edu.macalester.graphics.*;
 
 /** Minecart used in the Webkinz Gem Hunt with buttons to implement side-scrolling */
@@ -93,13 +92,4 @@ public class Minecart {
         return rightButtonGroup;
     }
 
-    //for testing
-    public static void main(String[] args) {
-
-        CanvasWindow canvas = new CanvasWindow("minecrart", 800, 600);
-        Minecart cart = new Minecart();
-        canvas.add(cart.getMinecart());
-        canvas.draw();
-    }
-    
 }

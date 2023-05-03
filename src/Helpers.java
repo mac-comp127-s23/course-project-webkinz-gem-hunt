@@ -24,13 +24,6 @@ public class Helpers {
     }
 
     /**
-     * Convenience to return true with the given percent change (0 = always false, 100 = always true).
-     */
-    public static boolean percentChance(double chance) {
-        return random.nextDouble() * 100 < chance;
-    }
-
-    /**
      * Returns a slightly different color than the given one. Useful for making a bunch of items not
      * look entirely identical.
      */
