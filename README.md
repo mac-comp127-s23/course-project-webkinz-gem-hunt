@@ -24,8 +24,9 @@ __How to run the program:__
 
 ## __Known Issues:__
 
-insert text here
+> This seems to only be an issue on Macs: the canvas will sometimes freeze after the user has attempted to mine a rock. The only thing the user can do now is force quit the program. Our team cannot do much to fix this issue at this point because there are not any actual error messages.
 
+> The program does get slower as the user switches between mines. We think this is due to the constant redrawing of the canvas.
 
 
 ## __Societal Impact:__
