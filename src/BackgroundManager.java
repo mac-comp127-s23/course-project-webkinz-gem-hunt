@@ -32,7 +32,7 @@ public class BackgroundManager {
     }
 
     /**
-     * Changes the displayed background, removing the previous one.
+     * Changes the displayed background to teh one specified by the key, removing the previous one.
      */
     public void drawBackround(String key){
         currentBackgroundName = key;
@@ -42,6 +42,10 @@ public class BackgroundManager {
         canvas.draw();
     }
 
+    /**
+     * Gets the current, drawn graphics group.
+     * @return graphics group
+     */
     public GraphicsGroup getGraphicsGroup(){
         return currentBackground.getGraphicsGroup();
     }

@@ -83,6 +83,12 @@ public class Game {
         mine.addGemSet(color);
     }
 
+    /**
+     * Tests all clickable objects in the mine gamestate, including the back button, rocks, 
+     * and exit buttons for popup panels.
+     * 
+     * @param event
+     */
     private static void mineClickables(MouseButtonEvent event){
         if(mine.testBackButton(event, canvas) && !Panel.isDrawn()){
             activateMap();
@@ -110,6 +116,12 @@ public class Game {
         crownPopUp.test(event, canvas);
     }
 
+    /**
+     * Tests all clickable objects in the map gamestate, 
+     * including different mines and the collection button
+     * 
+     * @param event
+     */
     private static void mapClickables(MouseButtonEvent event){
         if (startMap.getDoors().keySet().contains(canvas.getElementAt(event.getPosition()))){
             activateMine(startMap.getDoors().get(canvas.getElementAt(event.getPosition())));
@@ -119,6 +131,12 @@ public class Game {
         }
     }
 
+    /**
+     * Tests for any on mouse down actions in the mine gamestate, currently 
+     * only used for the minecart buttons.
+     * 
+     * @param event
+     */
     private static void mineOnMouseDownEvents(MouseButtonEvent event){
         if(!Panel.isDrawn()){
             if(mine.testRightButton(event)){
@@ -130,11 +148,23 @@ public class Game {
         }
     }
 
+    /**
+     * Tests for any on mouse Up actions in the mine gamestate, currently 
+     * only used for the minecart buttons.
+     * 
+     * @param event
+     */
     private static void mineOnMouseUpEvents(MouseButtonEvent event){
         scrollingLeft = false;
         scrollingRight = false;
     }
 
+    /**
+     * Runs any animate events while game is in the mine state, currently only
+     * used for sidescrolling.
+     * 
+     * @param event
+     */
     private static void mineAnimateEvents(){
         if(scrollingLeft){
             mine.scrollLeft();
@@ -144,6 +174,12 @@ public class Game {
         }
     }
 
+    /**
+     * Runs any on mouse move events while game is in the mine state, currently only
+     * used for pickaxe movement.
+     * 
+     * @param event
+     */
     private static void mineMouseMovementEvents(MouseMotionEvent event){
         mine.moveAxe(event);
     }
