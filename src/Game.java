@@ -15,6 +15,7 @@ public class Game {
     private static CrownPanel crownPopUp;
     private static SlagPanel slagPopUp;
     private static Player player;
+    private static boolean shownCrown = false;
 
     public static void main(String[] args) {
         canvas = new CanvasWindow("Gem Hunt", 800, 600);
@@ -91,7 +92,14 @@ public class Game {
      */
     private static void mineClickables(MouseButtonEvent event){
         if(mine.testBackButton(event, canvas) && !Panel.isDrawn()){
-            activateMap();
+            if(player.checkCompletion() && !shownCrown){
+                crownPopUp.draw(null);
+                crownPopUp.setUp(canvas, null);
+                shownCrown = true;
+            }
+            else{
+                activateMap();
+            }
         }
 
         Rock schrodingersRock = mine.testRockHit(event);

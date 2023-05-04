@@ -51,4 +51,22 @@ public class Player {
             return 0;
         }
     }
+
+    public boolean checkCompletion(){
+        if(gems.size() == 30){
+            return true;
+        } 
+        else{
+            return false;
+        }
+    }
 }
+
+// Methods used in testing
+//-------------------------------------------------------
+
+//     public void autoCompleteCollection(){
+//         for(Gem gem : GemList.getGems()){
+//             this.newGemFound(gem);
+//         }
+//     }
