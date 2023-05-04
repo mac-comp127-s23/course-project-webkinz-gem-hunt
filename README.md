@@ -26,12 +26,10 @@ __How to run the program:__
 
 > This seems to only be an issue on Macs: the canvas will sometimes freeze after the user has attempted to mine a rock. The only thing the user can do now is force quit the program. Our team cannot do much to fix this issue at this point because there are not any actual error messages.
 
-> The program does get slower as the user switches between mines. We think this is due to the constant redrawing of the canvas.
-
 
 ## __Societal Impact:__
 
-insert text here
+__There are clear accessibility barriers present in our game.__ Obviously __the gameplay relies heavily on point and click interactions__, so users that do not have the ability to use a mouse/trackpad will experience barriers while playing this game. Similarly, the game contains no audio components and is entirely visual, so the visually impaired user will have difficulties playing the game. The game also __relies somewhat on distinctions between colors__, so the color blind user may experience some limitations during gameplay. The gems themselves have distinct shapes/sprites and names, so they are distinguishable without the aid of color. The gem collection panel also includes a text descriptor of the color, so the user doesn't *need* the button's background color to distinguish between gem colors. The same issue is somewhat prevalent in the display of each mine since the mine doors on the map and the backgrounds of each mine are color coded. However, the mines on the map have text labels identifying their names, so a user should be able to distinguish the mines from the map according to the names and without using the color identifier. Another __possible barrier arises from the small red exit button on each panel__, which may be hard to distinguish (although it does have a black outline indicating a small button is present.)
 
 
 ## __Goals:__
