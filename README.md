@@ -20,11 +20,21 @@ __How to run the program:__
 3. Make sure the main method is present (if commented out, please uncomment it)
 4. Hit the "run" button.
 
+__How to play the game:__
+
+1. Select a mine in which to search for gems by clicking on the desired door from the map.
+2. To mine for gems, click on the rock you would like to break. The axe will animate, and a pop up window will appear indicating the results of your mining attempt. This pop up can be closed with the small red square in the upper right hand corner of the panel.
+3. Inside of a mine, clicking on the left and right buttons on either side of the cart allows the user to scroll back and forth to access additional rocks.
+4. Exit the current mine by clicking the orange circle X button in the upper left hand corner. The player is returned to the map, where they can select another mine to enter.
+5. Check which gems you have found and how many of each are in your collection by clicking the "Collection" button on the bottom left corner of the map. Your collection is automatically filtered by color, and the player may select which gem color to view by using the color buttons at the bottom of the collection screen. The player may close out of the collection by using the small red square in the upper right hand corner.
+6. Once all 30 gems have been collected by the user (6 per color), the user wins the Crown of Wonder, and a pop up will be displayed indicating the achievement. The user may continue to play freely after that point.
 
 
 ## __Known Issues:__
 
 > This seems to only be an issue on Macs: the canvas will sometimes freeze after the user has attempted to mine a rock. The only thing the user can do now is force quit the program. Our team cannot do much to fix this issue at this point because there are not any actual error messages.
+
+> Gameplay relies on randomness, and there are no hard coded shields to prevent randomness from hurting the user experience.
 
 
 ## __Societal Impact:__
