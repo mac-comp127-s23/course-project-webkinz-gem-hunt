@@ -16,6 +16,7 @@ public class Game {
     private static SlagPanel slagPopUp;
     private static Player player;
     private static boolean shownCrown = false;
+    private static CollectionPopUp collection;
 
     public static void main(String[] args) {
         canvas = new CanvasWindow("Gem Hunt", 800, 600);
@@ -91,6 +92,8 @@ public class Game {
      * @param event
      */
     private static void mineClickables(MouseButtonEvent event){
+        if (collection.testWhiteButton(event))
+
         if(mine.testBackButton(event, canvas) && !Panel.isDrawn()){
             if(player.checkCompletion() && !shownCrown){
                 crownPopUp.draw(null);

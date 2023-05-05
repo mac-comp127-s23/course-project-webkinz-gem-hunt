@@ -130,6 +130,8 @@ public class Mine implements Background{
         }
     }
 
+
+
     //------------------------------------------Rock Breaking & Gem Generation--------------------------------------------
 
     /**
