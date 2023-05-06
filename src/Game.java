@@ -27,7 +27,7 @@ public class Game {
         gemPopUp = new GemPanel();
         slagPopUp = new SlagPanel();
         crownPopUp = new CrownPanel();
-        collection = new CollectionPopUp();
+        collection = new CollectionPopUp(canvas);
         GemList.setList();
         activateMap();
         player = new Player("Alex");
@@ -143,11 +143,8 @@ public class Game {
             player.printGemSet();
         }
 
-        if (collection.testWhiteButton(event) && Panel.isDrawn()) {
-            collection.setGem1Image("Webkinz_Diamon.png");
-            canvas.draw();
-        }
-
+        collection.testWhiteButton(event, canvas);
+        collection.testGreenButton(event, canvas);
         collection.test(event, canvas);
 
     }
