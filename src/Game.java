@@ -17,6 +17,9 @@ public class Game {
     private static Player player;
     private static boolean shownCrown = false;
     private static CollectionPopUp collection;
+    private static CollectionButton collectButton;
+
+    private static GraphicsGroup collectionUI;
 
     public static void main(String[] args) {
         canvas = new CanvasWindow("Gem Hunt", 800, 600);
@@ -27,6 +30,9 @@ public class Game {
         gemPopUp = new GemPanel();
         slagPopUp = new SlagPanel();
         crownPopUp = new CrownPanel();
+        collectButton = new CollectionButton();
+        collection = new CollectionPopUp();
+        collectionUI = new GraphicsGroup();
         GemList.setList();
         activateMap();
         player = new Player("Alex");
@@ -92,7 +98,18 @@ public class Game {
      * @param event
      */
     private static void mineClickables(MouseButtonEvent event){
-        if (collection.testWhiteButton(event))
+
+        if (collection.testExitButton(event)) {
+            canvas.remove(collection.getPopup());
+            
+        }
+
+        if (collection.testWhiteButton(event)) {
+            canvas.remove(collection.getPopup());
+            collection.setGem1Image("Webkinz_Diamond.png");
+            canvas.add(collection.getPopup());
+            canvas.draw();
+        }
 
         if(mine.testBackButton(event, canvas) && !Panel.isDrawn()){
             if(player.checkCompletion() && !shownCrown){
@@ -138,6 +155,8 @@ public class Game {
             activateMine(startMap.getDoors().get(canvas.getElementAt(event.getPosition())));
         }
         if(startMap.checkCollectionButton(event)){
+            canvas.add(collection.getPopup());;
+            canvas.draw();
             player.printGemSet();
         }
     }

@@ -10,7 +10,7 @@ import edu.macalester.graphics.events.MouseButtonEvent;
 
 /** A window that pops up during the main game when the player clicks on the collection button.
  * This displays the amount of gems (separated via color) that the player has currently found. */
-public class CollectionPopUp {
+public class CollectionPopUp extends Panel {
 
     private static final Color BACKGROUND_COLOR = new Color(219, 203, 160);
     
@@ -197,6 +197,10 @@ public class CollectionPopUp {
         return (getRedButton().testHit(event.getPosition().getX(), event.getPosition().getY()));
     }
 
+    public boolean testExitButton(MouseButtonEvent event) {
+        return (getCloseButton().testHit(event.getPosition().getX(), event.getPosition().getY()))
+    }
+
     public GraphicsGroup getWhiteButton() {
         return whiteButton;
     }
@@ -216,6 +220,20 @@ public class CollectionPopUp {
     public GraphicsGroup getRedButton() {
         return redButton;
     }
+
+    public Rectangle getCloseButton () {
+        return closeRectangle;
+    }
+
+    public void setGem1Image(String image) {
+        gem1.setImagePath(image);
+    }
+
+    public void setGem2Image(String image) {
+        gem2.setImagePath(image);
+    }
+
+
 
     /** Creates the gemstone collection pop-window that displays the player's current gemstone count
      * for the color of the button they have clicked. */
