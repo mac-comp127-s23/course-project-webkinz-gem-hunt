@@ -39,6 +39,9 @@ public class CollectionPopUp extends Panel {
     private Image gem5;
     private Image gem6;
 
+    private static boolean drawn = false;
+
+
     /** Creates the collection pop up window where each button is its own graphics group that is later added onto
      * the overall collection graphics group. The image/text descriptions are added and their coordinates are set.
      */
@@ -69,6 +72,8 @@ public class CollectionPopUp extends Panel {
     }
 
     public GraphicsGroup draw(Gem gem) {
+        drawn = true;
+
         collectionBackground.setFillColor(BACKGROUND_COLOR);
         collection.add(collectionBackground);
         collection.setCenter(400, 300);
@@ -181,6 +186,15 @@ public class CollectionPopUp extends Panel {
         return collection;
     }
 
+    @Override
+    public void test(MouseButtonEvent event, CanvasWindow canvas) {
+        if(drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY())
+        && collection.getElementAt(event.getPosition()).equals(closeRectangle)){
+            canvas.remove(collection);
+            drawn = false;
+        }
+    }
+    
     public boolean testWhiteButton(MouseButtonEvent event) {
         return (getWhiteButton().testHit(event.getPosition().getX(), event.getPosition().getY()));
     }
