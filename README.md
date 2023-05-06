@@ -34,7 +34,7 @@ __How to play the game:__
 
 > This seems to only be an issue on Macs: the canvas will sometimes freeze after the user has attempted to mine a rock. The only thing the user can do now is force quit the program. Our team cannot do much to fix this issue at this point because there are not any actual error messages.
 
-> Gameplay relies on randomness, and there are no hard coded shields to prevent randomness from hurting the user experience.
+> Gameplay relies on randomness, and while there is a hard coded safeguard to prevent the user from encountering slag more than 4 times, there are no safeguards related to the gem generation. Thus, it is possible for the user to play for many hours (or even forever) without ever collecting all 30 gems.
 
 
 ## __Societal Impact:__
