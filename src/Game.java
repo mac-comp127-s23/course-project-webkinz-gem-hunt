@@ -34,7 +34,6 @@ public class Game {
 
         canvas.onClick(event -> {
             if(backgrounds.getCurrentBackgroundName().equals("Mine")){
-                System.out.println("im clicking");
                 mineClickables(event);
             }
             if(backgrounds.getCurrentBackgroundName().equals("Map")){
@@ -153,7 +152,6 @@ public class Game {
         if(startMap.checkCollectionButton(event)){
             collection.draw(null);
             collection.setUp(canvas, null);
-            player.printGemSet();
         }
 
         collection.testWhiteButton(event, canvas);
