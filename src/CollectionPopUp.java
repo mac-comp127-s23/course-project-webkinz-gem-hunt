@@ -189,7 +189,7 @@ public class CollectionPopUp extends Panel {
     }
 
     public void testRedButton(MouseButtonEvent event, CanvasWindow canvas) {
-        if (collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
+        if (drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(red)) {
             gem1.setImagePath("Red_Ruby_Heart.png");
             gem1Description.setText("Red Ruby Heart");
@@ -213,7 +213,7 @@ public class CollectionPopUp extends Panel {
     }
 
     public void testBlueButton(MouseButtonEvent event, CanvasWindow canvas) {
-        if (collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
+        if (drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(blue)) {
             gem1.setImagePath("Ocean_Sapphire.png");
             gem1Description.setText("Ocean Sapphire");
@@ -237,7 +237,7 @@ public class CollectionPopUp extends Panel {
     }
 
     public void testYellowButton(MouseButtonEvent event, CanvasWindow canvas) {
-        if (collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
+        if (drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(yellow)) {
             gem1.setImagePath("Corona_Topaz.png");
             gem1Description.setText("Corona Topaz");
@@ -261,7 +261,7 @@ public class CollectionPopUp extends Panel {
     }
 
     public void testGreenButton(MouseButtonEvent event, CanvasWindow canvas) {
-        if (collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
+        if (drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(green)) {
             gem1.setImagePath("Earth_Emerald.png");
             gem1Description.setText("Earth Emerald");
@@ -285,7 +285,7 @@ public class CollectionPopUp extends Panel {
     }
 
     public void testWhiteButton(MouseButtonEvent event, CanvasWindow canvas) {
-        if (collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
+        if (drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(white)) {
             gem1.setImagePath("Webkinz_Diamond.png");
             gem1Description.setText("Webkinz Diamond");
