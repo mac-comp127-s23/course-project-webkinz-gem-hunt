@@ -27,13 +27,14 @@ public class Game {
         gemPopUp = new GemPanel();
         slagPopUp = new SlagPanel();
         crownPopUp = new CrownPanel();
-        collection = new CollectionPopUp();
+        player = new Player("Alex");
+        collection = new CollectionPopUp(player);
         GemList.setList();
         activateMap();
-        player = new Player("Alex");
 
         canvas.onClick(event -> {
             if(backgrounds.getCurrentBackgroundName().equals("Mine")){
+                System.out.println("im clicking");
                 mineClickables(event);
             }
             if(backgrounds.getCurrentBackgroundName().equals("Map")){
@@ -94,20 +95,8 @@ public class Game {
      */
     private static void mineClickables(MouseButtonEvent event){
 
-        if(mine.testBackButton(event, canvas) && !Panel.isDrawn()){
-            if(player.checkCompletion() && !shownCrown){
-                crownPopUp.draw(null);
-                crownPopUp.setUp(canvas, null);
-                shownCrown = true;
-            }
-            else{
-                activateMap();
-            }
-        }
-
         Rock schrodingersRock = mine.testRockHit(event);
         if (schrodingersRock != null  && !Panel.isDrawn()){
-
             if (Helpers.randomInt(0, 1) == 0){ // 50% of the time, generate slag
                 mine.rockDissolve(canvas, schrodingersRock);
                 slagPopUp.draw(null);
@@ -125,6 +114,17 @@ public class Game {
         slagPopUp.test(event, canvas);
         gemPopUp.test(event, canvas);
         crownPopUp.test(event, canvas);
+
+        if(mine.testBackButton(event, canvas) && !Panel.isDrawn()){
+            if(player.checkCompletion() && !shownCrown){
+                crownPopUp.draw(null);
+                crownPopUp.setUp(canvas, null);
+                shownCrown = true;
+            }
+            else{
+                activateMap();
+            }
+        }
     }
 
     /**
@@ -134,9 +134,6 @@ public class Game {
      * @param event
      */
     private static void mapClickables(MouseButtonEvent event){
-        if (startMap.getDoors().keySet().contains(canvas.getElementAt(event.getPosition()))){
-            activateMine(startMap.getDoors().get(canvas.getElementAt(event.getPosition())));
-        }
         if(startMap.checkCollectionButton(event)){
             collection.draw(null);
             collection.setUp(canvas, null);
@@ -149,6 +146,10 @@ public class Game {
         collection.testBlueButton(event, canvas);
         collection.testRedButton(event, canvas);
         collection.test(event, canvas);
+
+        if (startMap.getDoors().keySet().contains(canvas.getElementAt(event.getPosition()))){
+            activateMine(startMap.getDoors().get(canvas.getElementAt(event.getPosition())));
+        }
 
     }
 

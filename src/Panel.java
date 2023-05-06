@@ -5,7 +5,7 @@ public class Panel {
     
     private static GraphicsGroup panel;
     private static Rectangle closeRectangle;
-    private static boolean drawn = false;
+    protected static boolean drawn = false;
 
     public Panel() {
         panel = new GraphicsGroup();

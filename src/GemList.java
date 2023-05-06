@@ -30,6 +30,19 @@ public class GemList {
     }
 
     /**
+     * Creates a set of gems based on their types.
+     */
+    public static Gem getGemByName(String name){
+        Gem correctGem = new Gem();
+        for(Gem gem : gems){
+            if(gem.getName().equals(name)){
+                correctGem = gem;
+            }
+        }
+        return correctGem;
+    }
+
+    /**
      * Creates a set of gems based on whether they appear in a particular mine in the webkinz game.
      */
     public static Set<Gem> getGemSet(String type){

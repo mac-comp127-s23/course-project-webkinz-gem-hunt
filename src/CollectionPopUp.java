@@ -13,6 +13,8 @@ import edu.macalester.graphics.events.MouseButtonEvent;
 public class CollectionPopUp extends Panel {
 
     private static final Color BACKGROUND_COLOR = new Color(219, 203, 160);
+
+    Player player;
     
     private GraphicsGroup collection;
 
@@ -40,18 +42,15 @@ public class CollectionPopUp extends Panel {
     private Rectangle blue;
     private Rectangle red;
 
-    private static boolean drawn = false;
-
 
     /** Creates the collection pop up window where each button is its own graphics group that is later added onto
      * the overall collection graphics group. The image/text descriptions are added and their coordinates are set.
      */
-    public CollectionPopUp() {
-
+    public CollectionPopUp(Player player) {
+        this.player = player;
     }
 
     public GraphicsGroup draw(Gem gem) {
-        drawn = true;
 
         collection = new GraphicsGroup();
 
@@ -175,21 +174,22 @@ public class CollectionPopUp extends Panel {
         gem6Description.setCenter(450, 285);
         collection.add(gem6Description);
 
-
+        Panel.drawn = true;
         return collection;
     }
 
-    @Override
+    
     public void test(MouseButtonEvent event, CanvasWindow canvas) {
-        if(drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY())
+        if(Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY())
         && collection.getElementAt(event.getPosition()).equals(closeRectangle)){
             canvas.remove(collection);
             drawn = false;
+            Panel.drawn = false;
         }
     }
 
     public void testRedButton(MouseButtonEvent event, CanvasWindow canvas) {
-        if (drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
+        if (Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(red)) {
             gem1.setImagePath("Red_Ruby_Heart.png");
             gem1Description.setText("Red Ruby Heart");
@@ -213,7 +213,7 @@ public class CollectionPopUp extends Panel {
     }
 
     public void testBlueButton(MouseButtonEvent event, CanvasWindow canvas) {
-        if (drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
+        if (Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(blue)) {
             gem1.setImagePath("Ocean_Sapphire.png");
             gem1Description.setText("Ocean Sapphire");
@@ -237,7 +237,7 @@ public class CollectionPopUp extends Panel {
     }
 
     public void testYellowButton(MouseButtonEvent event, CanvasWindow canvas) {
-        if (drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
+        if (Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(yellow)) {
             gem1.setImagePath("Corona_Topaz.png");
             gem1Description.setText("Corona Topaz");
@@ -261,7 +261,7 @@ public class CollectionPopUp extends Panel {
     }
 
     public void testGreenButton(MouseButtonEvent event, CanvasWindow canvas) {
-        if (drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
+        if (Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(green)) {
             gem1.setImagePath("Earth_Emerald.png");
             gem1Description.setText("Earth Emerald");
@@ -285,10 +285,10 @@ public class CollectionPopUp extends Panel {
     }
 
     public void testWhiteButton(MouseButtonEvent event, CanvasWindow canvas) {
-        if (drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
+        if (Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(white)) {
             gem1.setImagePath("Webkinz_Diamond.png");
-            gem1Description.setText("Webkinz Diamond");
+            gem1Description.setText("Webkinz Diamond" + " Count: " + player.getCountForGem(GemList.getGemByName("Webkinz Diamond")));
 
             gem2.setImagePath("Unicorn_Horn.png");
             gem2Description.setText("Unicorn Horn");
