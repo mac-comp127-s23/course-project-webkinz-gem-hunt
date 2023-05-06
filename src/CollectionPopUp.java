@@ -44,6 +44,8 @@ public class CollectionPopUp extends Panel {
      */
     public CollectionPopUp() {
 
+        collection = new GraphicsGroup();
+
         whiteButton = new GraphicsGroup();
         greenButton = new GraphicsGroup();
         yellowButton = new GraphicsGroup();
@@ -51,9 +53,23 @@ public class CollectionPopUp extends Panel {
         redButton = new GraphicsGroup();
 
         collectionBackground = new Rectangle(0, 0, 600, 400);
-        collectionBackground.setFillColor(BACKGROUND_COLOR);
-        collection = new GraphicsGroup();
 
+        gem1 = new Image(50, 36);
+        gem2 = new Image(250, 36);
+        gem3 = new Image(450, 36);
+        gem4 = new Image(50, 172);
+        gem5 = new Image(250, 172);
+        gem6 = new Image(450, 172);
+        gem1Description = new GraphicsText(null);
+        gem2Description = new GraphicsText(null);
+        gem3Description = new GraphicsText(null);
+        gem4Description = new GraphicsText(null);
+        gem5Description = new GraphicsText(null);
+        gem6Description = new GraphicsText(null);
+    }
+
+    public GraphicsGroup draw(Gem gem) {
+        collectionBackground.setFillColor(BACKGROUND_COLOR);
         collection.add(collectionBackground);
         collection.setCenter(400, 300);
 
@@ -126,55 +142,43 @@ public class CollectionPopUp extends Panel {
         collectionText.setFont(FontStyle.BOLD, 24);
         collection.add(collectionText, 185, 25);
 
-        gem1 = new Image(50, 36);
         gem1.setScale(1);
         collection.add(gem1);
 
-        gem2 = new Image(250, 36);
         gem2.setScale(1);
         collection.add(gem2);
 
-        gem3 = new Image(450, 36);
         gem3.setScale(1);
         collection.add(gem3);
 
-        gem4 = new Image(50, 172);
         gem4.setScale(1);
         collection.add(gem4);
 
-        gem5 = new Image(250, 172);
         gem5.setScale(1);
         collection.add(gem5);
 
-        gem6 = new Image(450, 172);
         gem6.setScale(1);
         collection.add(gem6);
 
-        gem1Description = new GraphicsText(null);
         gem1Description.setCenter(100, 150);
         collection.add(gem1Description);
 
-        gem2Description = new GraphicsText(null);
         gem2Description.setCenter(300, 150);
         collection.add(gem2Description);
 
-        gem3Description = new GraphicsText(null);
         gem3Description.setCenter(500, 150);
         collection.add(gem3Description);
 
-        gem4Description = new GraphicsText(null);
         gem4Description.setCenter(100, 285);
         collection.add(gem4Description);
 
-        gem5Description = new GraphicsText(null);
         gem5Description.setCenter(300, 285);
         collection.add(gem5Description);
 
-        gem6Description = new GraphicsText(null);
         gem6Description.setCenter(500, 285);
         collection.add(gem6Description);
 
-
+        return collection;
     }
 
     public boolean testWhiteButton(MouseButtonEvent event) {
@@ -233,27 +237,8 @@ public class CollectionPopUp extends Panel {
         gem2.setImagePath(image);
     }
 
-
-
-    /** Creates the gemstone collection pop-window that displays the player's current gemstone count
-     * for the color of the button they have clicked. */
-    public void drawCollectionPopup(GraphicsGroup group) {
-        group.add(collection);
-    }
-
     public GraphicsGroup getPopup() {
         return collection;
-    }
-
-
-    // for testing purposes:
-    public static void main(String[] args) {
-        CanvasWindow canvas = new CanvasWindow("Collection Pop-up Window Test", 800, 600);
-        
-        CollectionPopUp test = new CollectionPopUp();
-        canvas.add(test.getPopup());
-        canvas.draw();
-
     }
 
 }

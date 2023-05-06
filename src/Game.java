@@ -101,13 +101,12 @@ public class Game {
 
         if (collection.testExitButton(event)) {
             canvas.remove(collection.getPopup());
+            canvas.draw();
             
         }
 
         if (collection.testWhiteButton(event)) {
-            canvas.remove(collection.getPopup());
-            collection.setGem1Image("Webkinz_Diamond.png");
-            canvas.add(collection.getPopup());
+            collection.setGem1Image("Webkinz_Diamon.png");
             canvas.draw();
         }
 
@@ -155,8 +154,8 @@ public class Game {
             activateMine(startMap.getDoors().get(canvas.getElementAt(event.getPosition())));
         }
         if(startMap.checkCollectionButton(event)){
-            canvas.add(collection.getPopup());;
-            canvas.draw();
+            collection.draw(null);
+            collection.setUp(canvas, null);
             player.printGemSet();
         }
     }
