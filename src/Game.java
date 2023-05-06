@@ -94,6 +94,8 @@ public class Game {
      */
     private static void mineClickables(MouseButtonEvent event){
 
+        int slagCounter = 0; // track how many consecutive slags encountered
+
         if(mine.testBackButton(event, canvas) && !Panel.isDrawn()){
             if(player.checkCompletion() && !shownCrown){
                 crownPopUp.draw(null);
@@ -108,18 +110,20 @@ public class Game {
         Rock schrodingersRock = mine.testRockHit(event);
         if (schrodingersRock != null  && !Panel.isDrawn()){
 
-            if (Helpers.randomInt(0, 1) == 0){ // 50% of the time, generate slag
-                mine.rockDissolve(canvas, schrodingersRock);
-                slagPopUp.draw(null);
-                slagPopUp.setUp(canvas, null);
-            }
-
-            else {
+            if ((Helpers.randomInt(0, 1) == 0) || (slagCounter >= 3)){ // after 4 slags, or 50% of the time, generate gem
                 mine.rockDissolve(canvas, schrodingersRock);
                 Gem receivedGem = mine.generateGem();
                 player.newGemFound(receivedGem);
                 gemPopUp.draw(receivedGem);
                 gemPopUp.setUp(canvas, receivedGem);
+                slagCounter = 0;
+            }
+
+            else {
+                mine.rockDissolve(canvas, schrodingersRock);
+                slagPopUp.draw(null);
+                slagPopUp.setUp(canvas, null);
+                slagCounter ++;
             }
         }
         slagPopUp.test(event, canvas);
