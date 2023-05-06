@@ -145,6 +145,9 @@ public class Game {
 
         collection.testWhiteButton(event, canvas);
         collection.testGreenButton(event, canvas);
+        collection.testYellowButton(event, canvas);
+        collection.testBlueButton(event, canvas);
+        collection.testRedButton(event, canvas);
         collection.test(event, canvas);
 
     }

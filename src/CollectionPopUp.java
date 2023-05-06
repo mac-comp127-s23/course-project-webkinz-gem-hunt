@@ -41,6 +41,9 @@ public class CollectionPopUp extends Panel {
 
     private Rectangle white;
     private Rectangle green;
+    private Rectangle yellow;
+    private Rectangle blue;
+    private Rectangle red;
 
     private static boolean drawn = false;
 
@@ -55,12 +58,6 @@ public class CollectionPopUp extends Panel {
         yellowButton = new GraphicsGroup();
         blueButton = new GraphicsGroup();
         redButton = new GraphicsGroup();
-
-        white = new Rectangle(0, 0, 200, 50);
-        white.setFillColor(Color.darkGray);
-
-        green = new Rectangle(0, 0, 200, 50);
-        green.setFillColor(new Color(10, 40, 3));
 
     }
 
@@ -90,25 +87,28 @@ public class CollectionPopUp extends Panel {
         collection.add(collectionBackground);
         collection.setCenter(400, 300);
 
+        white = new Rectangle(0, 0, 200, 50);
+        white.setFillColor(Color.darkGray);
+
         GraphicsText whiteText = new GraphicsText("WHITE");
         whiteText.setFont(FontStyle.BOLD, 16);
         whiteText.setFillColor(BACKGROUND_COLOR);
-        whiteText.setCenter(100, 25);
+        
+        collection.add(white, 0, 300);
+        collection.add(whiteText, 77, 330);
 
-        whiteButton.add(white);
-        whiteButton.add(whiteText);
-        collection.add(whiteButton, 0, 300);
+        green = new Rectangle(0, 0, 200, 50);
+        green.setFillColor(new Color(10, 40, 3));
 
         GraphicsText greenText = new GraphicsText("GREEN");
         greenText.setFont(FontStyle.BOLD, 16);
         greenText.setFillColor(BACKGROUND_COLOR);
         greenText.setCenter(100, 25);
 
-        greenButton.add(green);
-        greenButton.add(greenText);
-        collection.add(greenButton, 200, 300);
+        collection.add(green, 200, 300);
+        collection.add(greenText, 275, 330);
 
-        Rectangle yellow = new Rectangle(0, 0, 200, 50);
+        yellow = new Rectangle(0, 0, 200, 50);
         yellow.setFillColor(new Color(120, 105, 15));
 
         GraphicsText yellowText = new GraphicsText("YELLOW");
@@ -116,11 +116,10 @@ public class CollectionPopUp extends Panel {
         yellowText.setFillColor(BACKGROUND_COLOR);
         yellowText.setCenter(100, 25);
 
-        yellowButton.add(yellow);
-        yellowButton.add(yellowText);
-        collection.add(yellowButton, 400, 300);
+        collection.add(yellow, 400, 300);
+        collection.add(yellowText, 475, 330);
 
-        Rectangle blue = new Rectangle(0, 0, 300, 50);
+        blue = new Rectangle(0, 0, 300, 50);
         blue.setFillColor(new Color(9, 1, 64));
 
         GraphicsText blueText = new GraphicsText("BLUE");
@@ -132,7 +131,7 @@ public class CollectionPopUp extends Panel {
         blueButton.add(blueText);
         collection.add(blueButton, 0, 350);
 
-        Rectangle red = new Rectangle(0, 0, 300, 50);
+        red = new Rectangle(0, 0, 300, 50);
         red.setFillColor(new Color(75, 10, 5));
 
         GraphicsText redText = new GraphicsText("RED");
@@ -202,9 +201,81 @@ public class CollectionPopUp extends Panel {
         }
     }
 
+    public void testRedButton(MouseButtonEvent event, CanvasWindow canvas) {
+        if (collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
+        collection.getElementAt(event.getPosition()).equals(red)) {
+            gem1.setImagePath("Red_Ruby_Heart.png");
+            gem1Description.setText("Red Ruby Heart");
+
+            gem2.setImagePath("Ember_Amber.png");
+            gem2Description.setText("Ember Amber");
+
+            gem3.setImagePath("Volcano_Viscose.png");
+            gem3Description.setText("Volcano Viscose");
+
+            gem4.setImagePath("Flare_Fyca.png");
+            gem4Description.setText("Flare Fyca");
+
+            gem5.setImagePath("Torch_Treasure.png");
+            gem5Description.setText("Torch Treasure");
+
+            gem6.setImagePath("Lava_Lump.png");
+            gem6Description.setText("Lava Lump");
+
+        }
+    }
+
+    public void testBlueButton(MouseButtonEvent event, CanvasWindow canvas) {
+        if (collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
+        collection.getElementAt(event.getPosition()).equals(blue)) {
+            gem1.setImagePath("Ocean_Sapphire.png");
+            gem1Description.setText("Ocean Sapphire");
+
+            gem2.setImagePath("Teardrop_Tower.png");
+            gem2Description.setText("Teardrop Tower");
+
+            gem3.setImagePath("Sea_Stone.png");
+            gem3Description.setText("Sea Stone");
+
+            gem4.setImagePath("Rainbow_Flower.png");
+            gem4Description.setText("Rainbow Flower");
+
+            gem5.setImagePath("River_Ripple.png");
+            gem5Description.setText("River Ripple");
+
+            gem6.setImagePath("Aqua_Orb.png");
+            gem6Description.setText("Aqua Orb");
+
+        }
+    }
+
+    public void testYellowButton(MouseButtonEvent event, CanvasWindow canvas) {
+        if (collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
+        collection.getElementAt(event.getPosition()).equals(yellow)) {
+            gem1.setImagePath("Corona_Topaz.png");
+            gem1Description.setText("Corona Topaz");
+
+            gem2.setImagePath("Aurora_Rox.png");
+            gem2Description.setText("Aurora Rox");
+
+            gem3.setImagePath("Pyramid_Plunder.png");
+            gem3Description.setText("Pyramid Plunder");
+
+            gem4.setImagePath("Starlight_Shimmer.png");
+            gem4Description.setText("Starlight Shimmer");
+
+            gem5.setImagePath("Lemon_Drop.png");
+            gem5Description.setText("Lemon Drop");
+
+            gem6.setImagePath("Carat_Eclipse.png");
+            gem6Description.setText("Carat Eclipse");
+
+        }
+    }
+
     public void testGreenButton(MouseButtonEvent event, CanvasWindow canvas) {
         if (collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
-        collection.getElementAt(event.getPosition()).equals(getGreenButton())) {
+        collection.getElementAt(event.getPosition()).equals(green)) {
             gem1.setImagePath("Earth_Emerald.png");
             gem1Description.setText("Earth Emerald");
 
@@ -228,7 +299,7 @@ public class CollectionPopUp extends Panel {
 
     public void testWhiteButton(MouseButtonEvent event, CanvasWindow canvas) {
         if (collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
-        collection.getElementAt(event.getPosition()).equals(getWhiteButton())) {
+        collection.getElementAt(event.getPosition()).equals(white)) {
             gem1.setImagePath("Webkinz_Diamond.png");
             gem1Description.setText("Webkinz Diamond");
 
@@ -249,22 +320,6 @@ public class CollectionPopUp extends Panel {
 
             //canvas.draw();
         }
-    }
-
-    public boolean testYellowButton(MouseButtonEvent event) {
-        return (getYellowButton().testHit(event.getPosition().getX(), event.getPosition().getY()));
-    }
-
-    public boolean testBlueButton(MouseButtonEvent event) {
-        return (getBlueButton().testHit(event.getPosition().getX(), event.getPosition().getY()));
-    }
-
-    public boolean testRedButton(MouseButtonEvent event) {
-        return (getRedButton().testHit(event.getPosition().getX(), event.getPosition().getY()));
-    }
-
-    public boolean testExitButton(MouseButtonEvent event) {
-        return (getCloseButton().testHit(event.getPosition().getX(), event.getPosition().getY()))
     }
 
     public Rectangle getWhiteButton() {
