@@ -15,11 +15,6 @@ public class CollectionPopUp extends Panel {
     private static final Color BACKGROUND_COLOR = new Color(219, 203, 160);
     
     private GraphicsGroup collection;
-    private GraphicsGroup whiteButton;
-    private GraphicsGroup greenButton;
-    private GraphicsGroup yellowButton;
-    private GraphicsGroup blueButton;
-    private GraphicsGroup redButton;
 
     private Rectangle collectionBackground;
     private Rectangle closeRectangle;
@@ -51,13 +46,7 @@ public class CollectionPopUp extends Panel {
     /** Creates the collection pop up window where each button is its own graphics group that is later added onto
      * the overall collection graphics group. The image/text descriptions are added and their coordinates are set.
      */
-    public CollectionPopUp(CanvasWindow canvas) {
-
-        whiteButton = new GraphicsGroup();
-        greenButton = new GraphicsGroup();
-        yellowButton = new GraphicsGroup();
-        blueButton = new GraphicsGroup();
-        redButton = new GraphicsGroup();
+    public CollectionPopUp() {
 
     }
 
@@ -127,9 +116,8 @@ public class CollectionPopUp extends Panel {
         blueText.setFillColor(BACKGROUND_COLOR);
         blueText.setCenter(150, 25);
 
-        blueButton.add(blue);
-        blueButton.add(blueText);
-        collection.add(blueButton, 0, 350);
+        collection.add(blue, 0, 350);
+        collection.add(blueText, 121, 380);
 
         red = new Rectangle(0, 0, 300, 50);
         red.setFillColor(new Color(75, 10, 5));
@@ -139,9 +127,8 @@ public class CollectionPopUp extends Panel {
         redText.setFillColor(BACKGROUND_COLOR);
         redText.setCenter(150, 25);
 
-        redButton.add(red);
-        redButton.add(redText);
-        collection.add(redButton, 300, 350);
+        collection.add(red, 300, 350);
+        collection.add(redText, 435, 380);
 
         closeRectangle = new Rectangle(0, 0, 20, 20);
         closeRectangle.setFillColor(Color.RED);
@@ -318,28 +305,7 @@ public class CollectionPopUp extends Panel {
             gem6.setImagePath("Booger_Nugget.png");
             gem6Description.setText("Booger Nugget");
 
-            //canvas.draw();
         }
-    }
-
-    public Rectangle getWhiteButton() {
-        return white;
-    }
-
-    public Rectangle getGreenButton() {
-        return green;
-    }
-
-    public GraphicsGroup getYellowButton() {
-        return yellowButton;
-    }
-
-    public GraphicsGroup getBlueButton() {
-        return blueButton;
-    }
-
-    public GraphicsGroup getRedButton() {
-        return redButton;
     }
 
     public Rectangle getCloseButton () {

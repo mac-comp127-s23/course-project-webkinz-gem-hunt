@@ -27,7 +27,7 @@ public class Game {
         gemPopUp = new GemPanel();
         slagPopUp = new SlagPanel();
         crownPopUp = new CrownPanel();
-        collection = new CollectionPopUp(canvas);
+        collection = new CollectionPopUp();
         GemList.setList();
         activateMap();
         player = new Player("Alex");
