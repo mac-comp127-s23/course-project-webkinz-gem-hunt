@@ -156,22 +156,22 @@ public class CollectionPopUp extends Panel {
         gem6.setScale(1);
         collection.add(gem6);
 
-        gem1Description.setCenter(50, 150);
+        gem1Description.setCenter(25, 150);
         collection.add(gem1Description);
 
-        gem2Description.setCenter(270, 150);
+        gem2Description.setCenter(245, 150);
         collection.add(gem2Description);
 
-        gem3Description.setCenter(450, 150);
+        gem3Description.setCenter(425, 150);
         collection.add(gem3Description);
 
-        gem4Description.setCenter(50, 285);
+        gem4Description.setCenter(25, 285);
         collection.add(gem4Description);
 
-        gem5Description.setCenter(270, 285);
+        gem5Description.setCenter(245, 285);
         collection.add(gem5Description);
 
-        gem6Description.setCenter(450, 285);
+        gem6Description.setCenter(425, 285);
         collection.add(gem6Description);
 
         Panel.drawn = true;
@@ -192,22 +192,22 @@ public class CollectionPopUp extends Panel {
         if (Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(red)) {
             gem1.setImagePath("Red_Ruby_Heart.png");
-            gem1Description.setText("Red Ruby Heart");
+            gem1Description.setText("Red Ruby Heart (x" + player.getCountForGem(GemList.getGemByName("Red Ruby Heart")) + ")");
 
             gem2.setImagePath("Ember_Amber.png");
-            gem2Description.setText("Ember Amber");
+            gem2Description.setText("Ember Amber (x" + player.getCountForGem(GemList.getGemByName("Ember Amber")) + ")");
 
             gem3.setImagePath("Volcano_Viscose.png");
-            gem3Description.setText("Volcano Viscose");
+            gem3Description.setText("Volcano Viscose (x" + player.getCountForGem(GemList.getGemByName("Volcano Viscose")) + ")");
 
             gem4.setImagePath("Flare_Fyca.png");
-            gem4Description.setText("Flare Fyca");
+            gem4Description.setText("Flare Fyca (x" + player.getCountForGem(GemList.getGemByName("Flare Fyca")) + ")");
 
             gem5.setImagePath("Torch_Treasure.png");
-            gem5Description.setText("Torch Treasure");
+            gem5Description.setText("Torch Treasure (x" + player.getCountForGem(GemList.getGemByName("Torch Treasure")) + ")");
 
             gem6.setImagePath("Lava_Lump.png");
-            gem6Description.setText("Lava Lump");
+            gem6Description.setText("Lava Lump (x" + player.getCountForGem(GemList.getGemByName("Lava Lump")) + ")");
 
         }
     }
@@ -216,22 +216,22 @@ public class CollectionPopUp extends Panel {
         if (Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(blue)) {
             gem1.setImagePath("Ocean_Sapphire.png");
-            gem1Description.setText("Ocean Sapphire");
+            gem1Description.setText("Ocean Sapphire (x" + player.getCountForGem(GemList.getGemByName("Ocean Sapphire")) + ")");
 
             gem2.setImagePath("Teardrop_Tower.png");
-            gem2Description.setText("Teardrop Tower");
+            gem2Description.setText("Teardrop Tower (x" + player.getCountForGem(GemList.getGemByName("Teardrop Tower")) + ")");
 
             gem3.setImagePath("Sea_Stone.png");
-            gem3Description.setText("Sea Stone");
+            gem3Description.setText("Sea Stone (x" + player.getCountForGem(GemList.getGemByName("Sea Stone")) + ")");
 
             gem4.setImagePath("Rainbow_Flower.png");
-            gem4Description.setText("Rainbow Flower");
+            gem4Description.setText("Rainbow Flower (x" + player.getCountForGem(GemList.getGemByName("Rainbow Flower")) + ")");
 
             gem5.setImagePath("River_Ripple.png");
-            gem5Description.setText("River Ripple");
+            gem5Description.setText("River Ripple (x" + player.getCountForGem(GemList.getGemByName("River Ripple")) + ")");
 
             gem6.setImagePath("Aqua_Orb.png");
-            gem6Description.setText("Aqua Orb");
+            gem6Description.setText("Aqua Orb (x" + player.getCountForGem(GemList.getGemByName("Aqua Orb")) + ")");
 
         }
     }
@@ -240,22 +240,22 @@ public class CollectionPopUp extends Panel {
         if (Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(yellow)) {
             gem1.setImagePath("Corona_Topaz.png");
-            gem1Description.setText("Corona Topaz");
+            gem1Description.setText("Corona Topaz (x" + player.getCountForGem(GemList.getGemByName("Corona Topaz")) + ")");
 
             gem2.setImagePath("Aurora_Rox.png");
-            gem2Description.setText("Aurora Rox");
+            gem2Description.setText("Aurora Rox (x" + player.getCountForGem(GemList.getGemByName("Aurora Rox")) + ")");
 
             gem3.setImagePath("Pyramid_Plunder.png");
-            gem3Description.setText("Pyramid Plunder");
+            gem3Description.setText("Pyramid Plunder (x" + player.getCountForGem(GemList.getGemByName("Pyramid Plunder")) + ")");
 
             gem4.setImagePath("Starlight_Shimmer.png");
-            gem4Description.setText("Starlight Shimmer");
+            gem4Description.setText("Starlight Shimmer (x" + player.getCountForGem(GemList.getGemByName("Starlight Shimmer")) + ")");
 
             gem5.setImagePath("Lemon_Drop.png");
-            gem5Description.setText("Lemon Drop");
+            gem5Description.setText("Lemon Drop (x" + player.getCountForGem(GemList.getGemByName("Lemon Drop")) + ")");
 
             gem6.setImagePath("Carat_Eclipse.png");
-            gem6Description.setText("Carat Eclipse");
+            gem6Description.setText("Carat Eclipse (x" + player.getCountForGem(GemList.getGemByName("Carat Eclipse")) + ")");
 
         }
     }
@@ -264,22 +264,22 @@ public class CollectionPopUp extends Panel {
         if (Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(green)) {
             gem1.setImagePath("Earth_Emerald.png");
-            gem1Description.setText("Earth Emerald");
+            gem1Description.setText("Earth Emerald (x" + player.getCountForGem(GemList.getGemByName("Earth Emerald")) + ")");
 
             gem2.setImagePath("Moss_Marble.png");
-            gem2Description.setText("Moss Marble");
+            gem2Description.setText("Moss Marble (x" + player.getCountForGem(GemList.getGemByName("Moss Marble")) + ")");
 
             gem3.setImagePath("Cat_Eye_Glint.png");
-            gem3Description.setText("Cat's Eye Glint");
+            gem3Description.setText("Cat's Eye Glint (x" + player.getCountForGem(GemList.getGemByName("Cat's Eye Glint")) + ")");
 
             gem4.setImagePath("Jaded_Envy.png");
-            gem4Description.setText("Jaded Envy");
+            gem4Description.setText("Jaded Envy (x" + player.getCountForGem(GemList.getGemByName("Jaded Envy")) + ")");
 
             gem5.setImagePath("Pearl_Egg.png");
-            gem5Description.setText("Pearl Egg");
+            gem5Description.setText("Pearl Egg (x" + player.getCountForGem(GemList.getGemByName("Pearl Egg")) + ")");
 
             gem6.setImagePath("Terra_Tectonic.png");
-            gem6Description.setText("Terra Tectonic");
+            gem6Description.setText("Terra Tectonic (x" + player.getCountForGem(GemList.getGemByName("Terra Tectonic")) + ")");
 
         }
     }
@@ -288,22 +288,22 @@ public class CollectionPopUp extends Panel {
         if (Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(white)) {
             gem1.setImagePath("Webkinz_Diamond.png");
-            gem1Description.setText("Webkinz Diamond" + " Count: " + player.getCountForGem(GemList.getGemByName("Webkinz Diamond")));
+            gem1Description.setText("Webkinz Diamond (x" + player.getCountForGem(GemList.getGemByName("Webkinz Diamond")) + ")");
 
             gem2.setImagePath("Unicorn_Horn.png");
-            gem2Description.setText("Unicorn Horn");
+            gem2Description.setText("Unicorn Horn (x" + player.getCountForGem(GemList.getGemByName("Unicorn Horn")) + ")");
 
             gem3.setImagePath("Yum_Zum_Sparkle.png");
-            gem3Description.setText("Yum Zum Sparkle");
+            gem3Description.setText("Yum Zum Sparkle (x" + player.getCountForGem(GemList.getGemByName("Yum Zum Sparkle")) + ")");
 
             gem4.setImagePath("Zingoz_Zincoz.png");
-            gem4Description.setText("Zingoz Zincoz");
+            gem4Description.setText("Zingoz Zincoz (x" + player.getCountForGem(GemList.getGemByName("Zingoz Zincoz")) + ")");
 
             gem5.setImagePath("Goober_Glitter.png");
-            gem5Description.setText("Goober Glitter");
+            gem5Description.setText("Goober Glitter (x" + player.getCountForGem(GemList.getGemByName("Goober Glitter")) + ")");
 
             gem6.setImagePath("Booger_Nugget.png");
-            gem6Description.setText("Booger Nugget");
+            gem6Description.setText("Booger Nugget (x" + player.getCountForGem(GemList.getGemByName("Booger Nugget")) + ")");
 
         }
     }
