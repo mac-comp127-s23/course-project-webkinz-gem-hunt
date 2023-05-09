@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
 
 public class Player {
@@ -61,12 +60,3 @@ public class Player {
         }
     }
 }
-
-// Methods used in testing
-//-------------------------------------------------------
-
-//     public void autoCompleteCollection(){
-//         for(Gem gem : GemList.getGems()){
-//             this.newGemFound(gem);
-//         }
-//     }
