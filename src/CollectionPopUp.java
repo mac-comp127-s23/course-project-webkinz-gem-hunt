@@ -188,6 +188,7 @@ public class CollectionPopUp extends Panel {
         }
     }
 
+    /** Tests whether the red button has been clicked, and updates images and descriptions if it has. */
     public void testRedButton(MouseButtonEvent event, CanvasWindow canvas) {
         if (Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(red)) {
@@ -212,6 +213,7 @@ public class CollectionPopUp extends Panel {
         }
     }
 
+    /** Tests whether the blue button has been clicked, and updates images and descriptions if it has. */
     public void testBlueButton(MouseButtonEvent event, CanvasWindow canvas) {
         if (Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(blue)) {
@@ -236,6 +238,7 @@ public class CollectionPopUp extends Panel {
         }
     }
 
+    /** Tests whether the yellow button has been clicked, and updates images and descriptions if it has. */
     public void testYellowButton(MouseButtonEvent event, CanvasWindow canvas) {
         if (Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(yellow)) {
@@ -260,6 +263,7 @@ public class CollectionPopUp extends Panel {
         }
     }
 
+    /** Tests whether the green button has been clicked, and updates images and descriptions if it has. */
     public void testGreenButton(MouseButtonEvent event, CanvasWindow canvas) {
         if (Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(green)) {
@@ -284,6 +288,7 @@ public class CollectionPopUp extends Panel {
         }
     }
 
+    /** Tests whether the white button has been clicked, and updates images and descriptions if it has. */
     public void testWhiteButton(MouseButtonEvent event, CanvasWindow canvas) {
         if (Panel.drawn && collection.testHit(event.getPosition().getX(), event.getPosition().getY()) &&
         collection.getElementAt(event.getPosition()).equals(white)) {
